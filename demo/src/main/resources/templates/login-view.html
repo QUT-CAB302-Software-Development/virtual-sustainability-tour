@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+<form method="post" th:action="@{/login}">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:field="*{user.email}" th:value="*{user.email}" th:readonly="*{isRegistering}" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" th:field="*{user.password}" th:value="*{user.email}" th:readonly="${isRegistering}" required>
+    </div>
+    <div>
+        <label for="name" th:classappend="${!isRegistering} ? 'hidden' : ''">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{user.name}" th:classappend="${!isRegistering} ? 'hidden' : ''">
+    </div>
+    <div>
+        <input type="submit" name="login" value="Login">
+        <input type="submit" name="register" value="Register" th:disabled="${isRegistering}">
+    </div>
+    <p th:text="${success}" th:if="${success}"></p>
+    <p th:text="${error}" th:if="${error}"></p>
+</form>
+
+<script th:inline="javascript">
+    // Change the type of the password field to "password" so that the password is not visible.
+    // This is done to allow default values to be set in the password field.
+    document.getElementById("password").type = "password";
+</script>
+</body>
+</html>
