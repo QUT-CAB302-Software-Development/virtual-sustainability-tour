@@ -67,3 +67,17 @@ Please note that this is not an exhaustive list of tutorials. These are just som
   - [Spring Official Guide](https://spring.io/guides#gettingStarted) - This is the official Spring guide. It is a good place to start if you are new to Spring. They are a bit long, but feel free to focus on the sections that are relevant to your project.
   - [Thymeleaf Official Documentation](https://www.thymeleaf.org/doc/tutorials/3.1/thymeleafspring.html) - This is the official Thymeleaf documentation. It is a good place to start if you are new to Thymeleaf. They are a bit long, so again, feel free to focus on the relevant sections.
   - [Introduction to Using Thymeleaf in Spring](https://www.baeldung.com/thymeleaf-in-spring-mvc) - This is a good article that explains how to use Thymeleaf with Spring MVC.
+  
+# PR Documentation:
+
+### Describe your changes
+
+### Issue ticket number and link
+
+### Checklist before requesting a review
+- [ ] I have performed a self-review of my code
+- [ ] If it is a core feature, I have added thorough tests.
+- [ ] Do we need to implement analytics?
+- [ ] Will this be part of a product update? If yes, please write one phrase about this update.
+
+
