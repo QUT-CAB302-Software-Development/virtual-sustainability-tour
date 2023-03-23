@@ -1,10 +1,8 @@
 # Web Application with Spring Web and Thymeleaf
 
-## PR docouomentation is at the end of this readme
+## PR documentation is at the end of this readme
 
-This is a sample application that demonstrates how to build a web application with Spring Boot and Thymeleaf. This application allows you to sign up for an account, log in, and view a list of users.
-
-It is not required of you to use this application as a starting point for your project. You may choose to start from scratch, or use another sample application as a starting point. This application is provided as a reference for you to use if you find it helpful.
+This is a sample application that demonstrates how to build a web application with Spring Boot and Thymeleaf. This application allows you to sign up for an account, log in, and view a list of users. You can start from here, use another sample application, or from scratch.
 
 To create a Spring Boot project in IntelliJ IDEA (Ultimate), follow the instructions in the [Create your first Spring application](https://www.jetbrains.com/help/idea/your-first-spring-application.html) tutorial.
 
@@ -21,15 +19,11 @@ This project uses the following dependencies:
 
 ## Software Requirements
 
-This project requires the following software:
-
 - IntelliJ IDEA Ultimate
   - Download: https://www.jetbrains.com/idea/download/
   - Obtain a free student license: https://www.jetbrains.com/community/education/#students
 
-*Spring support is only available in IntelliJ IDEA Ultimate. For more information, see [Spring Support in IntelliJ IDEA](https://www.jetbrains.com/help/idea/spring-support.html).*
-
-Additionally, the following software is recommended:
+*Spring support is only available in IntelliJ IDEA Ultimate.
 
 ## Getting Started
 
@@ -54,8 +48,6 @@ In this project, the Java code is located in the `src/main/java` directory, and 
 Test files are located in the `src/test/java` directory.
 
 ## Recommended Tutorials
-
-Please note that this is not an exhaustive list of tutorials. These are just some tutorials that I found helpful when I was learning Spring & Thymeleaf. You may find other tutorials more useful to you, depending on your learning style and your project requirements.
 
 - Videos:
   - [(LinkedIn Learning) Create a Spring Project - by Todd Perkins](https://www.linkedin.com/learning/learning-java-applications-14700256/creating-a-spring-project) - This is a collection of short videos to get you started with Spring & Thymeleaf. We recommend the first 3 videos in this series:
