@@ -1,5 +1,7 @@
 # Web Application with Spring Web and Thymeleaf
 
+## PR docouomentation is at the end of this readme
+
 This is a sample application that demonstrates how to build a web application with Spring Boot and Thymeleaf. This application allows you to sign up for an account, log in, and view a list of users.
 
 It is not required of you to use this application as a starting point for your project. You may choose to start from scratch, or use another sample application as a starting point. This application is provided as a reference for you to use if you find it helpful.
