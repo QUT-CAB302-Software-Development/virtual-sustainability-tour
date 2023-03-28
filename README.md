@@ -3,8 +3,6 @@
 
 ## PR documentation is at the end of this readme
 
-This is a sample application that demonstrates how to build a web application with Spring Boot and Thymeleaf. This application allows you to sign up for an account, log in, and view a list of users. You can start from here, use another sample application, or from scratch.
-
 To create a Spring Boot project in IntelliJ IDEA (Ultimate), follow the instructions in the [Create your first Spring application](https://www.jetbrains.com/help/idea/your-first-spring-application.html) tutorial.
 
 ## Dependencies
@@ -14,9 +12,8 @@ This project uses the following dependencies:
 - Amazon Corretto 18
 - Spring Boot 3.0.4
 - Spring Web
-- Thymeleaf
-
-***Note:** Other dependencies may be added to the project as needed.*
+- React
+- SQL
 
 ## Software Requirements
 
