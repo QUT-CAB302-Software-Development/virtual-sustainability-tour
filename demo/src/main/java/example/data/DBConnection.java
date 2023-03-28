@@ -10,7 +10,7 @@ public class DBConnection {
     private static StaticDatabaseConnection instance = null;
 
     /**
-     * Constructor intializes the connection.
+     * Constructor initialises the connection.
      */
     private DBConnection() {
         instance = new StaticDatabaseConnection();
