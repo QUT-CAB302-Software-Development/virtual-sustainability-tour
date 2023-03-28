@@ -41,24 +41,7 @@ This will start the application on port 8080. You can access the application by 
 
 ### Project Structure
 
-In this project, the Java code is located in the `src/main/java` directory, and the HTML templates are located in the `src/main/resources/templates` directory. 
-
-Test files are located in the `src/test/java` directory.
-
-## Recommended Tutorials
-
-- Videos:
-  - [(LinkedIn Learning) Create a Spring Project - by Todd Perkins](https://www.linkedin.com/learning/learning-java-applications-14700256/creating-a-spring-project) - This is a collection of short videos to get you started with Spring & Thymeleaf. We recommend the first 3 videos in this series:
-    - Creating a Spring project
-    - Building APIs
-    - Returning JSON data
-  - [(YouTube) Java Web Development: Java Thymeleaf - by LaunchCode](https://www.youtube.com/watch?v=UIetMLyDVjQ&list=PLs5n5nYB22fIVO1nSiNoUTHIbQujdHYuC&index=8) - This is a playlist of tutorials on how to use Spring with Thymeleaf to build a web application. We recommend the following tutorials of this series:
-    - Java Hello Spring Part 3: Static Response. You will learn how to create a controller that returns a static view.
-
-- Articles / Guides:
-  - [Spring Official Guide](https://spring.io/guides#gettingStarted) - This is the official Spring guide. It is a good place to start if you are new to Spring. They are a bit long, but feel free to focus on the sections that are relevant to your project.
-  - [Thymeleaf Official Documentation](https://www.thymeleaf.org/doc/tutorials/3.1/thymeleafspring.html) - This is the official Thymeleaf documentation. It is a good place to start if you are new to Thymeleaf. They are a bit long, so again, feel free to focus on the relevant sections.
-  - [Introduction to Using Thymeleaf in Spring](https://www.baeldung.com/thymeleaf-in-spring-mvc) - This is a good article that explains how to use Thymeleaf with Spring MVC.
+In this project, the Java code is located in the `src/main/java` directory, and the HTML templates are located in the `src/main/resources/templates` directory. Test files are located in the `src/test/java` directory.
   
 # PR Documentation:
 
@@ -67,9 +50,6 @@ Test files are located in the `src/test/java` directory.
 ### Issue ticket number and link
 
 ### Checklist before requesting a review
-- [ ] I have performed a self-review of my code
-- [ ] If it is a core feature, I have added thorough tests.
-- [ ] Do we need to implement analytics?
-- [ ] Will this be part of a product update? If yes, please write one phrase about this update.
-
-
+- [] I have performed a self-review of my code
+- [] I have tested the extensively tested the code
+- [] Added comments to code to follow best practice
