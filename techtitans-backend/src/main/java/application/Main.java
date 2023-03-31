@@ -1,7 +1,7 @@
-package example.application;
+package application;
 
 
-import example.database.DatabaseConnection;
+import database.DatabaseConnection;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;

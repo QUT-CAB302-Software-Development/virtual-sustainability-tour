@@ -1,4 +1,4 @@
-package example.database;
+package database;
 import java.util.List;
 
 // Database interface defines methods for data access object
