@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<div>
+    <span>Welcome, <span th:text="${user.name}"></span>!</span>
+    <form method="post" action="/logout">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.name}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

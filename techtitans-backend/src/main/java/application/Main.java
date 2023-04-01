@@ -17,7 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		//SpringApplication.run(DemoApplication.class, args);
 		DatabaseConnection databaseConnection = new DatabaseConnection();
-		System.out.println("test123");
+		System.out.println("test123\n");
 		
 	}
 
