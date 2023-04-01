@@ -1,9 +1,16 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-8d59dc4de5201274e310e4c54b9627a8934c3b88527886e3b421487c677d23eb.svg)](https://classroom.github.com/a/cgVKkZfY)
-# Web Application with Spring Web and Thymeleaf
+# Web Application with React, Spring boot, and MySQL
 
-## PR documentation is at the end of this readme
+# PR Documentation:
 
-To create a Spring Boot project in IntelliJ IDEA (Ultimate), follow the instructions in the [Create your first Spring application](https://www.jetbrains.com/help/idea/your-first-spring-application.html) tutorial.
+### Describe your changes
+
+### Issue ticket number and link
+
+### Checklist before requesting a review
+- [] I have performed a self-review of my code
+- [] I have tested the extensively tested the code
+- [] Added comments to code to follow best practice
 
 ## Dependencies
 
@@ -13,15 +20,9 @@ This project uses the following dependencies:
 - Spring Boot 3.0.4
 - Spring Web
 - React
-- SQL
+- MySQL
 
 ## Software Requirements
-
-- IntelliJ IDEA Ultimate
-  - Download: https://www.jetbrains.com/idea/download/
-  - Obtain a free student license: https://www.jetbrains.com/community/education/#students
-
-*Spring support is only available in IntelliJ IDEA Ultimate.
 
 ## Getting Started
 
@@ -42,14 +43,3 @@ This will start the application on port 8080. You can access the application by 
 ### Project Structure
 
 In this project, the Java code is located in the `src/main/java` directory, and the HTML templates are located in the `src/main/resources/templates` directory. Test files are located in the `src/test/java` directory.
-  
-# PR Documentation:
-
-### Describe your changes
-
-### Issue ticket number and link
-
-### Checklist before requesting a review
-- [] I have performed a self-review of my code
-- [] I have tested the extensively tested the code
-- [] Added comments to code to follow best practice
