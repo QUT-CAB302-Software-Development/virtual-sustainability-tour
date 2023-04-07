@@ -18,7 +18,6 @@ public class Main {
 		//SpringApplication.run(DemoApplication.class, args);
 		DatabaseConnection databaseConnection = new DatabaseConnection();
 		System.out.println("test123\n");
-		
 	}
 
 	@Bean
