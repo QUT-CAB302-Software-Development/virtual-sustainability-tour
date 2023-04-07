@@ -29,7 +29,7 @@ public class UserDatabase {
     public User PasswordMatch(String email, String password)
     {
         User user = UserExists(email);
-        if (user.fetchPassword(user) == password)
+        if (user.getPassword() == password)
         {
             return user;
         }
