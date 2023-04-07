@@ -1,20 +1,18 @@
 package application;
 
 
-// import database.DatabaseConnection;
+// import oldDatabase.DatabaseConnection;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 
-
-
 import java.util.Arrays;
-
 
 @SpringBootApplication
 public class Main {
+
 
 	// Main program entry point
 	public static void main(String[] args) {
