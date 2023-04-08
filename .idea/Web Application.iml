@@ -4,6 +4,20 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-j-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mysql.connector.java" level="project" />
+    <orderEntry type="library" name="h2database.h2" level="project" />
+    <orderEntry type="library" name="springframework.boot.spring.starter.data.jpa" level="project" />
+    <orderEntry type="library" name="springframework.boot.spring.starter.data.jpa1" level="project" />
+    <orderEntry type="library" name="h2database.h21" level="project" />
   </component>
 </module>
