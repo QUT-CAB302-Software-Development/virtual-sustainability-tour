@@ -35,14 +35,14 @@
     border-radius: 5px;
     margin: 10px 0px;
     cursor: pointer;
+}
 
-    &:disabled {
+disabled {
         color: grey;
         opacity: 0.7;
         cursor: default;
     }
 
-}
 
 . center {
     text-align:center;
