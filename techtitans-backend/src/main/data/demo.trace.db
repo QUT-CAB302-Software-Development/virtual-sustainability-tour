@@ -110,3 +110,6 @@ Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 50 more
+2023-04-14 10:24:13 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users  [*]name VARCHAR(255),  username VARCHAR(255),  phone VARCHAR(255),  email VARCHAR(255),  password VARCHAR(255),  PRIMARY KEY ( email ))"; SQL statement:
+CREATE TABLE IF NOT EXISTS users  name VARCHAR(255),  username VARCHAR(255),  phone VARCHAR(255),  email VARCHAR(255),  password VARCHAR(255),  PRIMARY KEY ( email )) [42000-214]
