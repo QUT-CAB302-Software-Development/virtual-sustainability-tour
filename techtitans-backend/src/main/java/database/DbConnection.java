@@ -15,16 +15,17 @@ public class DbConnection {
     //Creates table if does not exist already
     private void createTableIfNotExists() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS users " +
-                " name VARCHAR(255), " +
-                " username VARCHAR(255), " +
-                " phone VARCHAR(255), " +
-                " email VARCHAR(255), " +
-                " password VARCHAR(255), " +
-                " PRIMARY KEY ( email ))";
+                "(name VARCHAR(255), " +
+                "username VARCHAR(255), " +
+                "phone VARCHAR(255), " +
+                "email VARCHAR(255), " +
+                "password VARCHAR(255), " +
+                "PRIMARY KEY (email))";
         Statement stmt = connection.createStatement();
         stmt.execute(sql);
         stmt.close();
     }
+
 
     // Takes list of users as parameter and saves into h2 database using sql query. Not sure if static is an issue?
     public static void saveUsers(List<User> users) throws SQLException {
