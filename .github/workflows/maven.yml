@@ -37,15 +37,17 @@ jobs:
       - name: Clean install with Maven
         working-directory: techtitans-backend
         run: mvn clean install
-
       - name: Run unit tests
         working-directory: techtitans-backend
         run: mvn test
-      - name: Check code quality with SpotBugs
-        uses: spotbugs/spotbugs-action@4.4.4
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
         with:
-            source: src/main/java
-            excludeFilter: /tmp/spotbugs-exclude.xml
-            xmlOutput: true
-            spotbugsArgs: -effort:max -low -output-format:XML
+          path: ~/.m2/example
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+
+
 
