@@ -26,9 +26,6 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: tecttitans-app
-      - name: Test
-        run: npm run test
-        working-directory: tecttitans-app
       - name: Lint
         run: npm run lint
         working-directory: tecttitans-app

@@ -29,4 +29,9 @@ jobs:
       - name: Build with Maven
         working-directory: techtitans-backend
         run: mvn -B package --file pom.xml
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: jar
+          path: /path/to/artifact.jar
 
