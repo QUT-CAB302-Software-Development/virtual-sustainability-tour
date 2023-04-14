@@ -41,4 +41,11 @@ jobs:
       - name: Run unit tests
         working-directory: techtitans-backend
         run: mvn test
+      - name: Check code quality with SpotBugs
+        uses: spotbugs/spotbugs-action@4.4.4
+        with:
+            source: src/main/java
+            excludeFilter: /tmp/spotbugs-exclude.xml
+            xmlOutput: true
+            spotbugsArgs: -effort:max -low -output-format:XML
 
