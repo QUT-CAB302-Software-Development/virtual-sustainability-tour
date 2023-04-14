@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - '*'
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -24,4 +22,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm install
+        working-directory: tecttitans-app
+      - name: Build
+        run: npm run build
+        working-directory: tecttitans-app
+      - name: Lint
+        run: npm run lint
         working-directory: tecttitans-app

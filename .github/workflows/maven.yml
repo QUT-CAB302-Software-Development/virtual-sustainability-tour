@@ -12,8 +12,6 @@ on:
   push:
     branches:
       - '*'
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -31,4 +29,25 @@ jobs:
       - name: Build with Maven
         working-directory: techtitans-backend
         run: mvn -B package --file pom.xml
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: jar
+          path: /path/to/artifact.jar
+      - name: Clean install with Maven
+        working-directory: techtitans-backend
+        run: mvn clean install
+      - name: Run unit tests
+        working-directory: techtitans-backend
+        run: mvn test
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/example
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+
+
 
