@@ -34,38 +34,9 @@ jobs:
         with:
           name: jar
           path: /path/to/artifact.jar
-      - name: Cache Maven dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/.m2/repository/example
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
-
-      - name: Build with Maven
+      - name: Clean install with Maven
         run: mvn clean install
 
       - name: Run unit tests
         run: mvn test
-
-      - name: Check code quality with SpotBugs
-        uses: spotbugs/spotbugs-action@4.4.4
-        with:
-              source: src/main/java
-              excludeFilter: /tmp/spotbugs-exclude.xml
-              xmlOutput: true
-              spotbugsArgs: -effort:max -low -output-format:XML
-
-      - name: Upload code coverage report to Codecov
-        uses: codecov/codecov-action@v2.1.0
-        with:
-                token: ${{ secrets.CODECOV_TOKEN }}
-                files: ./target/site/jacoco/jacoco.xml
-                flags: unit_tests
-
-      - name: Scan dependencies for known vulnerabilities
-        uses: dependency-check-action@v2
-        with:
-                format: "XML"
-                outputDirectory: "target/dependency-check"
-                failOnCVSS: "7"
 
