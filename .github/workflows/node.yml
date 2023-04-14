@@ -25,3 +25,18 @@ jobs:
       - name: Install
         run: npm install
         working-directory: tecttitans-app
+      - name: Build
+        run: npm run build
+        working-directory: tecttitans-app
+      - name: Test
+        run: npm run test
+        working-directory: tecttitans-app
+      - name: Lint
+        run: npm run lint
+        working-directory: tecttitans-app
+      - name: Deploy
+        uses: nwtgck/actions-netlify@v1.4.1
+        with:
+          publish-dir: './tecttitans-app/build'
+          production-branch: 'master'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
