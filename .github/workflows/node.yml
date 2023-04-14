@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - '*'
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -34,9 +32,3 @@ jobs:
       - name: Lint
         run: npm run lint
         working-directory: tecttitans-app
-      - name: Deploy
-        uses: nwtgck/actions-netlify@v1.4.1
-        with:
-          publish-dir: './tecttitans-app/build'
-          production-branch: 'master'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
