@@ -35,8 +35,10 @@ jobs:
           name: jar
           path: /path/to/artifact.jar
       - name: Clean install with Maven
+        working-directory: techtitans-backend
         run: mvn clean install
 
       - name: Run unit tests
+        working-directory: techtitans-backend
         run: mvn test
 
