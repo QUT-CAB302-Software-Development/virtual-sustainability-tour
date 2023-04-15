@@ -1,0 +1,60 @@
+1. As a new user, I want to register so that I can create an account. (Should Have)
+ACCEPTANCE CRITERIA:
+Given I am on the registration page, when I click on “register”, the system should prompt me to enter my details to register an account.
+
+2. As a registered user, I want to login so that I leave feedback. (Should Have)
+ACCEPTANCE CRITERIA:
+Given I am on the login page, when I click on “login”, then the system should prompt me to enter my details (username and password).
+
+3. As a registered user, I want to know if my login is successful so that I can access the system. (Should Have)
+ACCEPTANCE CRITERIA:
+Given the username and password are valid, when I click on “enter”, then the system should allow me to leave feedback.
+Given the username and password are invalid, when I click on “enter”, then the system should prompt me to enter my details again.
+
+4. As a logged-in user, I want to leave feedback, so that I can share my comments. (Could Have)
+ACCEPTANCE CRITERIA:
+Given I am on the feedback text box, when I click the box, then the system should allow me to input text into the text box.
+
+5. As a logged-in user, I want to share my feedback, so that the developers can receive constructive feedback. (Could Have)
+ACCEPTANCE CRITERIA:
+Given I have finished inputting my feedback, when I click on “Submit”, then the system should share my comments in the web app.
+
+6. As a user, I want to select a location, so that I can see its information. (Must  Have)
+ACCEPTANCE CRITERIA:
+Given I have chosen a location on the 2D Map, when I “click” the location, then the system should display relevant information about that location.
+
+7. As a user, I want to search for specific addresses in Brisbane, so that I can know sustainable information about the address. (Must Have)
+ACCEPTANCE CRITERIA:
+Given I have entered a keyword into the search bar, when I click on “Search”, then the system should display locations relevant to the keyword.(Should Have)
+
+8. As a user, I want to be able to filter my search results on different metrics so I can find results quicker and easier. Most importantly, I want to filter based on sustainability ratings, so I can identify locations within a certain sustainability rating.
+ACCEPTANCE CRITERIA:
+Given I am on the search bar, when I select the “Filter search” option, then the system should allow me to filter results based on my input.
+
+9. As a user, I want to see transportation recommendations, so that I can access nearby transportation in a specified location. (Should Have)
+ACCEPTANCE CRITERIA:
+Given I am on the 2d map page, when I click on “Browse transportation”, then the system should display nearby transportation options within that area.
+
+10. As a user, I want to see accommodation options, so that I can access nearby accommodations in a specified location. (Should Have)
+ACCEPTANCE CRITERIA:
+Given I am on the 2d map page, when I click on “Browse accommodations”, then the system should display nearby transportation options within that area.
+
+11. As a user, I want to book accommodation, so that I can stay nearby my chosen location. (Could Have)
+ACCEPTANCE CRITERIA:
+Given I have selected accommodation in “Browse Accommodations”, when I click on “Book accommodations”, then the system should prompt me to a booking page where I can book.
+
+12. As a user, I want to input my details on the booking page, so that I can proceed with the bookings. (Could Have)
+ACCEPTANCE CRITERIA:
+Given I am redirected to the booking page, when I click on “Input details”, then the system should allow me to input details for booking.
+
+13. As a user, I want to receive a booking confirmation, so that I can know if my booking is approved. (Could Have)
+ACCEPTANCE CRITERIA:
+Given I have inputted my details in the booking page, when I click on “Enter”, then the system should send me a booking confirmation.
+
+14. As a user, I want to view road networks, so that I can know the road condition of my chosen location. (Should Have)
+ACCEPTANCE CRITERIA:
+Given I have selected a location on the 2D map, when I select “View Road Networks”, then the system should display road information (i.e. traffic conditions) of the chosen location.
+
+15. As a developer, I want to see the github repository, so that I can credit the contributors. (Should Have)
+ACCEPTANCE CRITERIA:
+Given there is a github icon  every webpage, when I click on the icon, then I should be redirected to the github repository.

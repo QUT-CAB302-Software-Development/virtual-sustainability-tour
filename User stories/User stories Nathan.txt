@@ -1,0 +1,92 @@
+
+1. As a user, I want to view the start screen of the website, where I am invited to take a virtual sustainable tour of Brisbane City.
+
+ACCEPTANCE CRITERIA:
+A homepage with an immersive and appealing design featuring a navbar, information about the website's purpose, and a button that leads to the tour page. The page should be optimized for quick loading, accessible, and responsive on different devices.
+
+2. As a user, I want to interact with the map to select a location. 
+
+ACCEPTANCE CRITERIA:
+After clicking the "start tour" button, the user is taken to the maps page, which displays a map of Brisbane City that can be zoomed in and out. The user can click on any valid location to view sustainability ratings and other relevant information.
+
+3. As a user, I want to search for a location in Brisbane City.
+
+ACCEPTANCE CRITERIA:
+A search bar is underneath the navigation bar in the maps page. A search algorithm is implemented so that the best search results can be selected by the user.
+
+4. As a user, I want to filter my search results by sustainability ratings and disability accessibility, so that I can find locations that meet my specific needs.
+
+ACCEPTANCE CRITERIA:
+When searching for locations, the user should be able to apply filters based on sustainability ratings and disability accessibility. The filters should be easy to use and update the search results in real-time.
+
+5. As a user, I want to input a radius around my chosen location, so that I can view alternative locations within my initial chosen area. 
+
+ACCEPTANCE CRITERIA:
+After I have chosen a location, recommendations around the area with higher sustainability ratings and similar accommodations are shown, with a radius slider which can be dragged by the user.
+
+6. As a user, I want to explore the space I have chosen virtually.
+
+ACCEPTANCE CRITERIA:
+UUpon selecting the tour button on the location card, the user is taken to a page with a 360-degree image of the location. The image should be interactive and allow the user to navigate around the space using their mouse or touchscreen. The 360-degree image should be high quality and load quickly.
+
+7. As a user, I want to interact with the 360 degree image, so that I can access information about the location. 
+
+ACCEPTANCE CRITERIA:
+When taken to the 360 degree image, the user should be able to view the eco-friendly rating and other relevant information about the location. 
+
+8. As a user, I want to save locations to my favorites list, so that I can easily access them in the future.
+
+ACCEPTANCE CRITERIA:
+The user should be able to click a "favorite" button on any location card, which will add the location to their favorites list. The user should be able to view and manage their favorites list from their profile page.
+
+9. As a user, I want to leave reviews and ratings for locations I have visited, so that I can share my experience with others.
+
+ACCEPTANCE CRITERIA:
+After visiting a location, the user should be able to leave a review and rating. The user's review should be displayed publicly on the location's page, along with their username and profile picture. The user should be able to edit or delete their review if necessary.
+
+10. As a user, I want to access the website in different languages, so that I can understand the content better.
+
+ACCEPTANCE CRITERIA:
+The website should be available in multiple languages, which can be selected from a dropdown menu on the homepage. The language should be saved in the user's cookies, so that they do not have to select it every time they visit the website.
+
+
+11. As a user, I want to receive web or gmail notifications about sustainability events and promotions in Brisbane City, so that I can stay informed about sustainable travel options.
+
+ACCEPTANCE CRITERIA:
+The user should be able to opt-in to receive notifications about updated locations they are interested in and their friend's activities. The notifications should be delivered via email or push notification, and should be tailored to the user's interests and preferences. The user should be able to opt-out of notifications at any time.
+
+12. As a developer, I want to set up a Spring Boot project, so that I can start building the backend for the website.
+
+ACCEPTANCE CRITERIA:
+A Spring Boot project should be set up with all necessary dependencies and configurations, including H2 database and Spring Data JPA. The project should be able to run and connect to the database.
+
+13. As a developer, I want to create data models for accommodation, transportation, and locations, so that I can store and retrieve data from the database.
+
+ACCEPTANCE CRITERIA:
+Data models for accommodation, transportation, and locations should be created using Spring Data JPA annotations. The models should be able to map to corresponding database tables, and should be able to store and retrieve data from the database.
+
+14. As a developer, I want to set up a React project, so that I can start building the front-end for the website.
+
+ACCEPTANCE CRITERIA:
+A React project should be set up with all necessary dependencies and configurations, including React Router. The project should be able to run and connect to the backend APIs.
+
+15. As a developer, I want to create React components for displaying location data and recommendations, so that the user can interact with the data.
+
+ACCEPTANCE CRITERIA:
+React components for displaying location data and recommendations should be created using React functional components and hooks. The components should be able to fetch data from the backend APIs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
