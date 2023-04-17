@@ -2,7 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import HeroSection from './HeroSection';
 import { BrowserRouter } from 'react-router-dom';
-import {toBeInTheDocument } from '@testing-library/jest-dom'
+import  '@testing-library/jest-dom/extend-expect';
+
 
 describe('HeroSection component', () => {
     it('renders the title and description correctly', () => {
