@@ -1,6 +1,7 @@
 package database;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 // User database contains user update methods
@@ -9,8 +10,8 @@ public class UserDatabase {
     private DbConnection dbConnection;
 
     // initialises new user, creates user, and adds to class list/
-    public User createUser(String username, String phone, String name, String email, String password) {
-        User user = new User(username, phone, name, email, password);
+    public User createUser(String username, String phone, String name, String email, String password, Date birthday) {
+        User user = new User(username, phone, name, email, password, birthday);
         users.add(user);
         return user;
     }

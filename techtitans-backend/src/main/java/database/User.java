@@ -1,5 +1,7 @@
 package database;
 
+import java.util.Date;
+
 // Contains private user data for encapsulation
 public class User {
     private String username;
@@ -8,15 +10,19 @@ public class User {
     private String email;
     private String password;
 
+    private Date birthday;
+
     // Constructor for new user
-    public User(String username, String phone, String name, String email, String password)
+    public User(String username, String phone, String name, String email, String password, Date birthday)
     {
         this.username = username;
         this.phone = phone;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.birthday = birthday;
     }
+
     public String getUsername() {
         return username;
     }
@@ -37,6 +43,8 @@ public class User {
         return password;
     }
 
+    public Date getBirthday() { return birthday;}
+
     public void setUserName(String username) {
         this.username = username;
     }
@@ -50,4 +58,9 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
 }
