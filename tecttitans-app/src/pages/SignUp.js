@@ -44,13 +44,22 @@ function SignUp(){
     },
     {
         id: 4,
+        name:"number",
+        type:"number",
+        placeholder:"Number",
+        errorMessage:"It should be a valid number",
+        label:"Number",
+        required: true,
+    },
+    {
+        id: 5,
         name:"birthday",
         type:"date",
         placeholder:"Birthday",
         label:"Birthday"
     },
     {
-        id: 5,
+        id: 6,
         name:"password",
         type:"password",
         placeholder:"Password",
@@ -59,7 +68,7 @@ function SignUp(){
         required: true,
     },
     {
-        id: 6,
+        id: 7,
         name:"confirmPassword  ",
         type:"password",
         placeholder:"Confirm Password",
@@ -68,7 +77,7 @@ function SignUp(){
         required: true,
     },
     {
-        id: 7,
+        id: 8,
         name:"Nickname  ",
         type:"nickname",
         placeholder:"Nickname",
@@ -77,7 +86,7 @@ function SignUp(){
         required: true,
     },
     {
-        id: 8,
+        id: 9,
         name:"Country  ",
         type:"country",
         placeholder:"Country",

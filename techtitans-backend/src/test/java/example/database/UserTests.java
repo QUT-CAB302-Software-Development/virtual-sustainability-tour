@@ -71,7 +71,7 @@ public class UserTests {
 
     @Test
     void testUserConfirmPassword() {
-        user.setConfirmemail("ConfirmPassword");
+        user.setConfirmpassword("ConfirmPassword");
         assertEquals("ConfirmPassword", user.getConfirmpassword());
     }
 
