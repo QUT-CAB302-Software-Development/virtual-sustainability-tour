@@ -1,5 +1,5 @@
 package application;
-import database.DbConnection;
+import application.database.DbConnection;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
@@ -7,10 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 
 import java.sql.SQLException;
-import java.util.Arrays;
 
 @SpringBootApplication
 public class Main {
+
+	public static DbConnection dbConnection;
 
 	// Main program entry point
 	public static void main(String[] args) {
@@ -21,11 +22,10 @@ public class Main {
 
 		SpringApplication.run(Main.class, args);
 		try {
-			DbConnection dbConnection = new DbConnection(url, username, password);
+			dbConnection = new DbConnection(url, username, password);
 			// Call methods on the DbConnection object to interact with the database
 			dbConnection.close();
-		} catch (
-				SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

@@ -1,11 +1,13 @@
-package database;
+package application.database;
+import application.model.User;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 // User database contains user update methods
 public class UserDatabase {
-    private List<User> users = new ArrayList<>();
+    private static List<User> users = new ArrayList<>();
     private DbConnection dbConnection;
 
     // initialises new user, creates user, and adds to class list/
@@ -19,27 +21,36 @@ public class UserDatabase {
         this.dbConnection = dbConnection;
     }
 
-    public User userExists(String email) {
+    public boolean userExists(String username) {
         for (User user : users) {
-            if (user.getEmail().equals(email)) {
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public User getUser(String username) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
                 return user;
             }
         }
         return null;
     }
 
-    public User passwordMatch(String email, String password) {
-        User user = userExists(email);
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
+    public boolean passwordMatch(String username, String password) {
+        boolean user = userExists(username);
+        if (user && getUser(username).getPassword().equals(password)) {
+            return true;
         }
-        return null;
+        return false;
     }
 
     // Save method calls save method from dbconnection
     public void save() {
         try {
-            DbConnection.saveUsers(users);
+            dbConnection.saveUsers(users);
         } catch (SQLException e) {
             e.printStackTrace();
         }
