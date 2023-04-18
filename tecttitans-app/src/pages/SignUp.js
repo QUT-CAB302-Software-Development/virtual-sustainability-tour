@@ -35,13 +35,22 @@ function SignUp(){
     },
     {
         id: 3,
+        name:"confirmemail",
+        type:"email",
+        placeholder:"Confirm Email",
+        errorMessage:"It should be a valid email address!",
+        label:"Email",
+        required: true,
+    },
+    {
+        id: 4,
         name:"birthday",
         type:"date",
         placeholder:"Birthday",
         label:"Birthday"
     },
     {
-        id: 4,
+        id: 5,
         name:"password",
         type:"password",
         placeholder:"Password",
@@ -50,14 +59,32 @@ function SignUp(){
         required: true,
     },
     {
-        id: 5,
+        id: 6,
         name:"confirmPassword  ",
         type:"password",
         placeholder:"Confirm Password",
         errorMessage:"Passwords don't match!",
         label:"Confirm Password",
         required: true,
-    }
+    },
+    {
+        id: 7,
+        name:"Nickname  ",
+        type:"nickname",
+        placeholder:"Nickname",
+        errorMessage:"Nickname must be minimum 3 characters",
+        label:"Nickname",
+        required: true,
+    },
+    {
+        id: 8,
+        name:"Country  ",
+        type:"country",
+        placeholder:"Country",
+        errorMessage:"Not a valid country",
+        label:"Country",
+        required: true,
+    },
     ];
     function handleSubmit(e) {
         e.preventDefault();

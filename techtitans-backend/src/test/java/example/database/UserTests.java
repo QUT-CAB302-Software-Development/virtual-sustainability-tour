@@ -15,7 +15,8 @@ public class UserTests {
     Date birthDate = new Date(2023, 4, 17);
     @BeforeEach
     void setUp() {
-        user = new User("username", "0412345678", "name", "name@gmail.com", "password", birthDate);
+        user = new User("username", "0412345678", "name", "name@gmail.com", "password", birthDate, "name@gmail.com","password",
+                "nickname", "country");
     }
 
     @Test
@@ -26,6 +27,10 @@ public class UserTests {
         assertEquals("name@gmail.com", user.getEmail());
         assertEquals("password", user.getPassword());
         assertEquals(birthDate, user.getBirthday());
+        assertEquals("name@gmail.com", user.getConfirmemail());
+        assertEquals("password", user.getPassword());
+        assertEquals("nickname", user.getNickname());
+        assertEquals("country", user.getCountry());
     }
 
     @Test
@@ -57,4 +62,29 @@ public class UserTests {
         user.setBirthday(new Date(2023, 04, 18));
         assertEquals(new Date (2023, 04, 18), user.getBirthday());
     }
+
+    @Test
+    void testUserConfirmEmail() {
+        user.setConfirmemail("confirmEmail@example.com");
+        assertEquals("confirmEmail@example.com", user.getConfirmemail());
+    }
+
+    @Test
+    void testUserConfirmPassword() {
+        user.setConfirmemail("ConfirmPassword");
+        assertEquals("ConfirmPassword", user.getConfirmpassword());
+    }
+
+    @Test
+    void testUserSetNickname() {
+        user.setNickname("newNickname");
+        assertEquals("newNickname", user.getNickname());
+    }
+
+    @Test
+    void testUserSetCountry() {
+        user.setCountry("Australia");
+        assertEquals("Australia", user.getCountry());
+    }
+
 }

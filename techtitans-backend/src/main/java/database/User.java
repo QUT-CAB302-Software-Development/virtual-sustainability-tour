@@ -12,8 +12,18 @@ public class User {
 
     private Date birthday;
 
+    private String confirmemail;
+
+    private String confirmpassword;
+
+    private String nickname;
+
+    private String country;
+
+
     // Constructor for new user
-    public User(String username, String phone, String name, String email, String password, Date birthday)
+    public User(String username, String phone, String name, String email, String password, Date birthday,
+                String confirmemail,String confirmpassword, String nickname, String country)
     {
         this.username = username;
         this.phone = phone;
@@ -21,6 +31,10 @@ public class User {
         this.email = email;
         this.password = password;
         this.birthday = birthday;
+        this.confirmemail = confirmemail;
+        this.confirmpassword = confirmpassword;
+        this.nickname = nickname;
+        this.country = country;
     }
 
     public String getUsername() {
@@ -45,6 +59,15 @@ public class User {
 
     public Date getBirthday() { return birthday;}
 
+    public String getConfirmemail() { return confirmemail;}
+
+    public String getConfirmpassword() { return  confirmpassword;};
+
+    public String getNickname() { return nickname;}
+
+    public String getCountry() { return country;}
+
+
     public void setUserName(String username) {
         this.username = username;
     }
@@ -60,7 +83,22 @@ public class User {
     }
 
     public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+        this.birthday = birthday;}
+
+    public void setConfirmemail (String confirmemail) {this.confirmemail = confirmemail;}
+
+    public void setConfirmpassword (String confirmpassword) {
+        this.confirmpassword = confirmpassword;}
+
+    public void setNickname (String nickname) {
+        this.nickname = nickname;
     }
+
+    public void setCountry (String country) {
+        this.country = country;
+    }
+
+
+
 
 }
