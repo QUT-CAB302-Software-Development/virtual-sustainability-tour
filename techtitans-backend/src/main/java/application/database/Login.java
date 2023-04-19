@@ -1,4 +1,6 @@
-package database;
+package application.database;
+
+import application.model.User;
 
 public class Login {
     private User user;

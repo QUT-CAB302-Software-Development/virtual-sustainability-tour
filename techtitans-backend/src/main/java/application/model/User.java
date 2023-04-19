@@ -1,4 +1,4 @@
-package database;
+package application.model;
 
 // Contains private user data for encapsulation
 public class User {
@@ -7,6 +7,8 @@ public class User {
     private String name;
     private String email;
     private String password;
+
+    public User(){}
 
     // Constructor for new user
     public User(String username, String phone, String name, String email, String password)
@@ -49,7 +51,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
