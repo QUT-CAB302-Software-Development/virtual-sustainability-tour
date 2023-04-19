@@ -10,10 +10,8 @@ public class UserDatabase {
     private DbConnection dbConnection;
 
     // initialises new user, creates user, and adds to class list/
-    public User createUser(String username, String phone, String name, String email, String password, Date birthday,
-                           String confirmemail, String confirmpassword, String nickname, String country) {
-        User user = new User(username, phone, name, email, password, birthday, confirmemail, confirmpassword,
-                nickname, country);
+    public User createUser(String username, String phone, String name, String email, String password) {
+        User user = new User(username, phone, name, email, password);
         users.add(user);
         return user;
     }

@@ -2,21 +2,14 @@ package example.database;
 import database.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 // Basic user testing for constructor and setting private fields.
 public class UserTests {
     private User user;
-
-    // creating date constructor
-    Date birthDate = new Date(2023, 4, 17);
     @BeforeEach
     void setUp() {
-        user = new User("username", "0412345678", "name", "name@gmail.com", "password", birthDate, "name@gmail.com","password",
-                "nickname", "country");
+        user = new User("username", "0412345678", "name", "name@gmail.com", "password");
     }
 
     @Test
@@ -26,17 +19,26 @@ public class UserTests {
         assertEquals("name", user.getName());
         assertEquals("name@gmail.com", user.getEmail());
         assertEquals("password", user.getPassword());
-        assertEquals(birthDate, user.getBirthday());
-        assertEquals("name@gmail.com", user.getConfirmemail());
-        assertEquals("password", user.getPassword());
-        assertEquals("nickname", user.getNickname());
-        assertEquals("country", user.getCountry());
     }
 
     @Test
     void testUserSetUserName() {
-        user.setUserName("newName");
-        assertEquals("newName", user.getUsername());
+        user.setUserName("newUsername");
+        assertEquals("newUsername", user.getUsername());
+    }
+    @Test
+    void testUserGetUserName() {
+        assertEquals("username", user.getUsername());
+    }
+
+    @Test
+    void testUserSetName() {
+        user.setName("newName");
+        assertEquals("newName", user.getName());
+    }
+    @Test
+    void testUserGetName() {
+        assertEquals("name", user.getName());
     }
 
     @Test
@@ -44,11 +46,19 @@ public class UserTests {
         user.setPhone("0487654321");
         assertEquals("0487654321", user.getPhone());
     }
+    @Test
+    void testUserGetPhone() {
+        assertEquals("0412345678", user.getPhone());
+    }
 
     @Test
     void testUserSetEmail() {
         user.setEmail("newEmail@example.com");
         assertEquals("newEmail@example.com", user.getEmail());
+    }
+    @Test
+    void testUserGetEmail() {
+        assertEquals("name@gmail.com", user.getEmail());
     }
 
     @Test
@@ -56,35 +66,9 @@ public class UserTests {
         user.setPassword("NewPass0");
         assertEquals("NewPass0", user.getPassword());
     }
-
+    //hi
     @Test
-    void testUserSetBirthday() {
-        user.setBirthday(new Date(2023, 04, 18));
-        assertEquals(new Date (2023, 04, 18), user.getBirthday());
+    void testUserGetPassword() {
+        assertEquals("password", user.getPassword());
     }
-
-    @Test
-    void testUserConfirmEmail() {
-        user.setConfirmemail("confirmEmail@example.com");
-        assertEquals("confirmEmail@example.com", user.getConfirmemail());
-    }
-
-    @Test
-    void testUserConfirmPassword() {
-        user.setConfirmpassword("ConfirmPassword");
-        assertEquals("ConfirmPassword", user.getConfirmpassword());
-    }
-
-    @Test
-    void testUserSetNickname() {
-        user.setNickname("newNickname");
-        assertEquals("newNickname", user.getNickname());
-    }
-
-    @Test
-    void testUserSetCountry() {
-        user.setCountry("Australia");
-        assertEquals("Australia", user.getCountry());
-    }
-
 }
