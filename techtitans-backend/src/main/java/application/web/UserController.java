@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Array;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +30,8 @@ public class UserController {
 
 
     private ArrayList<String> tokenList = new ArrayList<String>();
+    private UserDatabase userDatabase = Main.userDatabase;
 
-    private UserDatabase userDatabase = new UserDatabase(Main.dbConnection);
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody UserLogin userLogin) {
@@ -65,7 +66,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, Object>> register(@RequestBody User user) {
+    public ResponseEntity<Map<String, Object>> register(@RequestBody User user) throws SQLException {
 
         String username = user.getUsername();
         String password = user.getPassword();

@@ -17,13 +17,13 @@ public class DbConnection {
 
     //Creates table if does not exist already
     private void createTableIfNotExists() throws SQLException {
-        String sql = "CREATE TABLE IF NOT EXISTS users " +
-                "(name VARCHAR(255), " +
-                "username VARCHAR(255), " +
-                "phone VARCHAR(255), " +
-                "email VARCHAR(255), " +
-                "password VARCHAR(255), " +
-                "PRIMARY KEY (email))";
+        String sql = "CREATE TABLE IF NOT EXISTS USERS " +
+                "(NAME VARCHAR(255), " +
+                "USERNAME VARCHAR(255), " +
+                "PHONE BIGINT, " +
+                "EMAIL VARCHAR(255), " +
+                "PASSWORD VARCHAR(255), " +
+                "PRIMARY KEY (USERNAME))";
         Statement stmt = connection.createStatement();
         stmt.execute(sql);
         stmt.close();
@@ -32,22 +32,28 @@ public class DbConnection {
 
     // Takes list of users as parameter and saves into h2 database using sql query. Not sure if static is an issue?
     public void saveUsers(List<User> users) throws SQLException {
-        String sql = "INSERT INTO users (username, phone, name, email, password) " +
+        String sql = "INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) " +
                 "VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         for (User user : users) {
             pstmt.setString(1, user.getUsername());
-            pstmt.setString(2, user.getPhone());
-            pstmt.setString(3, user.getName());
-            pstmt.setString(4, user.getEmail());
+            pstmt.setString(2, user.getName());
+            pstmt.setString(3, user.getEmail());
+            pstmt.setString(4, user.getPhone());
             pstmt.setString(5, user.getPassword());
             pstmt.executeUpdate();
         }
         pstmt.close();
+
+
+//        sql = "CREATE TABLE test_table (" +
+//                "id int, " +
+//                "name varchar(255)" +
+//                ")";
     }
 
     public void saveUser(User user) throws SQLException {
-        String sql = "INSERT INTO users (username, phone, name, email, password) " +
+        String sql = "INSERT INTO users (USERNAME, PHONE, NAME, EMAIL, PASSWORD) " +
                 "VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pstmt = connection.prepareStatement(sql);
 

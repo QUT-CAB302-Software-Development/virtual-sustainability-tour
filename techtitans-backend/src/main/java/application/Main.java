@@ -1,7 +1,10 @@
 package application;
 import application.database.DbConnection;
+import application.database.UserDatabase;
+import jakarta.servlet.ServletContextListener;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +14,21 @@ import java.sql.SQLException;
 @SpringBootApplication
 public class Main {
 
+	private static String username="sa";
+	private static String password="password";
+	private static String url="jdbc:h2:file:./techtitans-backend/src/main/data/demo;DB_CLOSE_ON_EXIT=FALSE";
+
 	public static DbConnection dbConnection;
+
+	static {
+		try {
+			dbConnection = new DbConnection(url, username, password);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static UserDatabase userDatabase = new UserDatabase(dbConnection);
 
 	// Main program entry point
 	public static void main(String[] args) {
@@ -28,6 +45,14 @@ public class Main {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Bean
+	ServletListenerRegistrationBean<ServletContextListener> servletListener() {
+		ServletListenerRegistrationBean<ServletContextListener> srb
+				= new ServletListenerRegistrationBean<>();
+		srb.setListener(new ExampleServletContextListener());
+		return srb;
 	}
 
 	@Bean

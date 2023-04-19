@@ -11,11 +11,13 @@ public class UserDatabase {
     private DbConnection dbConnection;
 
     // initialises new user, creates user, and adds to class list/
-    public User createUser(String username, String phone, String name, String email, String password) {
+    public User createUser(String username, String phone, String name, String email, String password) throws SQLException {
         User user = new User(username, phone, name, email, password);
         users.add(user);
+
         return user;
     }
+
 
     public UserDatabase(DbConnection dbConnection) {
         this.dbConnection = dbConnection;
@@ -50,6 +52,7 @@ public class UserDatabase {
     // Save method calls save method from dbconnection
     public void save() {
         try {
+            System.out.println(users.size());
             dbConnection.saveUsers(users);
         } catch (SQLException e) {
             e.printStackTrace();
