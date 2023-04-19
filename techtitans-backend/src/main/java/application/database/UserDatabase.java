@@ -3,6 +3,7 @@ import application.model.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 // User database contains user update methods
