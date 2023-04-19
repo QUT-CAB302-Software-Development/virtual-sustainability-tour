@@ -66,6 +66,7 @@ public class UserTests {
         user.setPassword("NewPass0");
         assertEquals("NewPass0", user.getPassword());
     }
+    //hi
     @Test
     void testUserGetPassword() {
         assertEquals("password", user.getPassword());
