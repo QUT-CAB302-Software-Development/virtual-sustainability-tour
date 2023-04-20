@@ -10,23 +10,19 @@ import Contact from './pages/Contact';
 
 //  established routing between the four pages of the front end
 function App() {
-  return (
-      <>
-          <Router>
-              <Navbar />
-              <Routes>
-                  <Route path='/' exact element={Home()} />
-                  <Route path='/sign-up' element={SignUp()} />
-                  <Route path='/tour' element={Tour()} />
-                  <Route path='/contact' element={Contact()} />
-              </Routes>
-          </Router>
-
-      </>
-
-
-
-  );
+    return (
+        <>
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path='/' exact element={Home()} />
+                    <Route path='/sign-up' element={SignUp()} />
+                    <Route path='/tour' element={Tour()} />
+                    <Route path='/contact' element={Contact()} />
+                </Routes>
+            </Router>
+        </>
+    );
 }
 
 export default App;
