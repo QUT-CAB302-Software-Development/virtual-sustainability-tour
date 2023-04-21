@@ -1,4 +1,4 @@
-package database;
+package application.database;
 
 public class SustainabilityAlgo {
     private String CompanyName;
