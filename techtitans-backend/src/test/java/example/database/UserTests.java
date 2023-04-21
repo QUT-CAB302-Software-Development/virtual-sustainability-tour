@@ -1,5 +1,5 @@
 package example.database;
-import database.User;
+import application.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,8 +23,22 @@ public class UserTests {
 
     @Test
     void testUserSetUserName() {
-        user.setUserName("newName");
-        assertEquals("newName", user.getUsername());
+        user.setUserName("newUsername");
+        assertEquals("newUsername", user.getUsername());
+    }
+    @Test
+    void testUserGetUserName() {
+        assertEquals("username", user.getUsername());
+    }
+
+    @Test
+    void testUserSetName() {
+        user.setName("newName");
+        assertEquals("newName", user.getName());
+    }
+    @Test
+    void testUserGetName() {
+        assertEquals("name", user.getName());
     }
 
     @Test
@@ -32,16 +46,29 @@ public class UserTests {
         user.setPhone("0487654321");
         assertEquals("0487654321", user.getPhone());
     }
+    @Test
+    void testUserGetPhone() {
+        assertEquals("0412345678", user.getPhone());
+    }
 
     @Test
     void testUserSetEmail() {
         user.setEmail("newEmail@example.com");
         assertEquals("newEmail@example.com", user.getEmail());
     }
+    @Test
+    void testUserGetEmail() {
+        assertEquals("name@gmail.com", user.getEmail());
+    }
 
     @Test
     void testUserSetPassword() {
         user.setPassword("NewPass0");
         assertEquals("NewPass0", user.getPassword());
+    }
+    //hi
+    @Test
+    void testUserGetPassword() {
+        assertEquals("password", user.getPassword());
     }
 }
