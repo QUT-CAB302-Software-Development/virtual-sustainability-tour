@@ -6,23 +6,28 @@ import Rating from '@material-ui/lab/Rating';
 import useStyles from './PlaceDetailsStyle';
 
 
-function PlaceDetails({place}) {
+function PlaceDetails({place, selected, refProp }) {
     const classes = useStyles();
     const tripAdvisorButtonText = "Trip Advisor";
     const websiteButtonText = "Go to Website";
-    const placeholderImage = 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg';
 
-    console.log(place);
+    if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start"})
+
     return (
         <Card elevation={6}>
             <CardMedia
                 style={{ height: 350}}
-                image={place.photo ? place.photo.images.large.url : {placeholderImage}}
+                image={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
                 title={place.name}
             />
             <CardContent>
 
                 <Typography gutterBottom variant="h5">{place.name}</Typography>
+                
+                <Box display="flex" justifyContent="space-between">
+                    <Rating value={Number(place.rating)} readonly />
+                    <Typography gutterBottom variant="subtitle1"> {place.num_reviews} reviews</Typography>
+                </Box>
 
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">Price</Typography>

@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
-
 // handles API calls
-
-export const getPlacesData = async (sw, ne) => {
+export const getPlacesData = async (type, sw, ne) => {
     try {
         // gets screen bounds and returns places within bounds
-        const { data: {data}} = await axios.get(URL, 
+        const { data: {data} } = await axios.get(
+            `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`, 
             {
                 params: {
                     bl_latitude: sw.lat,
@@ -15,13 +13,12 @@ export const getPlacesData = async (sw, ne) => {
                     bl_longitude: sw.lng,
                     tr_longitude: ne.lng,
                 },
-                //api call
+                //api call, api key has a 500/month call limit
                 headers: {
-                    'X-RapidAPI-Key': 'd0f83890bbmshb339537501b6a58p15a2a5jsn5704f13578f1',
+                    'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY,
                     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
                 }
             });
-
         return data;
         
     } catch (error) {
