@@ -1,6 +1,6 @@
-import makeStyles from '@mui/styles/makeStyles';
+import styled from '@emotion/styled';
 
-export default makeStyles((theme) => ({
+export default styled((theme) => ({
     formControl: {
         margin: theme.spacing(1), minWidth: 120, marginBottom: '30px',
     },

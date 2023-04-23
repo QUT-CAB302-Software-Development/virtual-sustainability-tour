@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import '../App.css';
-import { CssBaseline, Grid } from '@material-ui/core';
+
+import { CssBaseline, Grid } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import {getPlacesData} from '../maps/api/index';
 import Header from '../maps/Header/Header';
@@ -8,6 +10,8 @@ import List from '../maps/List/List';
 import Map from '../maps/Map/Map';
 
 function Tour() {
+
+    const theme = createTheme();
 
     const [places, setPlaces] = useState([]);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
@@ -27,9 +31,9 @@ function Tour() {
     }, []);
 
     useEffect(() => {
-        const filteredPlaces = places.filter((place) => place.rating > rating);
+        const filteredPlaces = places?.filter((place) => place.rating > rating);
         setFilteredPlaces(filteredPlaces);
-    }, [rating]);
+    }, [rating, places]);
 
     useEffect (() => {
         if (bounds.sw && bounds.ne){
@@ -45,32 +49,33 @@ function Tour() {
 
     return(
         <>
-            <CssBaseline />
-            <Header setCoordinates={setCoordinates} />
-            <Grid container spacing={3} style={{ maxHeight: '87vh', width: '100%', overflow: 'clip' }}>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Header setCoordinates={setCoordinates} />
+                <Grid container spacing={3} style={{ maxHeight: '87vh', width: '100%', overflow: 'clip' }}>
 
-                <Grid item xs={12} md={4}>
-                    <List 
-                        places={filteredPlaces.length ? filteredPlaces : places}
-                        childClicked={childClicked}
-                        isLoading={isLoading}
-                        type={type}
-                        setType={setType}
-                        rating={rating}
-                        setRating={setRating}
-                    />
+                    <Grid item xs={12} md={4}>
+                        <List 
+                            places={filteredPlaces && filteredPlaces.length ? filteredPlaces : places}
+                            childClicked={childClicked}
+                            isLoading={isLoading}
+                            type={type}
+                            setType={setType}
+                            rating={rating}
+                            setRating={setRating}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                        <Map 
+                            setCoordinates={setCoordinates}
+                            setBounds={setBounds}
+                            coordinates={coordinates}
+                            places={filteredPlaces && filteredPlaces.length ? filteredPlaces : places}
+                            setChildClicked={setChildClicked}
+                        />
+                    </Grid>
                 </Grid>
-                {/* style={{ maxHeight:'86vh', overflow:'hidden' }} */}
-                <Grid item xs={12} md={8}>
-                    <Map 
-                        setCoordinates={setCoordinates}
-                        setBounds={setBounds}
-                        coordinates={coordinates}
-                        places={filteredPlaces.length ? filteredPlaces : places}
-                        setChildClicked={setChildClicked}
-                    />
-                </Grid>
-            </Grid>
+            </ThemeProvider>
         </>
     );
 }
