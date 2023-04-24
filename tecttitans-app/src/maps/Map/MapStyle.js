@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import {makeStyles} from '@mui/styles';
 
-export default styled(() => ({
+export default makeStyles(() => ({
     paper: {
-        padding: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100px',
+        padding: '5px', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100px',
     },
     mapContainer: {
         height: '85vh', width: '100%',

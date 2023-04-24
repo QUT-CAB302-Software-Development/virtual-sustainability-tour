@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+import {makeStyles} from '@mui/styles';
 
-export default styled((theme) => ({
+export default makeStyles((theme) => ({
     title: {
         display: 'none',
         [theme.breakpoints.up('sm')]: {
@@ -18,10 +18,10 @@ export default styled((theme) => ({
         [theme.breakpoints.up('sm')]: { marginLeft: theme.spacing(3), width: 'auto' },
     },
     searchIcon: {
-        padding: theme.spacing(0, 2), height: '100%', position: 'absolute', pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: theme.spacing(0, 0), height: '100%', position: 'absolute', pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center',
     },
     inputRoot: {
-        color: 'inherit',
+        padding: theme.spacing(0, 3) , color: 'inherit',
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0), paddingLeft: `calc(1em + ${theme.spacing(4)}px)`, transition: theme.transitions.create('width'), width: '100%', [theme.breakpoints.up('md')]: { width: '20ch' },

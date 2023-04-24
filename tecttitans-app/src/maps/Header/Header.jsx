@@ -17,7 +17,7 @@ function Header({setCoordinates}) {
     }
 
     // change to whatever u want
-    const headingName = "Tour";
+    const headingName = "TOUR";
     const searchPrompt = "Enter a location";
     const searchPlaceholder = "Search...";
     

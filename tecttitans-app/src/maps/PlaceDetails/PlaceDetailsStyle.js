@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+import {makeStyles} from '@mui/styles';
 
-export default styled(() => ({
+export default makeStyles(() => ({
     chip: {
         margin: '5px 5px 5px 0',
     },

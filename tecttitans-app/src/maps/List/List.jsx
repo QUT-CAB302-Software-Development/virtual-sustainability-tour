@@ -24,7 +24,7 @@ function List({places, childClicked, isLoading, type, setType, rating, setRating
                 </div>
             ) : (
                 <>
-                <FormControl className={classes.formControl}>
+                <FormControl variant="standard" size="small" className={classes.formControl}>
                     <InputLabel>Type</InputLabel>
                     <Select value={type} onChange={(event) => setType(event.target.value)}>
                         <MenuItem value="restaurants">Restaurants</MenuItem>
@@ -32,7 +32,7 @@ function List({places, childClicked, isLoading, type, setType, rating, setRating
                         <MenuItem value="attractions">Attractions</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl className={classes.formControl}>
+                <FormControl variant="standard" size="small" className={classes.formControl}>
                     <InputLabel>Rating</InputLabel>
                     <Select value={rating} onChange={(event) => setRating(event.target.value)}>
                         <MenuItem value={0}>All</MenuItem>
@@ -41,7 +41,7 @@ function List({places, childClicked, isLoading, type, setType, rating, setRating
                         <MenuItem value={4.5}>Above 4.5</MenuItem>
                     </Select>
                 </FormControl>
-                <Grid container spacing={3} className={classes.list}>
+                <Grid marginTop={1} container spacing={3} className={classes.list}>
                     {places?.map((place, i) => (
                         <Grid ref={elRefs[i]} item key={i} xs={12}>
                             <PlaceDetails 
