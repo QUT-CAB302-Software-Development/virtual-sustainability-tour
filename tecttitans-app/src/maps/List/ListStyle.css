@@ -1,5 +1,5 @@
 .container {
-    padding: 25px;
+    padding: 20px;
   }
   
   .loading {
@@ -12,7 +12,7 @@
   .formControl {
     margin: 8px;
     min-width: 120px;
-    margin-bottom: 30px;
+    margin-bottom: 4px;
   }
   
   .selectEmpty {

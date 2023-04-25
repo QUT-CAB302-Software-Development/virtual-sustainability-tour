@@ -3,7 +3,7 @@ import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chi
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import Rating from '@mui/lab/Rating';
-import './PlaceDetails.css';
+import './PlaceDetailsStyle.css';
 
 function PlaceDetails({ place, selected, refProp }) {
   const tripAdvisorButtonText = "Trip Advisor";
