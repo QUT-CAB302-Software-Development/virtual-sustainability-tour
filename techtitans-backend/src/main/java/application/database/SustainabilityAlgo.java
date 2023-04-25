@@ -9,7 +9,7 @@ public class SustainabilityAlgo {
         this.companyData = companyData;
     }
 
-    public int calculateESG(int ghgTotal, int sales, int operatingIncome, int waterWithdrawn, int waterDischarge, int sox, int nox, int voc) {
+    public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn, long waterDischarge, int sox, int nox, int voc) {
 
         // calculate normalised score for each metric based on papers
         double ghgNormalised = (double)(ghgTotal - 0) / (212222000 - 0);

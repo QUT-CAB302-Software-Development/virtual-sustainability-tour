@@ -5,19 +5,19 @@ public class CompanyData {
     private int year;
     private String country;
     private String subIndustry;
-    private int ghgTotal;
-    private int sales;
-    private int operatingIncome;
-    private int waterWithdrawn;
-    private int waterDischarge;
-    private int sox;
-    private int nox;
-    private int voc;
+    private long ghgTotal; // metric tons
+    private long sales; // dollars
+    private long operatingIncome; // dollars
+    private long waterWithdrawn; // m3
+    private long waterDischarge; // m3
+    private int sox; // metric tons
+    private int nox; // metric tons
+    private int voc; // metric tons
 
     // Constructor for Sustainability Algorithm
     public CompanyData(String companyName, int year, String country, String subIndustry,
-                       int ghgTotal, int sales, int operatingIncome, int waterWithdrawn,
-                       int waterDischarge, int sox, int nox, int voc) {
+                       long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
+                       long waterDischarge, int sox, int nox, int voc) {
         this.companyName = companyName;
         this.year = year;
         this.country = country;
@@ -31,6 +31,7 @@ public class CompanyData {
         this.nox = nox;
         this.voc = voc;
     }
+
     public CompanyData getAllData() {
         return this;
     }
