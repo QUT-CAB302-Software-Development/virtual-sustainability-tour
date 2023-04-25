@@ -16,9 +16,9 @@ public class SustainabilityAlgoTests {
         long operatingIncome = 1010000000L;
         long waterWithdrawn = 138887000L;
         long waterDischarge = 34722000L;
-        int sox = 100;
-        int nox = 10;
-        int voc = 50;
+        int sox = 0;
+        int nox = 0;
+        int voc = 0;
 
         int esgScore = SustainabilityAlgo.calculateESG(ghgTotal, sales, operatingIncome, waterWithdrawn, waterDischarge, sox, nox, voc);
 
