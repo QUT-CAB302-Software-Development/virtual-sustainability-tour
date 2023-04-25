@@ -9,8 +9,6 @@ public class ExampleServletContextListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent event) {
         System.out.println(
                 "Callback triggered - ContextListener2183617263168316.");
-
-
     }
 
     @Override

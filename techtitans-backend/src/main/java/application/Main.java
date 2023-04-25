@@ -18,6 +18,7 @@ public class Main {
 	private static String password="password";
 	private static String url="jdbc:h2:file:./techtitans-backend/src/main/data/demo;DB_CLOSE_ON_EXIT=FALSE";
 
+
 	public static DbConnection dbConnection;
 
 	static {
@@ -37,10 +38,14 @@ public class Main {
 		String username = "sa";
 		String password = "password";
 
+		System.out.println("Running!");
+
 		SpringApplication.run(Main.class, args);
 		try {
 			dbConnection = new DbConnection(url, username, password);
 			// Call methods on the DbConnection object to interact with the database
+
+
 			dbConnection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,6 +59,7 @@ public class Main {
 		srb.setListener(new ExampleServletContextListener());
 		return srb;
 	}
+
 
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
