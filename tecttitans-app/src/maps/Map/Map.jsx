@@ -3,18 +3,15 @@ import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import Rating from '@mui/lab/Rating';
-import useStyles from './MapStyle';
-import MapVisuals from './MapVisuals';
-// https://snazzymaps.com/ ^^
+import './MapStyle.css'
 
 // google maps api usage
 function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }) {
-    const classes = useStyles();
     const isDesktop = useMediaQuery('(min-width:600px)');
     const defaultZoom = 14;
 
     return (
-        <div className={classes.mapContainer}>
+        <div className="mapContainer">
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                 defaultCenter={coordinates}
@@ -36,7 +33,7 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
             >
                 {places?.map((place, i) => (
                     <div
-                    className={classes.markerContainer}
+                    className="markerContainer"
                     lat={Number(place.latitude)}
                     lng={Number(place.longitude)}
                     key={i}
@@ -45,16 +42,16 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
                             !isDesktop ? (
                                 <LocationOnOutlinedIcon color="primary" fontSize="large"/>
                             ) : (
-                                <Paper elevation={3} className={classes.paper}>
-                                    <Typography className={classes.typography} variant="subtitle2" gutterBottom>
+                                <Paper elevation={3} className="paper">
+                                    <Typography variant="subtitle2" gutterBottom>
                                         {place.name}
                                     </Typography>
                                     <img 
-                                        className={classes.pointer}
+                                        className="pointer"
                                         src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
                                         alt={place.name}
                                     />
-                                    <Rating size="small" value={Number(place.rating)} readonly />
+                                    <Rating size="small" value={Number(place.rating)} readOnly />
                                 </Paper>
                             )
                         }

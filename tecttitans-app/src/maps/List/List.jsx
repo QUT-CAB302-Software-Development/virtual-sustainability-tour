@@ -1,11 +1,9 @@
 import React, {useState, useEffect, createRef} from "react";
-import {CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
-import useStyles from './ListStyle';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
+import './ListStyle.css';
 
 // left hand list area of available locations
 function List({places, childClicked, isLoading, type, setType, rating, setRating}) {
-    const classes = useStyles();
     const [elRefs, setElRefs] = useState([]);
     // change to whatever
     const title = "Places in This Area";
@@ -16,42 +14,42 @@ function List({places, childClicked, isLoading, type, setType, rating, setRating
     }, [places]);
 
     return (
-        <div className={classes.container}>
-            <Typography variant='h4'>{title}</Typography>
+        <div className="container">
+            <h4>{title}</h4>
             {isLoading ? (
-                <div className={classes.loading}>
-                    <CircularProgress size="5rem" />
+                <div className="loading">
+                    <div className="loader"></div>
                 </div>
             ) : (
                 <>
-                <FormControl variant="standard" size="small" className={classes.formControl}>
-                    <InputLabel>Type</InputLabel>
-                    <Select value={type} onChange={(event) => setType(event.target.value)}>
-                        <MenuItem value="restaurants">Restaurants</MenuItem>
-                        <MenuItem value="hotels">Hotels</MenuItem>
-                        <MenuItem value="attractions">Attractions</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl variant="standard" size="small" className={classes.formControl}>
-                    <InputLabel>Rating</InputLabel>
-                    <Select value={rating} onChange={(event) => setRating(event.target.value)}>
-                        <MenuItem value={0}>All</MenuItem>
-                        <MenuItem value={3}>Above 3.0</MenuItem>
-                        <MenuItem value={4}>Above 4.0</MenuItem>
-                        <MenuItem value={4.5}>Above 4.5</MenuItem>
-                    </Select>
-                </FormControl>
-                <Grid marginTop={1} container spacing={3} className={classes.list}>
+                <div className="formControl">
+                    <label>Type</label>
+                    <select value={type} onChange={(event) => setType(event.target.value)}>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="hotels">Hotels</option>
+                        <option value="attractions">Attractions</option>
+                    </select>
+                </div>
+                <div className="formControl">
+                    <label>Rating</label>
+                    <select value={rating} onChange={(event) => setRating(event.target.value)}>
+                        <option value={0}>All</option>
+                        <option value={3}>Above 3.0</option>
+                        <option value={4}>Above 4.0</option>
+                        <option value={4.5}>Above 4.5</option>
+                    </select>
+                </div>
+                <div className="list">
                     {places?.map((place, i) => (
-                        <Grid ref={elRefs[i]} item key={i} xs={12}>
+                        <div ref={elRefs[i]} key={i} className={`place ${Number(childClicked) === i ? 'active' : ''}`}>
                             <PlaceDetails 
                                 place={place}
                                 selected={Number(childClicked) === i}
                                 refProp={elRefs[i]}
                             />
-                        </Grid>
+                        </div>
                     ))}
-                </Grid>
+                </div>
                 </>
             )}
         </div>
