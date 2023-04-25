@@ -31,8 +31,11 @@ public class CompanyData {
         this.nox = nox;
         this.voc = voc;
     }
+    public CompanyData getAllData() {
+        return this;
+    }
 
-    public int calculateIndex() {
-        return year;
+    public String getCompanyName() {
+        return companyName;
     }
 }
