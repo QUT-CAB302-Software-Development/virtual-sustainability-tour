@@ -17,8 +17,9 @@ public class Bean2 implements DisposableBean {
 
         System.out.println("Saved!!!!");
 
-
         Main.dbConnection.close();
 
     }
+
+
 }
