@@ -51,7 +51,7 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
                                         src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
                                         alt={place.name}
                                     />
-                                    <Rating size="small" value={Number(place.rating)} readOnly />
+                                    <Rating size="small" value={Number(place.rating)} readonly />
                                 </Paper>
                             )
                         }
