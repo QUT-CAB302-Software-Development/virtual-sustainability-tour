@@ -14,8 +14,8 @@
     width: 100%;
 }
 
-.search .searchIcon {
-    padding: 10;
+.search.searchIcon {
+    padding: 10px;
     height: 100%;
     position: absolute;
     pointer-events: none;
