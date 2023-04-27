@@ -22,9 +22,15 @@ export const getPlacesData = async (type, sw, ne) => {
             });
         return data.map((place) => {
             const matchingSustainabilityData = sustainabilityData.find((sustainabilityPlace) => {
+                // RegExp() is used because indexOf() and includes() functions were not working after several testings
+                // for unknown reasons
+                // '\b' used to match word boundaries
                 const regex = new RegExp(`\\b${sustainabilityPlace.hotel_name}\\b|\\b${sustainabilityPlace.company_name}\\b`, 'i');
-                return regex.test(place.name);
+                return regex.test(place.name); // This line checks if the 'name' matches with the regexp pattern
             });
+            // if there is a match, the place is a sustainable and the esg_score form the data
+            // assigned to the place
+            // if not, set to 'No data'
             if (matchingSustainabilityData) {
                 place.esg_score = matchingSustainabilityData.esg_score;
                 return place;
