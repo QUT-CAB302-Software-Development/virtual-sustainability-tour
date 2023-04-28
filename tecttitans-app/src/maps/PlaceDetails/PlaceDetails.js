@@ -1,8 +1,7 @@
 import React from "react";
-import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from '@mui/material';
+import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip, Rating } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import Rating from '@mui/lab/Rating';
 import './PlaceDetailsStyle.css';
 
 function PlaceDetails({ place, selected, refProp }) {
