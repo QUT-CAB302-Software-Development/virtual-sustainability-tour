@@ -4,14 +4,13 @@ import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
 import { useState } from "react";
 
-function SignUp(){
+
+
+export default function Login() {
 
     const [values, setValues] = useState({
         username: "",
-        email: "",
-        birthday: "",
         password: "",
-        confirmPassword: ""
     });
 
     const inputs = [
@@ -26,41 +25,15 @@ function SignUp(){
     },
     {
         id: 2,
-        name:"Name  ",
-        type:"name",
-        placeholder:"Name",
-        errorMessage:"Name must be minimum 3 characters",
-        label:"Name",
-        required: true,
-    },
-    {
-        id: 3,
-        name:"email",
-        type:"text",
-        placeholder:"Email",
-        errorMessage:"It should be a valid email address!",
-        label:"Email",
-        required: true,
-    },
-    {
-        id: 4,
-        name:"number",
-        type:"integer",
-        placeholder:"Phone Number",
-        errorMessage:"It should be a valid number",
-        label:"Phone Number",
-        required: true,
-    },
-    {
-        id: 5,
         name:"password",
         type:"password",
         placeholder:"Password",
         errorMessage:"Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character.",
         label:"Password",
         required: true,
-    },
-    ];
+    }
+    ]
+
     function handleSubmit(e) {
         e.preventDefault();
     };
@@ -73,7 +46,7 @@ function SignUp(){
     return(
         <div className="sign-up">
             <form onSubmit={handleSubmit}>
-            <h1 className="register">Register</h1>
+            <h1 className="register">Login</h1>
                 {inputs.map((input) => (
                     <FormInput
                         key={input.id}
@@ -83,12 +56,9 @@ function SignUp(){
                     />
                 ))}
                 <button className="register-button" type="submit">Submit</button>
-                <p className="loginredirect"><a href='/login'>Already have an account?</a></p>
+                <p className="loginredirect"><a href='/sign-up'>Don&apos;t have an account?</a></p>
 
             </form>
         </div>
     );
-
-}
-
-export default SignUp;
+};
