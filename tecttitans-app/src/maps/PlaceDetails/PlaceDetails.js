@@ -33,6 +33,11 @@ function PlaceDetails({ place, selected, refProp }) {
         </Box>
 
         <Box display="flex" justifyContent="space-between">
+          <Typography variant="subtitle1">ESG Score</Typography>
+          <Typography gutterBottom variant="subtitle1">{place.esg_score}</Typography>
+        </Box>
+
+        <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Ranking</Typography>
           <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
         </Box>
