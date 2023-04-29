@@ -3,7 +3,9 @@ import '../App.css';
 import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
 import { useState } from "react";
+import axios from 'axios';
 
+// HTTP request to connect with backend API
 
 
 export default function Login() {
@@ -36,6 +38,16 @@ export default function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        axios.post('/api/login', {
+            username: values.username,
+            password: values.password
+        })
+        .then((response) => {
+            // successful login
+        })
+        .catch((error) => {
+            // error in login
+        })
     };
 
     const onChange = (e) =>{
