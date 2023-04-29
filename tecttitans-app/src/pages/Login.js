@@ -38,15 +38,17 @@ export default function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('/api/login', {
+        axios.post('/login', {
             username: values.username,
             password: values.password
         })
         .then((response) => {
-            // successful login
+            // successful login, redirect to tour
+            window.location.href = "/tour";
         })
         .catch((error) => {
-            // error in login
+            // error in login, print error message in console
+            console.log(error);
         })
     };
 
