@@ -32,8 +32,7 @@ video {
 .hero-container > p {
     margin-top: 8px;
     color: #ffffff;
-    font-size: 32px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode','Lucida Sans', Arial, sans-serif;
+    font-size: 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
