@@ -13,32 +13,29 @@ public class SustainabilityAlgo {
                                         long waterDischarge, int sox, int nox, int voc) {
 
         // Normalise GHG emissions based on industry ratio
-        double ghgRatio = 0.0044; // average GHG emissions to sales ratio in industry
+        double ghgRatio = 0.0014; // average GHG emissions to sales ratio in industry
         double ghgNormalised = (double)(ghgTotal - 0) / (sales * ghgRatio);
 
         // Normalise water withdrawal based on company size
         double wwRatio = 0.0083; // average water withdrawal to sales ratio in industry
-        double wwNormalised = (double)(waterWithdrawn - 0) / (sales * wwRatio);
+        double wwNormalised = (double)(waterWithdrawn - 0) / (sales);
 
         // Normalise water discharge based on company size
         double wdRatio = 0.0021; // average water discharge to sales ratio in industry
-        double wdNormalised = (double)(waterDischarge - 0) / (sales * wdRatio);
+        double wdNormalised = (double)(waterDischarge - 0) / (sales);
 
         // Normalise operating income based on industry average
-        double oiRatio = 0.05; // average operating income to sales ratio in industry
-        double oiNormalised = (double)(operatingIncome - 0) / (sales * oiRatio);
+        double oiRatio = 0.0927; // average EBITDA/Sales ratio
+        double oiNormalised = (double)(operatingIncome - 0) / (sales);
 
         // Normalise SOx emissions based on industry average
-        double soxRatio = 0.00039; // average SOx emissions to sales ratio in industry
-        double soxNormalised = sox != 0 ? (double)(sox - 0) / (sales * soxRatio) : 0.0;
+        double soxNormalised = sox != 0 ? (double)(sox - 0) / (sales) : 0.0;
 
         // Normalise NOx emissions based on industry average
-        double noxRatio = 0.000052; // average NOx emissions to sales ratio in industry
-        double noxNormalised = nox != 0 ? (double)(nox - 0) / (sales * noxRatio) : 0.0;
+        double noxNormalised = nox != 0 ? (double)(nox - 0) / (sales) : 0.0;
 
         // Normalise VOC emissions based on industry average
-        double vocRatio = 0.000075; // average VOC emissions to sales ratio in industry
-        double vocNormalised = voc != 0 ? (double)(voc - 0) / (sales * vocRatio) : 0.0;
+        double vocNormalised = voc != 0 ? (double)(voc - 0) / (sales) : 0.0;
 
         // Calculate weighted score for each metric
         double ghgWeighted = ghgNormalised * 0.3;
