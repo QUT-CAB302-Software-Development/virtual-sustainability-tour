@@ -61,6 +61,9 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
+    font-size: 1rem;
+    justify-content: center;
+    text-align: center;
 }
 
 .space-small {
@@ -113,9 +116,10 @@
 
     .nav-links {
         text-align: center;
-        padding: 2rem;
+        padding: 0.3rem 0.7rem;
         width: 100%;
         display: table;
+        font-size: 0.8rem;
     }
 
     .nav-links:hover {

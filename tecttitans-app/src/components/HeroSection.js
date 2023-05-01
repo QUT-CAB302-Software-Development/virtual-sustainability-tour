@@ -3,6 +3,7 @@ import '../App.css'
 import './HeroSection.css';
 import {Button} from "./Button";
 import hero from './HeroSection.css'
+import {Link} from 'react-router-dom';
 
 function HeroSection() {
     return (
@@ -12,9 +13,11 @@ function HeroSection() {
             <p>Experience Brisbane Sustainability from your own couch</p>
             <div className="hero-btn">
                 <div className = 'space-small'>
+                <Link to='/tour'>
                 <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large'>
                     Explore tour
                 </Button>
+                </Link>
                 </div>
             </div>
         </div>
