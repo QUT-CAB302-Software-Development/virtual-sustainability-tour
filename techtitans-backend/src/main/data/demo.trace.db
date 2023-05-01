@@ -447,3 +447,12 @@ INSERT INTO users (USERNAME, NAME, EMAIL, PHONE1, PASSWORD) VALUES (?, ?, ?, ?, 
 2023-04-18 16:27:05 jdbc[15]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM USERS"; expected "identifier"; SQL statement:
 DELETE * FROM USERS [42001-214]
+2023-04-22 17:40:13 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]View"; SQL statement:
+View [42000-214]
+2023-04-22 17:40:16 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]VIEW USERS"; SQL statement:
+VIEW USERS [42000-214]
+2023-04-22 17:40:41 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM [*]User"; expected "identifier"; SQL statement:
+SELECT * FROM User [42001-214]

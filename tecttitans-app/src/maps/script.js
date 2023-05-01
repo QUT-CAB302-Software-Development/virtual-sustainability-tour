@@ -17,6 +17,14 @@ function initMap() {
 	// Image URL
 	// scaledSize width, height
 	const markers = [
+		[
+			"Hotel A",
+			34.66669734177897,
+			135.4309054875526,
+			'Picture link',
+			38,
+			31,
+		],
 	];
 
 	for (let i = 0; i < markers.length; i++) {

@@ -1,4 +1,5 @@
 package application;
+import application.database.CompanyDatabase;
 import application.database.DbConnection;
 import application.database.UserDatabase;
 import jakarta.servlet.ServletContextListener;
@@ -40,6 +41,7 @@ public class Main {
 		SpringApplication.run(Main.class, args);
 		try {
 			dbConnection = new DbConnection(url, username, password);
+			CompanyDatabase companyDatabase = new CompanyDatabase();
 			// Call methods on the DbConnection object to interact with the database
 			dbConnection.close();
 		} catch (SQLException e) {
