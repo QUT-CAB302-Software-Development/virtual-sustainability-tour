@@ -16,14 +16,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: 80px;
     height: 80px;
+    margin-left: 20px;
     width: 100%;
 }
 
 .navbar-logo {
     color: #fff;
     justify-self: start;
-    margin-left: 20px;
+    margin-left: -20px;
+    height: 60px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
@@ -123,8 +126,9 @@
 
     .navbar-logo {
         position: absolute;
+        height: 40px;
         top: 0;
-        left: 0;
+        left: 30px;
         transform: translate(25%, 50%);
     }
 
