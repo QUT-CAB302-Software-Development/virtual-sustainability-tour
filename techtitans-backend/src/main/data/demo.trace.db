@@ -462,3 +462,6 @@ INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) VALUES (?, ?, ?, ?, ?
 2023-05-01 15:39:59 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'asdsadas' (USERS: ""PHONE"" BIGINT)"; SQL statement:
 INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) VALUES (?, ?, ?, ?, ?) [22018-214]
+2023-05-01 15:58:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'asdsaads' (USERS: ""PHONE"" BIGINT)"; SQL statement:
+INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) VALUES (?, ?, ?, ?, ?) [22018-214]
