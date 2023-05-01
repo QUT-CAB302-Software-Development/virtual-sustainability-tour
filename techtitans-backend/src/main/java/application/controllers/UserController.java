@@ -1,5 +1,5 @@
 
-package application.web;
+package application.controllers;
 
 import application.database.UserDatabase;
 import application.model.User;
