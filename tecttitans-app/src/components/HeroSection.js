@@ -6,16 +6,16 @@ import hero from './HeroSection.css'
 
 function HeroSection() {
     return (
-
-        <div className='hero-container'>
+        <div className='hero-container global-padding space-small'>
             <img src={hero} alt=""/>
-
-            <h1> TECHTITANS VIRTUAL SUSTAINABLE TOUR</h1>
-            <p>Experience more green accommodation from the comfort of your couch</p>
+            <h1 className = 'space-small'>TechTitans Virtual Sustainable Tour</h1>
+            <p>Experience Brisbane Sustainability from your own couch</p>
             <div className="hero-btn">
+                <div className = 'space-small'>
                 <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large'>
-                    EXPLORE NOW!
+                    Explore tour
                 </Button>
+                </div>
             </div>
         </div>
     );
