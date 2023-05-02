@@ -5,7 +5,7 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import './MapStyle.css'
 
 // google maps api usage
-function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }) {
+function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, placeholderImage }) {
     const isDesktop = useMediaQuery('(min-width:600px)');
     const defaultZoom = 14;
     const defaultCoordinates = coordinates;
@@ -48,7 +48,7 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }
                                     </Typography>
                                     <img 
                                         className="pointer"
-                                        src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+                                        src={place.photo ? place.photo.images.large.url : placeholderImage}
                                         alt={place.name}
                                     />
                                     <Rating size="small" value={Number(place.rating)} readonly />

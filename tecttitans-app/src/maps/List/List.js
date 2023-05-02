@@ -4,7 +4,7 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import './ListStyle.css';
 
 // left hand list area of available locations
-function List({places, childClicked, isLoading, type, setType, rating: starRating, setRating}) {
+function List({places, childClicked, isLoading, type, setType, starRating, setRating, placeholderImage }) {
     const [elRefs, setElRefs] = useState([]);
     const listHeader = "Places in This Area"; // change to whatever
 
@@ -50,6 +50,7 @@ function List({places, childClicked, isLoading, type, setType, rating: starRatin
                                 place={place}
                                 selected={Number(childClicked) === i}
                                 refProp={elRefs[i]}
+                                placeholderImage={placeholderImage}
                             />
                         </div>
                     ))}
