@@ -1,27 +1,32 @@
 .navbar {
-    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    background: rgba(28, 27, 27, 0.8);
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    position: sticky;
+    position:sticky;
     top: 0;
     z-index: 999;
-}
-
+    backdrop-filter: blur(5px);
+    width: 100%;
+  }
+  
 .navbar-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: 80px;
     height: 80px;
-    max-width: 1500px;
+    margin-left: 20px;
+    width: 100%;
 }
 
 .navbar-logo {
     color: #fff;
     justify-self: start;
-    margin-left: 20px;
+    margin-left: -20px;
+    height: 60px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
@@ -37,6 +42,7 @@
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
+    backdrop-filter: blur(5px);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
@@ -56,6 +62,13 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
+    font-size: 1rem;
+    justify-content: center;
+    text-align: center;
+}
+
+.space-small {
+    padding-top: 50px;
 }
 
 .nav-links:hover {
@@ -83,6 +96,7 @@
     .nav-menu {
         display: flex;
         flex-direction: column;
+        background: rgba(28, 27, 27, 0.8);
         width: 100%;
         height: 90vh;
         position: absolute;
@@ -94,18 +108,20 @@
     }
 
     .nav-menu.active {
-        background: #242222;
+        background: rgba(28, 27, 27, 0.8);
+        backdrop-filter: blur(10px);
         left: 0;
         opacity: 1;
-        transition: all 0.5s ease;
+        transition: all 0.8s ease;
         z-index: 1;
     }
 
     .nav-links {
         text-align: center;
-        padding: 2rem;
+        padding: 2rem 0.7rem;
         width: 100%;
         display: table;
+        font-size: 1.2rem;
     }
 
     .nav-links:hover {
@@ -116,8 +132,9 @@
 
     .navbar-logo {
         position: absolute;
+        height: 40px;
         top: 0;
-        left: 0;
+        left: 30px;
         transform: translate(25%, 50%);
     }
 
@@ -143,12 +160,12 @@
         border-radius: 4px;
         width: 80%;
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1rem;
         background-color: transparent;
         color: #fff;
         padding: 14px 20px;
         border: 1px solid #fff;
-        transition: all 0.3s ease-out;
+        transition: all 0.5s ease-out;
     }
 
     .nav-links-mobile:hover {

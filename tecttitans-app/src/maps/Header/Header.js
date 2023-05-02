@@ -35,9 +35,7 @@ function Header({ setCoordinates }) {
             onPlaceChanged={onPlaceChanged}
           >
             <div className="search">
-              <div className="searchIcon">
-                <SearchIcon />
-              </div>
+              <SearchIcon />
               <InputBase
                 placeholder={searchPlaceholder}
                 classes={{
