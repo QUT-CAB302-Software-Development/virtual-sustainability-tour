@@ -1,20 +1,20 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
-import { Paper, Typography, useMediaQuery } from '@mui/material';
+import { Paper, Typography, useMediaQuery, Rating } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import Rating from '@mui/lab/Rating';
 import './MapStyle.css'
 
 // google maps api usage
 function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked }) {
     const isDesktop = useMediaQuery('(min-width:600px)');
     const defaultZoom = 14;
+    const defaultCoordinates = coordinates;
 
     return (
         <div className="mapContainer">
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-                defaultCenter={coordinates}
+                defaultCenter={defaultCoordinates}
                 center={coordinates}
                 defaultZoom={defaultZoom}
                 margin={[50, 50, 50, 50]}
