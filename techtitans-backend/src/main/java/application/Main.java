@@ -21,6 +21,7 @@ public class Main {
 
 	public static DbConnection dbConnection;
 
+
 	static {
 		try {
 			dbConnection = new DbConnection(url, username, password);

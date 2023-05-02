@@ -53,7 +53,7 @@ export default function Login() {
     };
 
     const onChange = (e) =>{
-    setValues({...values, [e.target.name]: e.target.value });
+        setValues({...values, [e.target.name]: e.target.value });
     };
 
 
