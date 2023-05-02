@@ -19,27 +19,6 @@ video {
     object-fit: contain;
 }
 
-.hero-container > h1 {
-    color: #ffffff;
-    font-size: 3rem;
-    margin-top: -100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.hero-container > p {
-    margin-top: 8px;
-    color: #ffffff;
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .hero-btns {
     margin-top: 32px;
 }
@@ -49,38 +28,9 @@ video {
 }
 
 @media  screen and (max-width: 960px)  {
-    .hero-container > h1 {
-        font-size: 2rem;
-        margin-top: -150px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-
-    .hero-container > p {
-        margin-top: 8px;
-        font-size: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode','Lucida Sans', Arial, sans-serif;
-    }
 }
 
 @media screen and (max-width: 760px) {
-    .hero-container > h1 {
-        font-size: 2.5rem;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: gray;
-        margin-top: -100px;
-    }
-
-    .hero-container > p {
-        font-size: 1rem;
-        margin-bottom: .5rem;
-    }
     .btn-mobile {
         display: block;
         text-decoration: none;
