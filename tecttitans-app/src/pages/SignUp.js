@@ -35,7 +35,7 @@ function SignUp(){
             name:"name",
             type:"text",
             placeholder:"Name",
-            errorMessage:"Name must be minimum 3 characters",
+            errorMessage:"Name must be minimum 3 characters and may not include special characters!",
             label:"Name",
             required: true,
         },
@@ -44,7 +44,7 @@ function SignUp(){
             name:"email",
             type:"text",
             placeholder:"Email",
-            errorMessage:"It should be a valid email address!",
+            errorMessage:"It should be a valid email address, following by this format: example@mail.com!",
             label:"Email",
             required: true,
         },
@@ -62,7 +62,7 @@ function SignUp(){
             name:"password",
             type:"password",
             placeholder:"Password",
-            errorMessage:"Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character.",
+            errorMessage:"Password should be 8-20 characters and must be included at least 1 letter, 1 number, and 1 special character.",
             label:"Password",
             required: true,
         },
@@ -105,7 +105,7 @@ function SignUp(){
                 setError( e );
             }
         )
-    };
+    }
 
     const onChange = (e) =>{
         setValues({...values, [e.target.name]: e.target.value });
