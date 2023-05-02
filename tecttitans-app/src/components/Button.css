@@ -5,6 +5,7 @@
 
 .btn {
     padding: 8px 20px;
+    backdrop-filter: blur(5px);
     border-radius: 20px;
     outline: none;
     border: none;
