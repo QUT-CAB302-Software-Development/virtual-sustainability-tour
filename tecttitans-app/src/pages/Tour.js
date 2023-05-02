@@ -38,6 +38,7 @@ function Tour() {
     useEffect (() => {
         if (bounds.sw && bounds.ne){
             setIsLoading(true);
+            console.log("api request sent");
             getPlacesData(type, bounds.sw, bounds.ne)
                 .then((data) => {
                     setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
