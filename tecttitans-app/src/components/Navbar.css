@@ -1,5 +1,5 @@
 .navbar {
-    background: rgba(28, 27, 27, 0.7);
+    background: rgba(28, 27, 27, 0.8);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -42,6 +42,7 @@
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
+    backdrop-filter: blur(5px);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
@@ -95,6 +96,7 @@
     .nav-menu {
         display: flex;
         flex-direction: column;
+        background: rgba(28, 27, 27, 0.8);
         width: 100%;
         height: 90vh;
         position: absolute;
@@ -106,8 +108,8 @@
     }
 
     .nav-menu.active {
-        background: rgba(28, 27, 27, 0.7);
-        backdrop-filter: blur(5px);
+        background: rgba(28, 27, 27, 0.8);
+        backdrop-filter: blur(10px);
         left: 0;
         opacity: 1;
         transition: all 0.8s ease;
@@ -116,10 +118,10 @@
 
     .nav-links {
         text-align: center;
-        padding: 0.3rem 0.7rem;
+        padding: 2rem 0.7rem;
         width: 100%;
         display: table;
-        font-size: 0.8rem;
+        font-size: 1.2rem;
     }
 
     .nav-links:hover {
@@ -158,7 +160,7 @@
         border-radius: 4px;
         width: 80%;
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1rem;
         background-color: transparent;
         color: #fff;
         padding: 14px 20px;
