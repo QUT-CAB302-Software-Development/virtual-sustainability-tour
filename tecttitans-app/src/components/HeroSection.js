@@ -3,19 +3,22 @@ import '../App.css'
 import './HeroSection.css';
 import {Button} from "./Button";
 import hero from './HeroSection.css'
+import {Link} from 'react-router-dom';
 
 function HeroSection() {
     return (
-
-        <div className='hero-container'>
+        <div className='hero-container global-padding space-small'>
             <img src={hero} alt=""/>
-
-            <h1> TECHTITANS VIRTUAL SUSTAINABLE TOUR</h1>
-            <p>Experience more green accommodation from the comfort of your couch</p>
+            <h1 className = 'space-small'>TechTitans Virtual Sustainable Tour</h1>
+            <p>Experience Brisbane Sustainability from your own couch</p>
             <div className="hero-btn">
+                <div className = 'space-small'>
+                <Link to='/tour'>
                 <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large'>
-                    EXPLORE NOW!
+                    Explore tour
                 </Button>
+                </Link>
+                </div>
             </div>
         </div>
     );
