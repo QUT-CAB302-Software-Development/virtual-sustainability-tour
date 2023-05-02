@@ -1,7 +1,7 @@
 import React, {useState, useEffect, createRef} from "react";
 import { CircularProgress, Typography } from '@mui/material';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
-import './ListStyle.css';
+import './List.css';
 
 // left hand list area of available locations
 function List({places, childClicked, isLoading, type, setType, starRating, setRating, placeholderImage }) {

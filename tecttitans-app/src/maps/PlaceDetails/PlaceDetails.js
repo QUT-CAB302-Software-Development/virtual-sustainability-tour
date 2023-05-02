@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip, Rating } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import './PlaceDetailsStyle.css';
+import './PlaceDetails.css';
 
 function PlaceDetails({ place, selected, refProp, placeholderImage }) {
   const tripAdvisorButtonText = "Trip Advisor";

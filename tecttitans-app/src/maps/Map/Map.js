@@ -2,7 +2,7 @@ import React from "react";
 import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery, Rating } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import './MapStyle.css'
+import './Map.css'
 
 // google maps api usage
 function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, placeholderImage }) {
