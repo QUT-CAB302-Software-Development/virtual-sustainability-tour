@@ -456,3 +456,12 @@ VIEW USERS [42000-214]
 2023-04-22 17:40:41 jdbc[15]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM [*]User"; expected "identifier"; SQL statement:
 SELECT * FROM User [42001-214]
+2023-05-01 15:38:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'sadadas' (USERS: ""PHONE"" BIGINT)"; SQL statement:
+INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) VALUES (?, ?, ?, ?, ?) [22018-214]
+2023-05-01 15:39:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'asdsadas' (USERS: ""PHONE"" BIGINT)"; SQL statement:
+INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) VALUES (?, ?, ?, ?, ?) [22018-214]
+2023-05-01 15:58:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'asdsaads' (USERS: ""PHONE"" BIGINT)"; SQL statement:
+INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) VALUES (?, ?, ?, ?, ?) [22018-214]

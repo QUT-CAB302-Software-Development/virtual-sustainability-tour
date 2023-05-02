@@ -16,8 +16,5 @@ public class Shutdown implements DisposableBean {
         System.out.println("Saved!!!!");
 
         Main.dbConnection.close();
-
     }
-
-
 }
