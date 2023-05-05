@@ -1,6 +1,7 @@
 package application.database;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SustainabilityAlgo {
     private List<CompanyData> companyData;
@@ -8,6 +9,24 @@ public class SustainabilityAlgo {
     public SustainabilityAlgo(List<CompanyData> companyData) {
         this.companyData = companyData;
     }
+    public static List<Double> normaliseESG(List<Double> esgScores) {
+        // Calculate the average ESG score in the industry
+        double avgESG = esgScores.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+
+        // Calculate the scaling factor to normalise ESG scores to the range of 0.2-0.3
+        double scalingFactor = 1.0 / avgESG * 0.25;
+
+        // Scale the ESG scores using the scaling factor
+        List<Double> scaledESG = esgScores.stream().map(score -> score * scalingFactor).collect(Collectors.toList());
+
+        // Further normalize the ESG scores to the range of 0-1
+        double maxESG = scaledESG.stream().mapToDouble(Double::doubleValue).max().orElse(0.0);
+        double minESG = scaledESG.stream().mapToDouble(Double::doubleValue).min().orElse(0.0);
+        List<Double> normalisedESG = scaledESG.stream().map(score -> (score - minESG) / (maxESG - minESG)).collect(Collectors.toList());
+
+        return normalisedESG;
+    }
+
 
     public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
                                         long waterDischarge, int sox, int nox, int voc) {
@@ -18,15 +37,15 @@ public class SustainabilityAlgo {
 
         // Normalise water withdrawal based on company size
         double wwRatio = 0.0083; // average water withdrawal to sales ratio in industry
-        double wwNormalised = (double)(waterWithdrawn - 0) / (sales);
+        double wwNormalised = (double)(waterWithdrawn - 0) / (sales * wwRatio);
 
         // Normalise water discharge based on company size
         double wdRatio = 0.0021; // average water discharge to sales ratio in industry
-        double wdNormalised = (double)(waterDischarge - 0) / (sales);
+        double wdNormalised = (double)(waterDischarge - 0) / (sales * wdRatio);
 
         // Normalise operating income based on industry average
         double oiRatio = 0.0927; // average EBITDA/Sales ratio
-        double oiNormalised = (double)(operatingIncome - 0) / (sales);
+        double oiNormalised = (double)(operatingIncome - 0) / (sales * oiRatio);
 
         // Normalise SOx emissions based on industry average
         double soxNormalised = sox != 0 ? (double)(sox - 0) / (sales) : 0.0;
@@ -51,6 +70,6 @@ public class SustainabilityAlgo {
                 soxWeighted + noxWeighted + vocWeighted;
 
         // Round to integer and return
-        return (int)Math.round(esgScore * 100);
+        return (int)Math.round(esgScore * 100 * 0.25);
     }
 }
