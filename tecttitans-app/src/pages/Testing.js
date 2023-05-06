@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleQuantize } from 'd3-scale';
-import { schemeGreens } from 'd3-scale-chromatic';
+// import { interpolateRdYlGn  } from 'd3-scale-chromatic';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker} from "react-leaflet";
 import "../testingMap/testingMap.css"
 import locationData from "../data/hotels_data.json"
@@ -41,8 +41,8 @@ function HotelPopup({ hotel }) {
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
         .domain([0, 30]) // range
-        .range(schemeGreens[5]); // use a green color scheme with 5 shades
-
+        //.range(schemeGreens[5]); // use a green color scheme with 5 shades
+        .range(['#f03b20', '#feb24c','#00FF00' ]); // use a color scale that goes from red to yellow to green
     return colorScale(esgScore);
 }
 function Testing(){
