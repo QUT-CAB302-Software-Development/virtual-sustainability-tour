@@ -21,8 +21,10 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
                 options={{
                     disableDefaultUI: true, 
                     zoomControl: true, 
-                    fullscreenControl: true, 
+                    mapTypeControl: true,
+                    streetViewControl: false,
                     disableDoubleClickZoom: true,
+                    //fullscreenControl: true, 
                     //styles: MapVisuals
                 }}
                 onChange={(event) => {
