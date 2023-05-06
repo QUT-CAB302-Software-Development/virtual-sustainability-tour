@@ -11,6 +11,8 @@
     "@react-google-maps/api": "^2.18.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.6",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.0.0",
     "google-map-react": "^2.2.0",
     "leaflet": "^1.9.3",
     "msw": "^1.2.1",

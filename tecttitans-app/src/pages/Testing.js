@@ -1,5 +1,7 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { scaleQuantize } from 'd3-scale';
+import { schemeGreens } from 'd3-scale-chromatic';
+import { MapContainer, TileLayer, Marker, Popup, CircleMarker} from "react-leaflet";
 import "../testingMap/testingMap.css"
 import locationData from "../data/hotels_data.json"
 import sustainabilityData from "../data/Sustainability.json"
@@ -17,7 +19,7 @@ function getESGScore(hotelName) {
     if (matchingSustainabilityData) {
         return matchingSustainabilityData.esg_score;
     } else {
-        return "no data";
+        return "No data";
     }
 }
 function HotelPopup({ hotel }) {
@@ -36,9 +38,15 @@ function HotelPopup({ hotel }) {
         </div>
     );
 }
+function getColor(esgScore) {
+    const colorScale = scaleQuantize()
+        .domain([0, 30]) // range
+        .range(schemeGreens[5]); // use a green color scheme with 5 shades
 
+    return colorScale(esgScore);
+}
 function Testing(){
-
+    const circleRadius = 25; // radius of the circle marker in meters
     return(
         <MapContainer center={[-27.470125, 153.021072]} zoom={13} scrollWheelZoom={true}>
             <TileLayer
@@ -47,18 +55,48 @@ function Testing(){
             />
 
             {locationData.map(hotel => (
+                <React.Fragment key={hotel.id}>
+                    <CircleMarker
+                        center={[hotel.geometry.location.lat, hotel.geometry.location.lng]}
+                        radius={circleRadius}
+                        pathOptions={{
+                            fillColor: getColor(getESGScore(hotel.name)),
+                            fillOpacity: 0.8, // set the opacity of the CircleMarker
+                            //stroke: true // disable the stroke of the CircleMarker
+                            color: "black", // set the border color of the CircleMarker
+                            weight: 0.5, // set the border weight of the CircleMarker
+                        }}
+                        eventHandlers={{
+                            click: (e) => {
+                                e.target.openPopup();
+                            },
+                            mouseover: (e) => {
+                                e.target.openPopup();
+                            },
+                            mouseout: (e) => {
+                                e.target.closePopup();
+                            }
+                        }}
+                    />
+                    <Marker
 
-            <Marker
+                        position={[hotel.geometry.location.lat, hotel.geometry.location.lng]}
+                        eventHandlers={{
+                            mouseover: (e) => {
+                                e.target.openPopup();
+                            },
+                            mouseout: (e) => {
+                                e.target.closePopup();
+                            }
+                        }}
+                    >
 
-                position={[hotel.geometry.location.lat, hotel.geometry.location.lng]}
-            >
-
-                <Popup>
-                    <HotelPopup hotel={hotel} />
-                </Popup>
-            </Marker>
+                        <Popup>
+                            <HotelPopup hotel={hotel} />
+                        </Popup>
+                    </Marker>
+                </React.Fragment>
             ))}
-
         </MapContainer>
     );
 }
