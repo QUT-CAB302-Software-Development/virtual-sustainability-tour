@@ -9,6 +9,7 @@ public class SustainabilityAlgo {
     public SustainabilityAlgo(List<CompanyData> companyData) {
         this.companyData = companyData;
     }
+
     public static List<Double> normaliseESG(List<Double> esgScores) {
         // Calculate the average ESG score in the industry
         double avgESG = esgScores.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
@@ -19,7 +20,7 @@ public class SustainabilityAlgo {
         // Scale the ESG scores using the scaling factor
         List<Double> scaledESG = esgScores.stream().map(score -> score * scalingFactor).collect(Collectors.toList());
 
-        // Further normalize the ESG scores to the range of 0-1
+        // Further normalise the ESG scores to the range of 0-1
         double maxESG = scaledESG.stream().mapToDouble(Double::doubleValue).max().orElse(0.0);
         double minESG = scaledESG.stream().mapToDouble(Double::doubleValue).min().orElse(0.0);
         List<Double> normalisedESG = scaledESG.stream().map(score -> (score - minESG) / (maxESG - minESG)).collect(Collectors.toList());
@@ -27,9 +28,8 @@ public class SustainabilityAlgo {
         return normalisedESG;
     }
 
-
     public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
-                                        long waterDischarge, int sox, int nox, int voc) {
+                                        long waterDischarge, int sox, int nox, int voc, double normalisedESG) {
 
         // Normalise GHG emissions based on industry ratio
         double ghgRatio = 0.0014; // average GHG emissions to sales ratio in industry
@@ -70,6 +70,6 @@ public class SustainabilityAlgo {
                 soxWeighted + noxWeighted + vocWeighted;
 
         // Round to integer and return
-        return (int)Math.round(esgScore * 100 * 0.25);
+        return (int)Math.round(esgScore * 100 * normalisedESG);
     }
 }
