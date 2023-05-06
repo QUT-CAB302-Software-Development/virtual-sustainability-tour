@@ -6,12 +6,12 @@ import './Header.css';
 
 // search bar and header functionality
 function Header({ setCoordinates }) {
-  const [autocomplete, setAutocomplete] = useState(null);
+  const [autocomplete, setAutocomplete] = useState('');
 
   const onLoad = (autoC) => setAutocomplete(autoC);
   const onPlaceChanged = () => {
-    const lat = autocomplete.getPlace().geometry.location.lat();
-    const lng = autocomplete.getPlace().geometry.location.lng();
+    const lat = autocomplete.getPlace().geometry.location?.lat();
+    const lng = autocomplete.getPlace().geometry.location?.lng();
     setCoordinates({ lat, lng });
   }
 
