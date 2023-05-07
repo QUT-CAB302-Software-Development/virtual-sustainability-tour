@@ -4,6 +4,7 @@ import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
 import { useState } from "react";
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 // HTTP request to connect with backend API
 
@@ -58,7 +59,11 @@ export default function Login() {
 
 
     return(
-        <div className="sign-up">
+        <motion.div
+            className="sign-up"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}>
             <form onSubmit={handleSubmit}>
             <h1 className="register">Login</h1>
                 {inputs.map((input) => (
@@ -73,6 +78,6 @@ export default function Login() {
                 <p className="loginredirect"><a href='/sign-up'>Don&apos;t have an account?</a></p>
 
             </form>
-        </div>
+        </motion.div>
     );
 };

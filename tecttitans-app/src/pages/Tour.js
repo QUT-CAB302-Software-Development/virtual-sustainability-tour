@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../App.css';
-
+import { motion } from 'framer-motion';
 import { CssBaseline, Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -51,7 +51,10 @@ function Tour() {
     }, [type, bounds]);
 
     return(
-        <>
+        <motion.div
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Header setCoordinates={setCoordinates} />
@@ -81,7 +84,7 @@ function Tour() {
                     </Grid>
                 </Grid>
             </ThemeProvider>
-        </>
+        </motion.div>
     );
 }
 
