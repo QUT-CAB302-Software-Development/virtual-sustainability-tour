@@ -16,6 +16,8 @@ export default function Login() {
         password: "",
     });
 
+    const LOGIN_URL = "http://localhost:8080/login";
+
     const inputs = [
     {
         id: 1,
@@ -37,9 +39,11 @@ export default function Login() {
     }
     ]
 
+
+
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('/login', {
+        axios.post(LOGIN_URL, {
             username: values.username,
             password: values.password
         })
