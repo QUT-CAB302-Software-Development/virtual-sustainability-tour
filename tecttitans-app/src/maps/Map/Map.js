@@ -25,19 +25,19 @@ import './Map.css';
 //     }
 // }
 
+// function rand([min, max]) {
+//     // get number between min (inclusive) and max (inclusive)
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+
 const ratingRange = [0, 5];
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
         .domain(ratingRange) // range
         .range(['#FF0000','#FF0000','#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
-    return colorScale(esgScore);
-}
-
-function rand([min, max]) {
-    // get number between min (inclusive) and max (inclusive)
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    return colorScale(esgScore);    
+}    
 
 
 // google maps api usage
