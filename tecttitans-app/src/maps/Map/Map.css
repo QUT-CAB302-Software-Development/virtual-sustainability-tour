@@ -24,4 +24,12 @@
   .pointer {
     cursor: pointer;
   }
+
+  .tooltip {
+    background-color: "transparent";
+  }
   
+  .icon {
+    border-color: "black";
+    border-radius: 1px;
+  }

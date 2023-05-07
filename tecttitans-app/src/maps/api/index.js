@@ -7,10 +7,11 @@ export const getPlacesData = async (type, sw, ne) => {
 
     try {
         // gets screen bounds and returns places within bounds
-        const {data: {data}} = await axios.get(
+        const {data: {data}} = await axios.request(
             `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
             {
                 //api call
+                method: 'GET',
                 headers: {
                     'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY,
                     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'

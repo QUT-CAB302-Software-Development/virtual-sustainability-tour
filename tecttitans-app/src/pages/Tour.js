@@ -59,6 +59,7 @@ function Tour() {
                     <Grid item xs={12} md={4}>
                         <List 
                             places={filteredPlaces && filteredPlaces.length ? filteredPlaces : places}
+                            setCoordinates={setCoordinates} 
                             childClicked={childClicked}
                             isLoading={isLoading}
                             type={type}
