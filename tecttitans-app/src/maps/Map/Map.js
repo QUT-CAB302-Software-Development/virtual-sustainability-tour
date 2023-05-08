@@ -1,7 +1,7 @@
 import React from "react";
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
-import { Paper, Typography, Rating, Tooltip } from '@mui/material';
+import { Typography, Rating, Tooltip } from '@mui/material';
 import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import './Map.css';
@@ -44,20 +44,6 @@ function getColor(esgScore) {
 function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, placeholderImage }) {
     const defaultZoom = 14;
     const defaultCoordinates = coordinates;
-
-    const options = {
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
-        clickable: false,
-        draggable: false,
-        editable: false,
-        visible: true,
-        radius: 30000,
-        zIndex: 2
-      }
 
     return (
         <div className="mapContainer">
