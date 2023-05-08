@@ -11,6 +11,8 @@ import Map from '../maps/Map/Map';
 
 function Tour() {
 
+    const placeholderImage = 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg';
+
     const theme = createTheme();
 
     const [places, setPlaces] = useState([]);
@@ -22,7 +24,7 @@ function Tour() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [type, setType] = useState('restaurants');
-    const [rating, setRating] = useState(0);
+    const [starRating, setStarRating] = useState(0);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude}}) => {
@@ -31,13 +33,14 @@ function Tour() {
     }, []);
 
     useEffect(() => {
-        const filteredPlaces = places?.filter((place) => place.rating > rating);
+        const filteredPlaces = places?.filter((place) => place.rating > starRating);
         setFilteredPlaces(filteredPlaces);
-    }, [rating, places]);
+    }, [starRating, places]);
 
     useEffect (() => {
         if (bounds.sw && bounds.ne){
             setIsLoading(true);
+            console.log("api request sent");
             getPlacesData(type, bounds.sw, bounds.ne)
                 .then((data) => {
                     setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
@@ -61,8 +64,9 @@ function Tour() {
                             isLoading={isLoading}
                             type={type}
                             setType={setType}
-                            rating={rating}
-                            setRating={setRating}
+                            starRating={starRating}
+                            setRating={setStarRating}
+                            placeholderImage={placeholderImage}
                         />
                     </Grid>
                     <Grid item xs={12} md={8}>
@@ -72,6 +76,7 @@ function Tour() {
                             coordinates={coordinates}
                             places={filteredPlaces && filteredPlaces.length ? filteredPlaces : places}
                             setChildClicked={setChildClicked}
+                            placeholderImage={placeholderImage}
                         />
                     </Grid>
                 </Grid>

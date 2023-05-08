@@ -1,5 +1,5 @@
 .navbar {
-    background: rgba(28, 27, 27, 0.8);
+    background: rgba(28, 27, 27, 0.5);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -42,7 +42,6 @@
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    backdrop-filter: blur(5px);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
@@ -80,9 +79,6 @@
     color: #fff;
 }
 
-.nav-links-mobile {
-    display: none;
-}
 
 .menu-icon {
     display: none;

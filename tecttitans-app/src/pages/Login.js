@@ -15,13 +15,15 @@ export default function Login() {
         password: "",
     });
 
+    const LOGIN_URL = "http://localhost:8080/login";
+
     const inputs = [
     {
         id: 1,
         name:"username",
         type:"text",
         placeholder:"Username",
-        errorMessage:"Username should be 3-16 characters and should not include special characters!",
+        errorMessage:"You have entered an invalid username.",
         label:"Username",
         required: true,
     },
@@ -30,15 +32,17 @@ export default function Login() {
         name:"password",
         type:"password",
         placeholder:"Password",
-        errorMessage:"Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character.",
+        errorMessage:"You have entered an invalid password.",
         label:"Password",
         required: true,
     }
     ]
 
+
+
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('/login', {
+        axios.post(LOGIN_URL, {
             username: values.username,
             password: values.password
         })
@@ -53,7 +57,7 @@ export default function Login() {
     };
 
     const onChange = (e) =>{
-    setValues({...values, [e.target.name]: e.target.value });
+        setValues({...values, [e.target.name]: e.target.value });
     };
 
 

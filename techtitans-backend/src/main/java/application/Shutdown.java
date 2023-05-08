@@ -9,11 +9,11 @@ public class Shutdown implements DisposableBean {
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("Callback triggered - DisposableBean.");
+        System.out.println("Callback triggered - Initiate shutdown");
 
         Main.userDatabase.save();
 
-        System.out.println("Saved!!!!");
+        System.out.println("Database is saved!!!!");
 
         Main.dbConnection.close();
     }

@@ -52,14 +52,14 @@ public class UserController {
             tokenList.add(token);
 
             body.put("error", false);
-            body.put("message", "login successful");
+            body.put("message", "user login successful");
             body.put("token", token);
 
             return new ResponseEntity<>(body, headers, HttpStatus.OK);
         } else {
 
             body.put("error", true);
-            body.put("message", "incorrect username or password");
+            body.put("message", "incorrect username or password, login failed");
 
             return new ResponseEntity<>(body, headers, HttpStatus.UNAUTHORIZED);
         }
@@ -82,7 +82,7 @@ public class UserController {
         if (!userDatabase.userExists(username)) {
             // user does not exist yet
             body.put("error", false);
-            body.put("message", "user created successfully");
+            body.put("message", "user created successfully, registration successful");
 
             userDatabase.createUser(username, phone, name, email, password);
 
@@ -91,7 +91,7 @@ public class UserController {
         } else {
             // user already exists
             body.put("error", true);
-            body.put("message", "username already exists");
+            body.put("message", "username already exists, registration failed");
 
             return new ResponseEntity<>(body, headers, HttpStatus.CONFLICT);
         }

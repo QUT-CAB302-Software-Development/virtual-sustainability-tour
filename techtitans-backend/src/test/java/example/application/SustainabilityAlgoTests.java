@@ -19,8 +19,9 @@ public class SustainabilityAlgoTests {
         int sox = 0;
         int nox = 0;
         int voc = 0;
+        double normalisedESG = 0.25;
 
-        int esgScore = SustainabilityAlgo.calculateESG(ghgTotal, sales, operatingIncome, waterWithdrawn, waterDischarge, sox, nox, voc);
+        int esgScore = SustainabilityAlgo.calculateESG(ghgTotal, sales, operatingIncome, waterWithdrawn, waterDischarge, sox, nox, voc, normalisedESG);
 
         System.out.println("Estimated ESG Score of Hilton: " + esgScore);
         System.out.println("Official ESG Score of Hilton: 17");

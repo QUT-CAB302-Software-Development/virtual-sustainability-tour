@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import './HeaderStyle.css';
+import './Header.css';
 
 // search bar and header functionality
 function Header({ setCoordinates }) {
