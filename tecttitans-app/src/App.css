@@ -1,19 +1,81 @@
+
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'PT Sans', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
+
+h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  p {
+    margin-top: 8px;
+    color: #ffffff;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 960px) {
+    h1 {
+      font-size: 2rem;
+      margin-top: -150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    p {
+      margin-top: 8px;
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Sans', Arial, sans-serif;
+    }
+  }
+  
+  @media screen and (max-width: 760px) {
+    h1 {
+      font-size: 2.5rem;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: gray;
+      margin-top: -100px;
+    }
+  
+    p {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+  }
+  
 
 .home,
 .tour,
 .contact,
 .sign-up {
     display: flex;
-    height: 90vh;
+    height: 100vh;
+    margin-top: -11vh;
+    padding-top: 80px;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 1rem;
+    background-image: url('./images/img_9.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .tour {
@@ -33,11 +95,27 @@
     font-size: 100px;
 }
 
-.sign-up {
+form{
+    background-color: #F5F5F5;
+    padding: 0px 60px;
+    border-radius: 10px;
+}
 
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #fff;
-    font-size: 100px;
+.register{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register-button {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: #19376D;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
 }
