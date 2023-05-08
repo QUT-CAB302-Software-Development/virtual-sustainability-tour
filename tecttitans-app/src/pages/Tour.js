@@ -23,7 +23,7 @@ function Tour() {
     const [bounds, setBounds] = useState({});
 
     const [isLoading, setIsLoading] = useState(false);
-    const [type, setType] = useState('restaurants');
+    const [type, setType] = useState('attractions');
     const [starRating, setStarRating] = useState(0);
 
     useEffect(() => {

@@ -30,13 +30,13 @@ import './Map.css';
 //     return Math.floor(Math.random() * (max - min + 1)) + min;
 // }
 
-const ratingRange = [0, 5];
+const ratingRange = [3, 5];
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
         .domain(ratingRange) // range
-        .range(['#FF0000','#FF0000','#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
-    return colorScale(esgScore);    
+        .range(['#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
+    return colorScale(esgScore);
 }    
 
 
@@ -44,6 +44,20 @@ function getColor(esgScore) {
 function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, placeholderImage }) {
     const defaultZoom = 14;
     const defaultCoordinates = coordinates;
+
+    const options = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        clickable: false,
+        draggable: false,
+        editable: false,
+        visible: true,
+        radius: 30000,
+        zIndex: 2
+      }
 
     return (
         <div className="mapContainer">
@@ -80,7 +94,7 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
                             className="tooltip"
                             TransitionComponent={Zoom}
                             title={
-                                <Paper elevation={3} className="paper">
+                                <div className="paper">
                                     <Typography variant="subtitle2" gutterBottom>
                                         {place.name}
                                     </Typography>
@@ -91,18 +105,24 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
                                     />
                                     <Rating 
                                         size="small" 
-                                        value={Number(place.rating)} 
+                                        value={Number(place.rating)}
                                         readonly 
                                     />
-                                </Paper>
+                                </div>
                             }
                         >
-                            <PlaceIcon
-                                className="icon"
-                                sx={{ color: getColor(Number(place.rating)) }} //Number(place.rating)
-                                fontSize="large"
-                            />
+                            <div className="icon">
+                                <PlaceIcon
+                                    sx={{ color: getColor(Number(place.rating)) }}
+                                    fontSize="large"
+                                />
+                            </div>
                         </Tooltip>
+                        <div className="svg">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="50" />
+                            </svg>
+                        </div>
                     </div>
                 ))}
             </GoogleMapReact>

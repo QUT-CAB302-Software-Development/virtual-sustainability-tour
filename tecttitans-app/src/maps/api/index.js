@@ -3,18 +3,20 @@ import sustainabilityData from '../../data/Sustainability.json';
 
 // handles API calls
 export const getPlacesData = async (type, sw, ne) => {
-    console.log("API req sent");
+    let callMethod = 'GET';
+    //if (type === 'hotels') { callMethod = 'POST'; }
 
     try {
+        console.log(`API req for ${type} sent with method '${callMethod}'`);
         // gets screen bounds and returns places within bounds
         const {data: {data}} = await axios.request(
             `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
             {
                 //api call
-                method: 'GET',
+                method: callMethod,
                 headers: {
                     'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY,
-                    'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+                    'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
                 },
                 params: {
                     bl_latitude: sw.lat,
