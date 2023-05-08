@@ -20,7 +20,7 @@ public class DbConnection {
         String sql = "CREATE TABLE IF NOT EXISTS USERS " +
                 "(NAME VARCHAR(255), " +
                 "USERNAME VARCHAR(255), " +
-                "PHONE BIGINT, " +
+                "PHONE VARCHAR(255), " +
                 "EMAIL VARCHAR(255), " +
                 "PASSWORD VARCHAR(255), " +
                 "PRIMARY KEY (USERNAME))";

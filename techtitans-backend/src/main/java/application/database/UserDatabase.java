@@ -42,6 +42,26 @@ public class UserDatabase {
         return null;
     }
 
+    public void EditUser(String username, String newName, String newEmail, String newPhone, String newPassword) {
+        User user = getUser(username);
+
+        if (newName != null) {
+            user.setUserName(newName);
+        }
+
+        if (newEmail != null) {
+            user.setEmail(newEmail);
+        }
+
+        if (newPhone != null) {
+            user.setPhone(newPhone);
+        }
+
+        if (newPassword != null) {
+            user.setPassword(newPassword);
+        }
+    }
+
     public boolean passwordMatch(String username, String password) {
         boolean user = userExists(username);
         if (user && getUser(username).getPassword().equals(password)) {

@@ -2,6 +2,7 @@
 package application.controllers;
 
 import application.database.UserDatabase;
+import application.model.EditUser;
 import application.model.User;
 import application.model.UserLogin;
 import application.Main;
@@ -33,7 +34,7 @@ public class UserController {
     private UserDatabase userDatabase = Main.userDatabase;
 
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody UserLogin userLogin) {
 
         String username = userLogin.getUsername();
@@ -65,7 +66,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping("/user/register")
     public ResponseEntity<Map<String, Object>> register(@RequestBody User user) throws SQLException {
 
         String username = user.getUsername();
@@ -97,5 +98,39 @@ public class UserController {
         }
     }
 
+    @PostMapping("/user/update")
+    public ResponseEntity<Map<String, Object>> updateUserInfo(@RequestBody EditUser user) throws SQLException {
+
+        String username = user.getUsername();
+        String password = user.getPassword();
+
+        String newPassword = user.getPassword();
+        String newName = user.getNewName();
+        String newEmail = user.getNewEmail();
+        String newPhone = user.getNewPhone();
+
+        HashMap<String, Object> body = new HashMap<>();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.valueOf("application/json"));
+
+        if (userDatabase.passwordMatch(username, password)) {
+            // user found
+
+            body.put("error", false);
+            body.put("message", "user info successfully changed");
+
+            userDatabase.EditUser(username, newName, newEmail, newPhone, newPassword);
+
+            return new ResponseEntity<>(body, headers, HttpStatus.CREATED);
+
+        } else {
+            // user not found
+            body.put("error", true);
+            body.put("message", "user cannot be found, change of user infomation failed");
+
+            return new ResponseEntity<>(body, headers, HttpStatus.CONFLICT);
+        }
+    }
 
 }

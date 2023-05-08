@@ -1,10 +1,8 @@
 package application.model;
 
 import application.Exceptions.InvalidMessageException;
-import application.database.DbConnection;
-import application.database.UserDatabase;
 
-public class Feedback {
+public class UserReview {
 
     private String message;
 
@@ -17,7 +15,7 @@ public class Feedback {
     private String location;
 
 
-    public Feedback(String message, Integer rating, Long timestamp, String username, String location) throws InvalidMessageException {
+    public UserReview(String message, Integer rating, Long timestamp, String username, String location) throws InvalidMessageException {
         setMessage(message);
         setRating(rating);
         setTimestamp(timestamp);
