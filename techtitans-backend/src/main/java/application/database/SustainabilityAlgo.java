@@ -1,5 +1,6 @@
 package application.database;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +27,49 @@ public class SustainabilityAlgo {
         List<Double> normalisedESG = scaledESG.stream().map(score -> (score - minESG) / (maxESG - minESG)).collect(Collectors.toList());
 
         return normalisedESG;
+    }
+
+    public static List<Double> calculateIndustryRatios(List<CompanyData> companyData) {
+        int numCompanies = companyData.size();
+        double totalGHGRatio = 0.0;
+        double totalWWRatio = 0.0;
+        double totalWDRatio = 0.0;
+        double totalOIRatio = 0.0;
+
+        for (CompanyData company : companyData) {
+            long sales = company.getSales();
+            long ghgTotal = company.getGHGTotal();
+            long waterWithdrawn = company.getWaterWithdrawn();
+            long waterDischarge = company.getWaterDischarge();
+            long operatingIncome = company.getOperatingIncome();
+
+            // Calculate ratios for each company
+            double ghgRatio = (double) ghgTotal / sales;
+            double wwRatio = (double) waterWithdrawn / sales;
+            double wdRatio = (double) waterDischarge / sales;
+            double oiRatio = (double) operatingIncome / sales;
+
+            // Sum ratios
+            totalGHGRatio += ghgRatio;
+            totalWWRatio += wwRatio;
+            totalWDRatio += wdRatio;
+            totalOIRatio += oiRatio;
+        }
+
+        // Calculate average ratios
+        double averageGHGRatio = totalGHGRatio / numCompanies;
+        double averageWWRatio = totalWWRatio / numCompanies;
+        double averageWDRatio = totalWDRatio / numCompanies;
+        double averageOIRatio = totalOIRatio / numCompanies;
+
+        // Create and return the list of average ratios
+        List<Double> industryRatios = new ArrayList<>();
+        industryRatios.add(averageGHGRatio);
+        industryRatios.add(averageWWRatio);
+        industryRatios.add(averageWDRatio);
+        industryRatios.add(averageOIRatio);
+
+        return industryRatios;
     }
 
     public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
