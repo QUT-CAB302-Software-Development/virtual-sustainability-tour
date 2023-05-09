@@ -1,10 +1,11 @@
 package application.database;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SustainabilityAlgo {
-    private List<CompanyData> companyData;
+    private static List<CompanyData> companyData;
 
     public SustainabilityAlgo(List<CompanyData> companyData) {
         this.companyData = companyData;
@@ -28,32 +29,75 @@ public class SustainabilityAlgo {
         return normalisedESG;
     }
 
+    public static List<Double> calculateIndustryRatios(List<CompanyData> companyData) {
+        int numCompanies = companyData.size();
+        double totalGHGRatio = 0.0;
+        double totalWWRatio = 0.0;
+        double totalWDRatio = 0.0;
+        double totalOIRatio = 0.0;
+
+        for (CompanyData company : companyData) {
+            long sales = company.getSales();
+            long ghgTotal = company.getGHGTotal();
+            long waterWithdrawn = company.getWaterWithdrawn();
+            long waterDischarge = company.getWaterDischarge();
+            long operatingIncome = company.getOperatingIncome();
+
+            // Calculate ratios for each company
+            double ghgRatio = (double) ghgTotal / sales;
+            double wwRatio = (double) waterWithdrawn / sales;
+            double wdRatio = (double) waterDischarge / sales;
+            double oiRatio = (double) operatingIncome / sales;
+
+            // Sum ratios
+            totalGHGRatio += ghgRatio;
+            totalWWRatio += wwRatio;
+            totalWDRatio += wdRatio;
+            totalOIRatio += oiRatio;
+        }
+
+        // Calculate average ratios
+        double averageGHGRatio = totalGHGRatio / numCompanies;
+        double averageWWRatio = totalWWRatio / numCompanies;
+        double averageWDRatio = totalWDRatio / numCompanies;
+        double averageOIRatio = totalOIRatio / numCompanies;
+
+        // Create and return the list of average ratios
+        List<Double> industryRatios = new ArrayList<>();
+        industryRatios.add(averageGHGRatio);
+        industryRatios.add(averageWWRatio);
+        industryRatios.add(averageWDRatio);
+        industryRatios.add(averageOIRatio);
+
+        return industryRatios;
+    }
+
     public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
                                         long waterDischarge, int sox, int nox, int voc, double normalisedESG) {
-
+        List<Double> industryRatios = calculateIndustryRatios(companyData);
         // Normalise GHG emissions based on industry ratio
-        double ghgRatio = 0.0014; // average GHG emissions to sales ratio in industry
+        double ghgRatio = industryRatios.get(0); // average GHG emissions to sales ratio in industry 0.0014
         double ghgNormalised = (double)(ghgTotal - 0) / (sales * ghgRatio);
 
         // Normalise water withdrawal based on company size
-        double wwRatio = 0.0083; // average water withdrawal to sales ratio in industry
+        double wwRatio = industryRatios.get(1); // average water withdrawal to sales ratio in industry 0.0083
         double wwNormalised = (double)(waterWithdrawn - 0) / (sales * wwRatio);
 
         // Normalise water discharge based on company size
-        double wdRatio = 0.0021; // average water discharge to sales ratio in industry
+        double wdRatio = industryRatios.get(2); // average water discharge to sales ratio in industry 0.0021
         double wdNormalised = (double)(waterDischarge - 0) / (sales * wdRatio);
 
         // Normalise operating income based on industry average
-        double oiRatio = 0.0927; // average EBITDA/Sales ratio
+        double oiRatio = industryRatios.get(3); // average EBITDA/Sales ratio 0.0927
         double oiNormalised = (double)(operatingIncome - 0) / (sales * oiRatio);
 
-        // Normalise SOx emissions based on industry average
+        // Normalise SOx emissions based on sales
         double soxNormalised = sox != 0 ? (double)(sox - 0) / (sales) : 0.0;
 
-        // Normalise NOx emissions based on industry average
+        // Normalise NOx emissions based on sales
         double noxNormalised = nox != 0 ? (double)(nox - 0) / (sales) : 0.0;
 
-        // Normalise VOC emissions based on industry average
+        // Normalise VOC emissions based on sales
         double vocNormalised = voc != 0 ? (double)(voc - 0) / (sales) : 0.0;
 
         // Calculate weighted score for each metric
