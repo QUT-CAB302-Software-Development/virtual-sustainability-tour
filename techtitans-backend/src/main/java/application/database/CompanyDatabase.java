@@ -13,6 +13,7 @@ public class CompanyDatabase {
 
     }
 
+
     public void addCompanyData(CompanyData data) {
         companyData.add(data);
     }
