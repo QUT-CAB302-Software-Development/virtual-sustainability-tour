@@ -30,11 +30,16 @@ public class SustainabilityAlgo {
     }
 
     public static List<Double> calculateIndustryRatios(List<CompanyData> companyData) {
-        int numCompanies = companyData.size();
+        int numCompanies = 0;
         double totalGHGRatio = 0.0;
         double totalWWRatio = 0.0;
         double totalWDRatio = 0.0;
         double totalOIRatio = 0.0;
+
+        int ghgCount = 0;
+        int wwCount = 0;
+        int wdCount = 0;
+        int oiCount = 0;
 
         for (CompanyData company : companyData) {
             long sales = company.getSales();
@@ -43,26 +48,38 @@ public class SustainabilityAlgo {
             long waterDischarge = company.getWaterDischarge();
             long operatingIncome = company.getOperatingIncome();
 
-            // Calculate ratios for each company
-            double ghgRatio = (double) ghgTotal / sales;
-            double wwRatio = (double) waterWithdrawn / sales;
-            double wdRatio = (double) waterDischarge / sales;
-            double oiRatio = (double) operatingIncome / sales;
+            if (ghgTotal != 0) {
+                double ghgRatio = (double) ghgTotal / sales;
+                totalGHGRatio += ghgRatio;
+                ghgCount++;
+            }
 
-            // Sum ratios
-            totalGHGRatio += ghgRatio;
-            totalWWRatio += wwRatio;
-            totalWDRatio += wdRatio;
-            totalOIRatio += oiRatio;
+            if (waterWithdrawn != 0) {
+                double wwRatio = (double) waterWithdrawn / sales;
+                totalWWRatio += wwRatio;
+                wwCount++;
+            }
+
+            if (waterDischarge != 0) {
+                double wdRatio = (double) waterDischarge / sales;
+                totalWDRatio += wdRatio;
+                wdCount++;
+            }
+
+            if (operatingIncome != 0) {
+                double oiRatio = (double) operatingIncome / sales;
+                totalOIRatio += oiRatio;
+                oiCount++;
+            }
+
+            numCompanies++; // Increment the count of valid data points
         }
 
-        // Calculate average ratios
-        double averageGHGRatio = totalGHGRatio / numCompanies;
-        double averageWWRatio = totalWWRatio / numCompanies;
-        double averageWDRatio = totalWDRatio / numCompanies;
-        double averageOIRatio = totalOIRatio / numCompanies;
+        double averageGHGRatio = ghgCount > 0 ? totalGHGRatio / ghgCount : 0.0;
+        double averageWWRatio = wwCount > 0 ? totalWWRatio / wwCount : 0.0;
+        double averageWDRatio = wdCount > 0 ? totalWDRatio / wdCount : 0.0;
+        double averageOIRatio = oiCount > 0 ? totalOIRatio / oiCount : 0.0;
 
-        // Create and return the list of average ratios
         List<Double> industryRatios = new ArrayList<>();
         industryRatios.add(averageGHGRatio);
         industryRatios.add(averageWWRatio);
@@ -71,6 +88,7 @@ public class SustainabilityAlgo {
 
         return industryRatios;
     }
+
 
     public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
                                         long waterDischarge, int sox, int nox, int voc, double normalisedESG) {
