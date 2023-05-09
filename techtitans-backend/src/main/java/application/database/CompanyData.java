@@ -1,5 +1,8 @@
 package application.database;
 
+import org.springframework.context.annotation.Bean;
+
+
 public class CompanyData {
     private String companyName;
     private int year;
@@ -78,4 +81,5 @@ public class CompanyData {
     public int getVOC() {
         return voc;
     }
+
 }
