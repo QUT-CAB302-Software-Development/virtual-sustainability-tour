@@ -1,6 +1,5 @@
 package application.database;
 import application.model.User;
-
 import java.sql.*;
 import java.util.List;
 
