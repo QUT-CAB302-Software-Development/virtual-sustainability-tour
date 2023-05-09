@@ -23,7 +23,7 @@ function Tour() {
     const [bounds, setBounds] = useState({});
 
     const [isLoading, setIsLoading] = useState(false);
-    const [type, setType] = useState('restaurants');
+    const [type, setType] = useState('attractions');
     const [starRating, setStarRating] = useState(0);
 
     useEffect(() => {
@@ -40,7 +40,6 @@ function Tour() {
     useEffect (() => {
         if (bounds.sw && bounds.ne){
             setIsLoading(true);
-            console.log("api request sent");
             getPlacesData(type, bounds.sw, bounds.ne)
                 .then((data) => {
                     setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
@@ -63,6 +62,7 @@ function Tour() {
                     <Grid item xs={12} md={4}>
                         <List 
                             places={filteredPlaces && filteredPlaces.length ? filteredPlaces : places}
+                            setCoordinates={setCoordinates} 
                             childClicked={childClicked}
                             isLoading={isLoading}
                             type={type}
