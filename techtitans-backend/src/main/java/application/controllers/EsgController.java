@@ -1,12 +1,11 @@
 package application.controllers;
-import application.database.CompanyData;
+import application.model.CompanyData;
 import application.database.CompanyDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

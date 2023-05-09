@@ -1,4 +1,5 @@
 package application.database;
+import application.model.CompanyData;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

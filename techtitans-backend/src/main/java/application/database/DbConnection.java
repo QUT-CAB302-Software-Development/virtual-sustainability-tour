@@ -1,5 +1,6 @@
 package application.database;
 import application.model.User;
+import application.model.UserReview;
 
 import java.sql.*;
 import java.util.List;
@@ -17,14 +18,47 @@ public class DbConnection {
 
     //Creates table if does not exist already
     private void createTableIfNotExists() throws SQLException {
+
+
         String sql = "CREATE TABLE IF NOT EXISTS USERS " +
                 "(NAME VARCHAR(255), " +
                 "USERNAME VARCHAR(255), " +
                 "PHONE VARCHAR(255), " +
                 "EMAIL VARCHAR(255), " +
                 "PASSWORD VARCHAR(255), " +
-                "PRIMARY KEY (USERNAME))";
+                "PRIMARY KEY (USERNAME));";
         Statement stmt = connection.createStatement();
+        stmt.execute(sql);
+        stmt.close();
+
+        sql = "CREATE TABLE IF NOT EXISTS COMPANY " +
+                "(COMPANY_NAME VARCHAR(255)," +
+                "YEAR VARCHAR(255)," +
+                "COUNTRY VARCHAR(255)," +
+                "SUB_INDUSTRY VARCHAR(255)," +
+                "GHG_TOTAL VARCHAR(255)," +
+                "SALES VARCHAR(255)," +
+                "OPERATING_INCOME VARCHAR(255)," +
+                "WATER_WITHDRAWN VARCHAR(255)," +
+                "WATER_DISCHARGE VARCHAR(255)," +
+                "SOX VARCHAR(255)," +
+                "NOX VARCHAR(255)," +
+                "VOC VARCHAR(255)," +
+                "PRIMARY KEY (COMPANY_NAME));";
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        stmt.close();
+
+        sql = "CREATE TABLE IF NOT EXISTS REVIEW " +
+                "(MESSAGE VARCHAR(255)," +
+                "RATING VARCHAR(255)," +
+                "TIMESTAMP VARCHAR(255)," +
+                "USERNAME VARCHAR(255)," +
+                "LOCATION VARCHAR(255)," +
+                "PRIMARY KEY (MESSAGE));";
+
+
+        stmt = connection.createStatement();
         stmt.execute(sql);
         stmt.close();
     }
@@ -51,6 +85,31 @@ public class DbConnection {
 //                "name varchar(255)" +
 //                ")";
     }
+
+    public void saveReviews(List<UserReview> reviews) throws SQLException {
+        String sql = "INSERT INTO USER_REVIEW (MESSAGE, RATING, TIMESTAMP, USERNAME, LOCATION) " +
+                "VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+
+        for (UserReview review : reviews) {
+            pstmt.setString(1, review.getUsername());
+            pstmt.setString(2, review.getRating().toString());
+            pstmt.setString(3, review.getTimestamp().toString());
+            pstmt.setString(4, review.getUsername().toString());
+            pstmt.setString(5, review.getLocation().toString());
+            pstmt.executeUpdate();
+        }
+
+        pstmt.close();
+
+
+//        sql = "CREATE TABLE test_table (" +
+//                "id int, " +
+//                "name varchar(255)" +
+//                ")";
+    }
+
+
 
     public void saveUser(User user) throws SQLException {
         String sql = "INSERT INTO users (USERNAME, PHONE, NAME, EMAIL, PASSWORD) " +

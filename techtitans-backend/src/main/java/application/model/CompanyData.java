@@ -1,4 +1,4 @@
-package application.database;
+package application.model;
 
 public class CompanyData {
     private String companyName;

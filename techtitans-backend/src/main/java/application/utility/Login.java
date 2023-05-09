@@ -1,4 +1,4 @@
-package application.database;
+package application.utility;
 
 import application.model.User;
 

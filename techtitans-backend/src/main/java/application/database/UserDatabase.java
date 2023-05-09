@@ -11,6 +11,10 @@ public class UserDatabase {
     private static List<User> users = new ArrayList<>();
     private DbConnection dbConnection;
 
+    public UserDatabase(DbConnection dbConnection) {
+        this.dbConnection = dbConnection;
+    }
+
     // initialises new user, creates user, and adds to class list/
     public User createUser(String username, String phone, String name, String email, String password) throws SQLException {
         User user = new User(username, phone, name, email, password);
@@ -19,9 +23,8 @@ public class UserDatabase {
         return user;
     }
 
-
-    public UserDatabase(DbConnection dbConnection) {
-        this.dbConnection = dbConnection;
+    public void addUser(User user) {
+        users.add(user);
     }
 
     public boolean userExists(String username) {

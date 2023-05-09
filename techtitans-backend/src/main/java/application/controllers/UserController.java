@@ -85,7 +85,9 @@ public class UserController {
             body.put("error", false);
             body.put("message", "user created successfully, registration successful");
 
-            userDatabase.createUser(username, phone, name, email, password);
+            userDatabase.addUser(user);
+
+            // userDatabase.createUser(username, phone, name, email, password);
 
             return new ResponseEntity<>(body, headers, HttpStatus.CREATED);
 

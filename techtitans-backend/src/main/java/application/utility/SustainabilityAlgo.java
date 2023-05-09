@@ -1,4 +1,6 @@
-package application.database;
+package application.utility;
+
+import application.model.CompanyData;
 
 import java.util.List;
 import java.util.stream.Collectors;

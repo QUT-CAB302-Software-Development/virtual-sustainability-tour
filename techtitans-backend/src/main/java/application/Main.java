@@ -1,6 +1,7 @@
 package application;
 import application.database.CompanyDatabase;
 import application.database.DbConnection;
+import application.database.ReviewDatabase;
 import application.database.UserDatabase;
 import jakarta.servlet.ServletContextListener;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,6 +32,8 @@ public class Main {
 	}
 
 	public static UserDatabase userDatabase = new UserDatabase(dbConnection);
+
+	public static ReviewDatabase reviewDatabase = new ReviewDatabase(dbConnection);
 
 	// Main program entry point
 	public static void main(String[] args) {

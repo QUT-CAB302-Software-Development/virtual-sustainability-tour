@@ -16,7 +16,10 @@ import java.util.Map;
 public class UserReviewController {
 
     @PostMapping("/review/new")
-    public ResponseEntity<Map<String, Object>> updateUserInfo(@RequestBody UserReview review) throws SQLException {
+    public ResponseEntity<Map<String, Object>> createReview(@RequestBody UserReview review) throws SQLException {
+
+
+
 
 
         return null;
