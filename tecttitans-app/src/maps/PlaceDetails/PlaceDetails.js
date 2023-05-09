@@ -4,9 +4,10 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import './PlaceDetails.css';
 
-function PlaceDetails({ place, selected, refProp, placeholderImage }) {
+function PlaceDetails({ place, setCoordinates, selected, refProp, placeholderImage }) {
   const tripAdvisorButtonText = "Trip Advisor";
   const websiteButtonText = "Go to Website";
+  const mapButtonText = "Go to Map";
 
   if (selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
 
@@ -70,6 +71,14 @@ function PlaceDetails({ place, selected, refProp, placeholderImage }) {
           </Button>
           <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
             {websiteButtonText}
+          </Button>
+          <Button size="small" color="primary" onClick={() => {
+              const lat = Number(place.latitude);
+              const lng = Number(place.longitude);
+              setCoordinates({ lat, lng });
+            }}
+          >
+            {mapButtonText}
           </Button>
         </CardActions>
 

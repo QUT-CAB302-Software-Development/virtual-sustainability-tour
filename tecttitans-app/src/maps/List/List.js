@@ -4,7 +4,7 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import './List.css';
 
 // left hand list area of available locations
-function List({places, childClicked, isLoading, type, setType, starRating, setRating, placeholderImage }) {
+function List({places, setCoordinates, childClicked, isLoading, type, setType, starRating, setRating, placeholderImage }) {
     const [elRefs, setElRefs] = useState([]);
     const listHeader = "Places in This Area"; // change to whatever
 
@@ -48,6 +48,7 @@ function List({places, childClicked, isLoading, type, setType, starRating, setRa
                         <div ref={elRefs[i]} key={i} className={`place ${Number(childClicked) === i ? 'active' : ''}`}>
                             <PlaceDetails 
                                 place={place}
+                                setCoordinates={setCoordinates}
                                 selected={Number(childClicked) === i}
                                 refProp={elRefs[i]}
                                 placeholderImage={placeholderImage}
