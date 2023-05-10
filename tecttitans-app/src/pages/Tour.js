@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState } from 'react';
 import '../App.css';
 
-import { CssBaseline, Grid, Paper } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import Header from '../maps/Header';
+import Map from '../maps/Map';
+import PlaceDetails from '../maps/PlaceDetails';
 import places from "../data/hotels_data.json"
-import Header from '../maps/Header/Header';
-import List from '../maps/List/List';
-import Map from '../maps/Map/Map';
-import PlaceDetails from '../maps/PlaceDetails/PlaceDetails';
 
 function Tour() {
 
