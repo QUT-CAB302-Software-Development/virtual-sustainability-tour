@@ -2,10 +2,10 @@ import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar";
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import Tour from './pages/Tour/Tour';
+import Testing from './pages/Testing/Testing';
 import SignUp from './pages/SignUp';
-import Tour from './pages/Tour';
-import Testing from './pages/Testing';
 import Login from './pages/Login';
 //  established routing between the four pages of the front end
 function App() {
