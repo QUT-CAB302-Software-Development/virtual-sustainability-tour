@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import FormInput from '../components/FormInput';
-import '../components/FormInput.css';
+import '../components/FormInput.css'
 import { useState } from "react";
 import axios from 'axios';
 

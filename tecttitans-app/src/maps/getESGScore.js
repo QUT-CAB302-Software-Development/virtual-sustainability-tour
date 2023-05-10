@@ -1,4 +1,4 @@
-import sustainabilityData from "../../data/Sustainability.json"
+import sustainabilityData from "../data/Sustainability.json"
 
 function getESGScore(placeName) {
     const matchingSustainabilityData = sustainabilityData.find((sustainabilityPlace) => {

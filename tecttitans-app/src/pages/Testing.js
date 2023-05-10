@@ -2,9 +2,9 @@ import React from 'react';
 import { scaleQuantize } from 'd3-scale';
 // import { interpolateRdYlGn  } from 'd3-scale-chromatic';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker} from "react-leaflet";
-import "./Testing.css"
-import locationData from "../../data/hotels_data.json"
-import sustainabilityData from "../../data/Sustainability.json"
+import "../testingMap/testingMap.css"
+import locationData from "../data/hotels_data.json"
+import sustainabilityData from "../data/Sustainability.json"
 
 
 function getESGScore(hotelName) {
