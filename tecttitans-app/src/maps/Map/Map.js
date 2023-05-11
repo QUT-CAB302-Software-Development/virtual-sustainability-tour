@@ -1,54 +1,68 @@
 import React from "react";
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
-import { Typography, Rating, Tooltip } from '@mui/material';
+import { Typography, Rating, Tooltip, Box } from '@mui/material';
 import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import './Map.css';
-// import locationData from "../data/hotels_data.json"
-// import sustainabilityData from "../data/Sustainability.json"
+import getESGScore from "../getESGScore";
 
-
-// function getESGScore(hotelName) {
-//     const matchingSustainabilityData = sustainabilityData.find((sustainabilityPlace) => {
-//         // RegExp() is used because indexOf() and includes() functions were not working after several testings
-//         // for unknown reasons
-//         // '\b' used to match word boundaries
-//         const regex = new RegExp(`\\b${sustainabilityPlace.hotel_name}\\b|\\b${sustainabilityPlace.company_name}\\b`, 'i');
-//         return regex.test(hotelName); // This line checks if the 'hotelName' matches with the regexp pattern
-//     });
-
-//     if (matchingSustainabilityData) {
-//         return matchingSustainabilityData.esg_score;
-//     } else {
-//         return "No data";
-//     }
-// }
-
-// function rand([min, max]) {
-//     // get number between min (inclusive) and max (inclusive)
-//     return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
-const ratingRange = [3, 5];
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-        .domain(ratingRange) // range
+        .domain([0, 30]) // range
         .range(['#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
+    
+    if(esgScore === "No data") { return '#B0B0B0'; }
     return colorScale(esgScore);
-}    
+}
+
+function placePopUp({ place, apiKey }){
+    const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${apiKey}`;
+    const name = place.name;
+    const esgStarRating = Math.round(100 * getESGScore(name) / 6) / 100;
+
+    return(
+        <div className="popup">
+            
+            <Typography variant="subtitle2" gutterBottom>{name}</Typography>
+
+            <img 
+                className="pointer"
+                src={imgSrc}
+                alt={name}
+            />
+
+            <Box display="flex" justifyContent="space-between">
+                <Typography gutterBottom variant="subtitle2">User Rating</Typography>
+                <Rating size="small" value={Number(place.rating)} readonly />
+            </Box>
+
+            <Box display="flex" justifyContent="space-between">
+                <Typography variant="subtitle2">ESG Score</Typography>
+                <Rating size="small" value={esgStarRating} readonly />
+            </Box>
+        </div>
+    )
+}
 
 
 // google maps api usage
-function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, placeholderImage }) {
+function Map({ places, coordinates, setPlaceClicked }) {
     const defaultZoom = 14;
+
+    const circleRadius = 100;
+    const circleBorderWidth = 5;
+    const circleTotalRadius = circleBorderWidth + circleRadius;
+    const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
+
     const defaultCoordinates = coordinates;
+    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
     return (
         <div className="mapContainer">
             <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+                bootstrapURLKeys={{ key: apiKey }}
                 defaultCenter={defaultCoordinates}
                 center={coordinates}
                 defaultZoom={defaultZoom}
@@ -59,56 +73,42 @@ function Map({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
                     mapTypeControl: true,
                     streetViewControl: false,
                     disableDoubleClickZoom: true,
-                    //fullscreenControl: true, 
+                    fullscreenControl: false,
+                    clickableIcons: false,
                     //styles: MapVisuals
                 }}
-                onChange={(event) => {
-                    console.log("map change");
-                    setCoordinates({ lat: event.center.lat, lng: event.center.lng });
-                    setBounds({ ne: event.marginBounds.ne, sw: event.marginBounds.sw });
-                }}
-                onChildClick={(child) => setChildClicked(child)}
             >
-                {places?.map((place, i) => (
+                {places.map((place, i) => (
                     <div
                         className="markerContainer"
-                        lat={Number(place.latitude)}
-                        lng={Number(place.longitude)}
+                        lat={Number(place.geometry.location.lat)}
+                        lng={Number(place.geometry.location.lng)}
                         key={i}
                     >
                         <Tooltip
                             className="tooltip"
                             TransitionComponent={Zoom}
-                            title={
-                                <div className="paper">
-                                    <Typography variant="subtitle2" gutterBottom>
-                                        {place.name}
-                                    </Typography>
-                                    <img 
-                                        className="pointer"
-                                        src={place.photo ? place.photo.images.large.url : placeholderImage}
-                                        alt={place.name}
-                                    />
-                                    <Rating 
-                                        size="small" 
-                                        value={Number(place.rating)}
-                                        readonly 
-                                    />
-                                </div>
-                            }
+                            title={ placePopUp({ place, apiKey }) }
                         >
                             <div className="icon">
                                 <PlaceIcon
-                                    sx={{ color: getColor(Number(place.rating)) }}
+                                    sx={{ color: getColor(getESGScore(place.name)) }}
                                     fontSize="large"
+                                    onClick={() => setPlaceClicked(place)}
                                 />
+                               <svg 
+                                    className="svg" 
+                                    viewBox={circleViewBox}
+                               >
+                                    <circle 
+                                        cx={circleTotalRadius}
+                                        cy={circleTotalRadius}
+                                        r={circleRadius}
+                                        stroke-width={circleBorderWidth}
+                                    />
+                                </svg>
                             </div>
                         </Tooltip>
-                        <div className="svg">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="50" />
-                            </svg>
-                        </div>
                     </div>
                 ))}
             </GoogleMapReact>
