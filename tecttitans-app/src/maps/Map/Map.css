@@ -1,19 +1,17 @@
-  .popup {
-    padding: 2px;
+  .paper {
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 180px;
+    width: 105px;
   }
 
   .mapContainer {
-    height: 83vh;
+    height: 85vh;
     width: 100%;
   }
   
   .markerContainer {
-    display: flex;
-    align-items: center;
     position: relative;
   }
   
@@ -28,16 +26,19 @@
   .svg {
     position: absolute;
     z-index: -1;
-    transform: translate(0%, 50%);
-    opacity: 0.3;
-    stroke: black;
-    stroke-opacity: 1;
+  }
+
+  .svg circle {
+    fill: black;
+  }
+  
+  .svg:hover {
+    fill: red;
   }
   
   .icon {
-    stroke: black;
-    stroke-width: 1px;
-    transform: translate(-50%, -100%);
+    border-color: "black";
+    border-radius: 1px;
   }
   
   .pointer {
