@@ -1,7 +1,7 @@
 import React from "react";
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
-import { Typography, Rating, Tooltip, Box, Button } from '@mui/material';
+import { Typography, Rating, Tooltip, Box } from '@mui/material';
 import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import './Map.css';

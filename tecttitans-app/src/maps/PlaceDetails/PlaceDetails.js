@@ -42,8 +42,8 @@ function PlaceDetails({ place, setPlaceClicked }) {
               <Rating size="small" value={esgStarRating} readonly />
               <Typography variant="subtitle1">{esgScoreText}</Typography>
           </Box>
-{/* 
-          <Box display="flex" justifyContent="space-between">
+
+          {/* <Box display="flex" justifyContent="space-between">
             <Typography variant="subtitle1">Price</Typography>
             <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
           </Box>
@@ -51,7 +51,7 @@ function PlaceDetails({ place, setPlaceClicked }) {
           <Box display="flex" justifyContent="space-between">
             <Typography variant="subtitle1">Ranking</Typography>
             <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
-          </Box>
+          </Box> */}
 
           {place?.awards?.map((award) => (
             <Box my={1} display="flex" justifyContent="space-between" alignItems="center">
@@ -62,17 +62,17 @@ function PlaceDetails({ place, setPlaceClicked }) {
 
           {place?.cuisine?.map(({ name }) => (
             <Chip key={name} size="small" label={name} className="chip" />
-          ))} */}
+          ))}
           
           <Typography gutterBottom variant="subtitle2" color="textSecondary" className="subtitle">
             <LocationOnIcon/> {place.formatted_address}
           </Typography>
 
-          {/* {place?.phone && (
+          {place?.phone && (
             <Typography gutterBottom variant="subtitle2" color="textSecondary" className="spacing">
               <PhoneIcon /> {place.phone}
             </Typography>
-          )} */}
+          )}
         </CardContent>
 
         <CardActions>
