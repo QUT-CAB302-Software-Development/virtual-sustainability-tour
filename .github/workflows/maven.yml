@@ -40,9 +40,6 @@ jobs:
       - name: Run unit tests
         working-directory: techtitans-backend
         run: mvn test
-      - name: Test with Maven
-        working-directory: techtitans-backend
-        run: mvn -B test --file pom.xml
       - name: Cache local Maven repository
         uses: actions/cache@v3
         with:

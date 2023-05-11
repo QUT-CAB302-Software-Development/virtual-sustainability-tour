@@ -14,4 +14,11 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .details {
+    position: absolute;
+    top: 154px;
+    left: 10px;
+    width: 360px;
+  }
   

@@ -5,7 +5,8 @@ import { MapContainer, TileLayer, Marker, Popup, CircleMarker} from "react-leafl
 import "../testingMap/testingMap.css"
 import locationData from "../data/hotels_data.json"
 import sustainabilityData from "../data/Sustainability.json"
-import { motion } from 'framer-motion';
+
+
 function getESGScore(hotelName) {
     const matchingSustainabilityData = sustainabilityData.find((sustainabilityPlace) => {
         // RegExp() is used because indexOf() and includes() functions were not working after several testings
@@ -47,10 +48,6 @@ function getColor(esgScore) {
 function Testing(){
     const circleRadius = 25; // radius of the circle marker in meters
     return(
-    <motion.div
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}>
         <MapContainer center={[-27.470125, 153.021072]} zoom={13} scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -101,7 +98,6 @@ function Testing(){
                 </React.Fragment>
             ))}
         </MapContainer>
-        </motion.div>
     );
 }
 

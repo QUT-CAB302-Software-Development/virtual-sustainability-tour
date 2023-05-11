@@ -119,11 +119,3 @@ form{
     margin-top: 15px;
     margin-bottom: 30px;
 }
-
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-

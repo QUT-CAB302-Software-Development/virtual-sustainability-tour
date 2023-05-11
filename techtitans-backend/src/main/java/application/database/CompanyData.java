@@ -1,8 +1,5 @@
 package application.database;
 
-import org.springframework.context.annotation.Bean;
-
-
 public class CompanyData {
     private String companyName;
     private int year;
@@ -17,6 +14,7 @@ public class CompanyData {
     private int nox; // metric tons
     private int voc; // metric tons
 
+    // Constructor for Sustainability Algorithm
     public CompanyData(String companyName, int year, String country, String subIndustry,
                        long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
                        long waterDischarge, int sox, int nox, int voc) {
@@ -34,52 +32,11 @@ public class CompanyData {
         this.voc = voc;
     }
 
+    public CompanyData getAllData() {
+        return this;
+    }
+
     public String getCompanyName() {
         return companyName;
     }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getSubIndustry() {
-        return subIndustry;
-    }
-
-    public long getGHGTotal() {
-        return ghgTotal;
-    }
-
-    public long getSales() {
-        return sales;
-    }
-
-    public long getOperatingIncome() {
-        return operatingIncome;
-    }
-
-    public long getWaterWithdrawn() {
-        return waterWithdrawn;
-    }
-
-    public long getWaterDischarge() {
-        return waterDischarge;
-    }
-
-    public int getSOx() {
-        return sox;
-    }
-
-    public int getNOx() {
-        return nox;
-    }
-
-    public int getVOC() {
-        return voc;
-    }
-
 }

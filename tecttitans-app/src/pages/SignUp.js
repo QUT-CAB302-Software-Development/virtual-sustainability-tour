@@ -3,7 +3,6 @@ import '../App.css';
 import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
 import { useState } from "react";
-import { motion } from 'framer-motion';
 
 function SignUp(){
 
@@ -118,10 +117,7 @@ function SignUp(){
 
 
     return(
-        <motion.div className="sign-up"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}>
+        <div className="sign-up">
             <form onSubmit={handleSubmit}>
             <h1 className="register">Register</h1>
                 {inputs.map((input) => (
@@ -136,7 +132,7 @@ function SignUp(){
                 <p className="loginredirect"><a href='/login'>Already have an account?</a></p>
 
             </form>
-        </motion.div>
+        </div>
     );
 
 }
