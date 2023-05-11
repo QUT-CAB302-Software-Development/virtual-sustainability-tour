@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import '../App.css';
-
+import { motion } from 'framer-motion';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -10,13 +10,16 @@ import Map from '../maps/Map/Map';
 import PlaceDetails from '../maps/PlaceDetails/PlaceDetails';
 
 function Tour() {
-
     const theme = createTheme();    
     const [placeClicked, setPlaceClicked] = useState(null);
     const [coordinates, setCoordinates] = useState({lat: -27.46794, lng: 153.02809});
 
     return(
-        <>
+        <motion.div
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+        >
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 
@@ -31,7 +34,7 @@ function Tour() {
                     setPlaceClicked={setPlaceClicked}
                 />
             </ThemeProvider>
-        </>
+        </motion.div>
     );
 }
 
