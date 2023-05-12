@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Routes, useLocation} from "react-router-dom";
 import '../App.css';
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 import SignUp from '../pages/SignUp';
-import Tour from '../pages/Tour';
-import Testing from '../pages/Testing';
+import Tour from '../pages/Tour/Tour';
+import Testing from '../pages/Testing/Testing';
 import Login from '../pages/Login';
 
 import { AnimatePresence } from 'framer-motion';

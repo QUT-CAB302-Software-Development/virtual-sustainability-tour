@@ -2,8 +2,8 @@ import React from "react";
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip, Rating } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
+import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
-import getESGScore from "../getESGScore";
 
 function PlaceDetails({ place, setPlaceClicked }) {
   if(place === null) return;

@@ -1,10 +1,10 @@
 import React from 'react';
-import '../App.css'
-import './HeroSection.css';
-import {Button} from "./Button";
+import {Button} from "../../components/Button";
 import hero from './HeroSection.css'
 import {Link} from 'react-router-dom';
 import { motion } from 'framer-motion';
+import '../../App.css'
+import './HeroSection.css';
 
 function HeroSection() {
     return (
