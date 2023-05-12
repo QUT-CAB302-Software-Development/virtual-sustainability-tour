@@ -1,13 +1,13 @@
 import React, {useState } from 'react';
-import '../App.css';
+import '../../App.css';
 import { motion } from 'framer-motion';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import places from "../data/hotels_data.json"
-import Header from '../maps/Header/Header';
-import Map from '../maps/Map/Map';
-import PlaceDetails from '../maps/PlaceDetails/PlaceDetails';
+import places from "../../data/hotels_data.json"
+import PlaceDetails from './PlaceDetails';
+import Header from './Header';
+import Map from './Map';
 
 function Tour() {
     const theme = createTheme();    

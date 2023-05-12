@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import {BrowserRouter as Router} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar";
-import AnimatedRoutes from "./components/AnimatedRoutes";
+import Loading from "./components/Loading";
 import ClipLoader from "react-spinners/ClipLoader";
+import { CircularProgress } from '@mui/material';
 
 //  established routing between the four pages of the front end
 function App() {
@@ -20,18 +21,22 @@ function App() {
     return (
         <div className="App">
             {
-                loading?
+                loading ? 
                 <div className="spinner-container">
-                <ClipLoader
-                color="#36d7b7"
-                 loading={loading}
-                 size={300}/>
+                    <ClipLoader
+                    color="#36d7b7"
+                    loading={loading}
+                    size={300}/>
+                    <CircularProgress
+                    color="primary"
+                    size="16rem"
+                    thickness={1} />
                  </div>
-                      :
-                       <Router>
-                            <Navbar />
-                            <AnimatedRoutes />
-                       </Router>
+                :
+                <Router>
+                    <Navbar />
+                    <Loading />
+                </Router>
             }
         </div>
     );

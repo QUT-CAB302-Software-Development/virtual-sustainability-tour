@@ -4,8 +4,8 @@ import GoogleMapReact from 'google-map-react';
 import { Typography, Rating, Tooltip, Box } from '@mui/material';
 import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
+import getESGScore from "../../data/getESGScore";
 import './Map.css';
-import getESGScore from "../getESGScore";
 
 
 function getColor(esgScore) {
