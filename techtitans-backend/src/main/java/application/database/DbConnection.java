@@ -3,6 +3,7 @@ import application.model.User;
 import application.model.UserReview;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 // Establishes the database connection and saves file.
@@ -31,19 +32,21 @@ public class DbConnection {
         stmt.execute(sql);
         stmt.close();
 
+        // theres something wrong with this SQL string and I can't find out why - Sean
+
         sql = "CREATE TABLE IF NOT EXISTS COMPANY " +
                 "(COMPANY_NAME VARCHAR(255)," +
-                "YEAR VARCHAR(255)," +
-                "COUNTRY VARCHAR(255)," +
-                "SUB_INDUSTRY VARCHAR(255)," +
-                "GHG_TOTAL VARCHAR(255)," +
-                "SALES VARCHAR(255)," +
-                "OPERATING_INCOME VARCHAR(255)," +
-                "WATER_WITHDRAWN VARCHAR(255)," +
-                "WATER_DISCHARGE VARCHAR(255)," +
-                "SOX VARCHAR(255)," +
-                "NOX VARCHAR(255)," +
-                "VOC VARCHAR(255)," +
+                // "YEAR VARCHAR(255)," +
+//                "COUNTRY VARCHAR(255)," +
+//                "SUB_INDUSTRY VARCHAR(255)," +
+//                "GHG_TOTAL VARCHAR(255)," +
+//                "SALES VARCHAR(255)," +
+//                "OPERATING_INCOME VARCHAR(255)," +
+//                "WATER_WITHDRAWN VARCHAR(255)," +
+//                "WATER_DISCHARGE VARCHAR(255)," +
+//                "SOX VARCHAR(255)," +
+//                "NOX VARCHAR(255)," +
+//                "VOC VARCHAR(255)," +
                 "PRIMARY KEY (COMPANY_NAME));";
         stmt = connection.createStatement();
         stmt.execute(sql);
@@ -124,6 +127,21 @@ public class DbConnection {
         pstmt.executeUpdate();
 
         pstmt.close();
+    }
+
+    public boolean executeStmt(String sqlString, ArrayList<String> data) throws SQLException {
+
+        PreparedStatement pstmt = connection.prepareStatement(sqlString);
+
+        for (int i = 0; i < data.size(); i++) {
+            pstmt.setString(i + 1, data.get(i));
+        }
+
+        pstmt.executeUpdate();
+
+        pstmt.close();
+
+        return true;
     }
 
     public void close() throws SQLException {

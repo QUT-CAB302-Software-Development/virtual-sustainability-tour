@@ -23,6 +23,11 @@ public class ReviewDatabase {
         reviews.add(review);
     }
 
+    public ArrayList<UserReview> getAllReviews() {
+
+        return null;
+    }
+
     public void save() {
         try {
             System.out.println(reviews.size());
