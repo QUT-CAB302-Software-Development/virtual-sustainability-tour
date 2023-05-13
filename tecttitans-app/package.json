@@ -16,6 +16,8 @@
     "framer-motion": "^10.12.8",
     "google-map-react": "^2.2.0",
     "leaflet": "^1.9.3",
+    "lottie-react": "^2.4.0",
+    "lottie-web": "^5.11.0",
     "msw": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
