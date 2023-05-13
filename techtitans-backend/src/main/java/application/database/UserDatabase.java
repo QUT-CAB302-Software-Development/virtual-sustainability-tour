@@ -1,8 +1,10 @@
 package application.database;
 import application.model.User;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -73,11 +75,36 @@ public class UserDatabase {
         return false;
     }
 
+    public void saveUser(User user) throws SQLException {
+
+        String sql = "INSERT INTO users (USERNAME, PHONE, NAME, EMAIL, PASSWORD) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+        List<String> data = Arrays.asList(
+            user.getUsername(),
+            user.getPhone(),
+            user.getName(),
+            user.getEmail(),
+            user.getPassword()
+        );
+
+        dbConnection.executeStmt(sql, data);
+    }
+
+
+    public void saveUsers() throws SQLException {
+
+        for (User user : users) {
+            saveUser(user);
+        }
+
+    }
+
     // Save method calls save method from dbconnection
     public void save() {
         try {
             System.out.println(users.size());
-            dbConnection.saveUsers(users);
+            saveUsers();
         } catch (SQLException e) {
             e.printStackTrace();
         }
