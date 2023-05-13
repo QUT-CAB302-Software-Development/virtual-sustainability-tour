@@ -8,9 +8,10 @@ import java.util.List;
 @Component
 public class CompanyDatabase {
     List<CompanyData> companyData = new ArrayList<>();
+    private DbConnection dbConnection;
 
     public CompanyDatabase() {
-        // load database from h2
+
     }
 
     public void addCompanyData(CompanyData data) {

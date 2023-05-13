@@ -1,27 +1,44 @@
-import React from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {BrowserRouter as Router} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar";
-import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-import Tour from './pages/Tour';
-import Testing from './pages/Testing';
-import Login from './pages/Login';
+import Loading from "./components/Loading";
+import ClipLoader from "react-spinners/ClipLoader";
+import { CircularProgress } from '@mui/material';
+
 //  established routing between the four pages of the front end
 function App() {
+
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+
+        }, 1000)
+    }, [])
     return (
-        <>
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route path='/' exact element={Home()} />
-                    <Route path='/sign-up' element={SignUp()} />
-                    <Route path='/tour' element={Tour()} />
-                    <Route path='/testing' element={Testing()} />
-                    <Route path='/login' element={Login()} />
-                </Routes>
-            </Router>
-        </>
+        <div className="App">
+            {
+                loading ? 
+                <div className="spinner-container">
+                    <ClipLoader
+                    color="#36d7b7"
+                    loading={loading}
+                    size={300}/>
+                    <CircularProgress
+                    color="primary"
+                    size="16rem"
+                    thickness={1} />
+                 </div>
+                :
+                <Router>
+                    <Navbar />
+                    <Loading />
+                </Router>
+            }
+        </div>
     );
 }
 

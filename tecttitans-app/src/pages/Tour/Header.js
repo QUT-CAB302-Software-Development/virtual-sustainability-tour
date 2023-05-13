@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 
 // search bar and header functionality
 function Header({ setCoordinates }) {
-  const [autocomplete, setAutocomplete] = useState(null);
+  const [autocomplete, setAutocomplete] = useState('');
 
   const onLoad = (autoC) => setAutocomplete(autoC);
   const onPlaceChanged = () => {
-    const lat = autocomplete.getPlace().geometry.location.lat();
-    const lng = autocomplete.getPlace().geometry.location.lng();
+    const lat = autocomplete.getPlace().geometry.location?.lat();
+    const lng = autocomplete.getPlace().geometry.location?.lng();
     setCoordinates({ lat, lng });
   }
 
@@ -22,29 +22,36 @@ function Header({ setCoordinates }) {
 
   return (
     <AppBar position="static">
+
       <Toolbar className="toolbar">
+
         <Typography variant="h5" className="title">
           {headingName}
         </Typography>
+
         <Box display="flex">
+
           <Typography variant="h6" className="title">
             {searchPrompt}
           </Typography>
+
           <Autocomplete
             onLoad={onLoad}
             onPlaceChanged={onPlaceChanged}
           >
-            <div className="search">
+            <Box className="search">
               <SearchIcon />
-              <InputBase
+              <Input
+                type='text'
                 placeholder={searchPlaceholder}
                 classes={{
                   root: "inputRoot",
                   input: "inputInput"
                 }}
               />
-            </div>
+            </Box>
           </Autocomplete>
+
         </Box>
       </Toolbar>
     </AppBar>
