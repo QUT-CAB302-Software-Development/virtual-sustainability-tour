@@ -40,8 +40,8 @@ public class Main {
 		String password = "password";
 
 		Fetcher fetcher = new Fetcher();
-		List<User> firstUser = fetcher.fetchUsers();
-		System.out.println(firstUser);
+		List<User> users = fetcher.fetchUsers();
+		System.out.println(users);
 
 		SpringApplication.run(Main.class, args);
 		try {
