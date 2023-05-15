@@ -1,12 +1,6 @@
 package example.application;
 
-import application.database.CompanyData;
-import application.database.SustainabilityAlgo;
-
-import static application.database.SustainabilityAlgo.*;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SustainabilityAlgoTests {
     @Test

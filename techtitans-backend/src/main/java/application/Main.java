@@ -1,16 +1,14 @@
 package application;
-import application.database.CompanyDatabase;
+import application.database.sustainability.CompanyDatabase;
 import application.database.DbConnection;
 import application.database.UserDatabase;
-import jakarta.servlet.ServletContextListener;
+import application.database.dummy.Fetcher;
+import application.model.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @SpringBootApplication
 public class Main {
@@ -32,6 +30,8 @@ public class Main {
 
 	public static UserDatabase userDatabase = new UserDatabase(dbConnection);
 
+	public static CompanyDatabase companyDatabase = new CompanyDatabase();//dbConnection);
+
 	// Main program entry point
 	public static void main(String[] args) {
 
@@ -39,10 +39,13 @@ public class Main {
 		String username = "sa";
 		String password = "password";
 
+		Fetcher fetcher = new Fetcher();
+		List<User> users = fetcher.fetchUsers();
+		System.out.println(users);
+
 		SpringApplication.run(Main.class, args);
 		try {
 			dbConnection = new DbConnection(url, username, password);
-			CompanyDatabase companyDatabase = new CompanyDatabase();
 			// Call methods on the DbConnection object to interact with the database
 			dbConnection.close();
 		} catch (SQLException e) {

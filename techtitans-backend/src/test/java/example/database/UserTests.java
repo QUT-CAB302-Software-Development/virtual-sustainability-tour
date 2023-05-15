@@ -9,14 +9,14 @@ public class UserTests {
     private User user;
     @BeforeEach
     void setUp() {
-        user = new User("username", "0412345678", "name", "name@gmail.com", "password");
+        user = new User("username", "0412345678", "name", "lastaname", "name@gmail.com", "password");
     }
 
     @Test
     void testUserConstructor() {
         assertEquals("username", user.getUsername());
         assertEquals("0412345678", user.getPhone());
-        assertEquals("name", user.getName());
+        assertEquals("name", user.getFirstName());
         assertEquals("name@gmail.com", user.getEmail());
         assertEquals("password", user.getPassword());
     }
@@ -33,12 +33,12 @@ public class UserTests {
 
     @Test
     void testUserSetName() {
-        user.setName("newName");
-        assertEquals("newName", user.getName());
+        user.setFirstName("newName");
+        assertEquals("newName", user.getFirstName());
     }
     @Test
     void testUserGetName() {
-        assertEquals("name", user.getName());
+        assertEquals("name", user.getFirstName());
     }
 
     @Test
