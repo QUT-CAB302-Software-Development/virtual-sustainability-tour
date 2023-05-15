@@ -47,12 +47,55 @@ const LoopingTypingHeading = ({ texts }) => {
 function HeroSection() {
     const texts = ['TechTitans Virtual Sustainable Tour'];
     return (
+
         <motion.div
             className='hero-container global-padding space-small'
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
         >
+            <div className="starfall">
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+                <div className="falling-star"></div>
+            </div>
             <img src={hero} alt=""/>
             <LoopingTypingHeading texts={texts} />
             <p>Experience Brisbane Sustainability from your own couch</p>
