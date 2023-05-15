@@ -39,7 +39,7 @@ function Header({ setCoordinates }) {
             onLoad={onLoad}
             onPlaceChanged={onPlaceChanged}
           >
-            <div className="search">
+            <Box className="search">
               <SearchIcon />
               <Input
                 type='text'
@@ -49,7 +49,7 @@ function Header({ setCoordinates }) {
                   input: "inputInput"
                 }}
               />
-            </div>
+            </Box>
           </Autocomplete>
 
         </Box>

@@ -2,10 +2,12 @@ import React from 'react';
 import { scaleQuantize } from 'd3-scale';
 // import { interpolateRdYlGn  } from 'd3-scale-chromatic';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker} from "react-leaflet";
-import "../testingMap/testingMap.css"
-import locationData from "../data/hotels_data.json"
-import sustainabilityData from "../data/Sustainability.json"
+import locationData from "../../data/hotels_data.json"
+import sustainabilityData from "../../data/Sustainability.json"
 import { motion } from 'framer-motion';
+import "./Testing.css";
+
+
 function getESGScore(hotelName) {
     const matchingSustainabilityData = sustainabilityData.find((sustainabilityPlace) => {
         // RegExp() is used because indexOf() and includes() functions were not working after several testings
