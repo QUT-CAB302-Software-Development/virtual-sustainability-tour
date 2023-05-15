@@ -1,6 +1,5 @@
 package application.database;
 import application.model.User;
-
 import java.sql.*;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class DbConnection {
         PreparedStatement pstmt = connection.prepareStatement(sql);
         for (User user : users) {
             pstmt.setString(1, user.getUsername());
-            pstmt.setString(2, user.getName());
+            pstmt.setString(2, user.getFirstName());
             pstmt.setString(3, user.getEmail());
             pstmt.setString(4, user.getPhone());
             pstmt.setString(5, user.getPassword());
@@ -59,7 +58,7 @@ public class DbConnection {
 
         pstmt.setString(1, user.getUsername());
         pstmt.setString(2, user.getPhone());
-        pstmt.setString(3, user.getName());
+        pstmt.setString(3, user.getFirstName());
         pstmt.setString(4, user.getEmail());
         pstmt.setString(5, user.getPassword());
         pstmt.executeUpdate();
