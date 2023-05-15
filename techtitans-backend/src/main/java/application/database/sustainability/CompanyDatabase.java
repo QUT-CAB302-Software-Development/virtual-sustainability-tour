@@ -10,8 +10,9 @@ public class CompanyDatabase {
     List<CompanyData> companyData = new ArrayList<>();
     private DbConnection dbConnection;
 
-    public CompanyDatabase() {
 
+    public CompanyDatabase(DbConnection dbConnection) {
+        this.dbConnection = dbConnection;
     }
 
 

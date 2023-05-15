@@ -1,10 +1,5 @@
-<<<<<<<< HEAD:techtitans-backend/src/main/java/application/utility/SustainabilityAlgo.java
-package application.utility;
 
-import application.model.CompanyData;
-========
 package application.database.sustainability;
->>>>>>>> 6e4d66c64562380b097cb10f7c3129906e1c2728:techtitans-backend/src/main/java/application/database/sustainability/SustainabilityAlgo.java
 
 import java.util.ArrayList;
 import java.util.List;

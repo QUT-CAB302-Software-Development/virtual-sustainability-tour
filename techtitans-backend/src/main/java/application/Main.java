@@ -1,4 +1,5 @@
 package application;
+import application.database.ReviewDatabase;
 import application.database.sustainability.CompanyDatabase;
 import application.database.DbConnection;
 import application.database.UserDatabase;
@@ -30,7 +31,9 @@ public class Main {
 
 	public static UserDatabase userDatabase = new UserDatabase(dbConnection);
 
-	public static CompanyDatabase companyDatabase = new CompanyDatabase();//dbConnection);
+	public static CompanyDatabase companyDatabase = new CompanyDatabase(dbConnection);
+
+	public static ReviewDatabase reviewDatabase = new ReviewDatabase(dbConnection);
 
 	// Main program entry point
 	public static void main(String[] args) {

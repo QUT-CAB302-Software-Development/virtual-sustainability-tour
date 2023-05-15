@@ -53,6 +53,8 @@ public class ReviewDatabase {
             review.getUsername().toString(),
             review.getLocation().toString()
         );
+
+        dbConnection.executeInsertStmt(sql, data);
     }
 
     public void saveReviews() throws SQLException {

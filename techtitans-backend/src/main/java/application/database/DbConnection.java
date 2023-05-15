@@ -20,8 +20,9 @@ public class DbConnection {
 
 
         String sql = "CREATE TABLE IF NOT EXISTS USERS " +
-                "(NAME VARCHAR(255), " +
-                "USERNAME VARCHAR(255), " +
+                "(USERNAME VARCHAR(255), " +
+                "FIRST_NAME VARCHAR(255), " +
+                "LAST_NAME VARCHAR(255)," +
                 "PHONE VARCHAR(255), " +
                 "EMAIL VARCHAR(255), " +
                 "PASSWORD VARCHAR(255), " +
@@ -51,7 +52,8 @@ public class DbConnection {
         stmt.close();
 
         sql = "CREATE TABLE IF NOT EXISTS REVIEW " +
-                "(MESSAGE VARCHAR(255)," +
+                "(REVIEW_ID VARCHAR(255)," +
+                "MESSAGE VARCHAR(255)," +
                 "RATING VARCHAR(255)," +
                 "TIMESTAMP VARCHAR(255)," +
                 "USERNAME VARCHAR(255)," +
@@ -65,10 +67,7 @@ public class DbConnection {
     }
 
 
-
-
-
-    public boolean executeStmt(String sqlString, List<String> data) throws SQLException {
+    public boolean executeInsertStmt(String sqlString, List<String> data) throws SQLException {
 
         PreparedStatement pstmt = connection.prepareStatement(sqlString);
 

@@ -28,15 +28,12 @@ public class UserDatabase {
 
     public void addUser(User user) {
         users.add(user);
+    }
 
     public List<User> getDummyUsers() {
         return users;
     }
 
-
-    public UserDatabase(DbConnection dbConnection) {
-        this.dbConnection = dbConnection;
-    }
 
     public boolean userExists(String username) {
         for (User user : users) {
@@ -86,18 +83,19 @@ public class UserDatabase {
 
     public void saveUser(User user) throws SQLException {
 
-        String sql = "INSERT INTO users (USERNAME, PHONE, NAME, EMAIL, PASSWORD) " +
+        String sql = "INSERT INTO users (USERNAME, PHONE, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) " +
                 "VALUES (?, ?, ?, ?, ?)";
 
         List<String> data = Arrays.asList(
             user.getUsername(),
             user.getPhone(),
-            user.getName(),
+            user.getFirstName(),
+            user.getLastName(),
             user.getEmail(),
             user.getPassword()
         );
 
-        dbConnection.executeStmt(sql, data);
+        dbConnection.executeInsertStmt(sql, data);
     }
 
 
