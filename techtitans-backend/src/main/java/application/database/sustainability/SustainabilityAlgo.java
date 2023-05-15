@@ -1,4 +1,4 @@
-package application.database;
+package application.database.sustainability;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +88,6 @@ public class SustainabilityAlgo {
 
         return industryRatios;
     }
-
 
     public static int calculateESG(long ghgTotal, long sales, long operatingIncome, long waterWithdrawn,
                                         long waterDischarge, int sox, int nox, int voc, double normalisedESG) {

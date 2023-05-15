@@ -1,16 +1,10 @@
 package application;
-import application.database.CompanyDatabase;
+import application.database.sustainability.CompanyDatabase;
 import application.database.DbConnection;
 import application.database.UserDatabase;
 import application.database.dummy.Fetcher;
 import application.model.User;
-import static java.lang.System.out;
-import jakarta.servlet.ServletContextListener;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 
 import java.sql.SQLException;
