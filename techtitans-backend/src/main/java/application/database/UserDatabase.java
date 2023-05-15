@@ -1,5 +1,6 @@
 package application.database;
 import application.model.User;
+import com.google.gson.Gson;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.List;
 
 // User database contains user update methods
 public class UserDatabase {
-    private static ArrayList<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
     private DbConnection dbConnection;
 
     public UserDatabase(DbConnection dbConnection) {
@@ -18,8 +19,8 @@ public class UserDatabase {
     }
 
     // initialises new user, creates user, and adds to class list/
-    public User createUser(String username, String phone, String name, String email, String password) throws SQLException {
-        User user = new User(username, phone, name, email, password);
+    public User createUser(String username, String phone, String firstName, String lastName, String email, String password) throws SQLException {
+        User user = new User(username, phone, firstName, lastName, email, password);
         users.add(user);
 
         return user;
@@ -27,6 +28,14 @@ public class UserDatabase {
 
     public void addUser(User user) {
         users.add(user);
+
+    public List<User> getDummyUsers() {
+        return users;
+    }
+
+
+    public UserDatabase(DbConnection dbConnection) {
+        this.dbConnection = dbConnection;
     }
 
     public boolean userExists(String username) {
@@ -108,5 +117,10 @@ public class UserDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static UserDatabase fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, UserDatabase.class);
     }
 }

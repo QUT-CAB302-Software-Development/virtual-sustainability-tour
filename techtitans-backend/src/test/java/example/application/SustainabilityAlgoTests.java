@@ -1,13 +1,8 @@
 package example.application;
 
-import application.utility.SustainabilityAlgo;
-
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 public class SustainabilityAlgoTests {
-
     @Test
     public void testCalculateESG1() {
         long ghgTotal = 4370546000L;

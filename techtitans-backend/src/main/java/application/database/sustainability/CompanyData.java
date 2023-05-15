@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:techtitans-backend/src/main/java/application/model/CompanyData.java
 package application.model;
+========
+package application.database.sustainability;
+>>>>>>>> 6e4d66c64562380b097cb10f7c3129906e1c2728:techtitans-backend/src/main/java/application/database/sustainability/CompanyData.java
 
 import org.springframework.context.annotation.Bean;
 

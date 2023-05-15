@@ -1,5 +1,5 @@
-package application.database;
-import application.model.CompanyData;
+package application.database.sustainability;
+import application.database.DbConnection;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ public class CompanyDatabase {
     public CompanyDatabase() {
 
     }
+
 
     public void addCompanyData(CompanyData data) {
         companyData.add(data);

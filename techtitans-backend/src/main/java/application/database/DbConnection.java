@@ -1,7 +1,5 @@
 package application.database;
 import application.model.User;
-import application.model.UserReview;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
