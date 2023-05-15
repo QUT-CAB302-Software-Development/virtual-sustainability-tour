@@ -2,6 +2,9 @@ package application;
 import application.database.CompanyDatabase;
 import application.database.DbConnection;
 import application.database.UserDatabase;
+import application.database.dummy.Fetcher;
+import application.model.User;
+import static java.lang.System.out;
 import jakarta.servlet.ServletContextListener;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @SpringBootApplication
 public class Main {
@@ -31,6 +35,7 @@ public class Main {
 	}
 
 	public static UserDatabase userDatabase = new UserDatabase(dbConnection);
+
 	public static CompanyDatabase companyDatabase = new CompanyDatabase();//dbConnection);
 
 	// Main program entry point
@@ -39,6 +44,10 @@ public class Main {
 		String url = "jdbc:h2:file:./techtitans-backend/src/main/data/demo";
 		String username = "sa";
 		String password = "password";
+
+		Fetcher fetcher = new Fetcher();
+		List<User> firstUser = fetcher.fetchUsers();
+		System.out.println(firstUser);
 
 		SpringApplication.run(Main.class, args);
 		try {
