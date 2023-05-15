@@ -10,7 +10,7 @@ import java.util.List;
 
 // User database contains user update methods
 public class UserDatabase {
-    private static List<User> users = new ArrayList<>();
+    private static ArrayList<User> users = new ArrayList<>();
     private DbConnection dbConnection;
 
     public UserDatabase(DbConnection dbConnection) {

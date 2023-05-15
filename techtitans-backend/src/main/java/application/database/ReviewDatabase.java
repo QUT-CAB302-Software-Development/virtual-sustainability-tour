@@ -25,9 +25,21 @@ public class ReviewDatabase {
         reviews.add(review);
     }
 
-    public ArrayList<UserReview> getAllReviews() {
+    public List<UserReview> getAllReviews() {
+        return reviews;
+    }
 
-        return null;
+    public List<UserReview> getReviewsByLocation(String location) {
+
+        List<UserReview> data = new ArrayList<>();
+
+        for (UserReview review : reviews) {
+            if (review.getLocation() == location) {
+                data.add(review);
+            }
+        }
+
+        return data;
     }
 
     public void saveReview(UserReview review) throws SQLException {
