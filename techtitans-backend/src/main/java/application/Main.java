@@ -63,8 +63,6 @@ public class Main {
 		}
 
 
-		// System.out.println(firstProduct);
-
 		SpringApplication.run(Main.class, args);
 		try {
 			dbConnection = new DbConnection(url, username, password);
