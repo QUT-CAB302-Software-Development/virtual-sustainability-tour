@@ -122,7 +122,7 @@ const [modal, setModal] = useState(false);
                 </div>
                 <button className='btn'>Submit feedback</button>
 
-                    <h3>Customer Feedback</h3>
+                    <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
                     {comments.length > 0 ? (
                       comments.map((comment) => (
                         <div key={comment.id}>
