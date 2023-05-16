@@ -54,7 +54,7 @@ public class Main {
 
 		DummyProductFetcher productFetcher = new DummyProductFetcher();
 
-		DummyProduct firstProduct = productFetcher.fetchProduct(1);
+		// DummyProduct firstProduct = productFetcher.fetchProduct(1);
 
 		DummyProduct[] products = productFetcher.fetchAllProducts();
 
@@ -63,7 +63,7 @@ public class Main {
 		}
 
 
-		System.out.println(firstProduct);
+		// System.out.println(firstProduct);
 
 		SpringApplication.run(Main.class, args);
 		try {

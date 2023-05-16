@@ -529,3 +529,9 @@ CREATE TABLE sustainability_data ( name VARCHAR(255), ghgTotal BIGINT, sales BIG
 2023-05-16 11:27:18 jdbc[15]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTINABILITY_DATA" not found; SQL statement:
 select * from SUSTINABILITY_DATA [42102-214]
+2023-05-16 11:30:24 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTAINABILITY" not found; SQL statement:
+DELETE FROM SUSTAINABILITY DATA [42102-214]
+2023-05-16 11:32:39 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTAINABILITY" not found; SQL statement:
+SELECT * FROM SUSTAINABILITY DATA [42102-214]
