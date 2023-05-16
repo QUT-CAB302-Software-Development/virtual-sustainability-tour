@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import '../../App.css'
 import './HeroSection.css';
 
+
 const LoopingTypingHeading = ({ texts }) => {
     const [textIndex, setTextIndex] = useState(0);
     const [currentText, setCurrentText] = useState('');

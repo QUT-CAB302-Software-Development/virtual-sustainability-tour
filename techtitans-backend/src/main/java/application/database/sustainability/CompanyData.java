@@ -1,3 +1,4 @@
+
 package application.database.sustainability;
 
 import org.springframework.context.annotation.Bean;

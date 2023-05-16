@@ -1,3 +1,4 @@
+
 package application.database.sustainability;
 
 import java.util.ArrayList;
@@ -133,4 +134,6 @@ public class SustainabilityAlgo {
         // Round to integer and return
         return (int)Math.round(esgScore * 100 * normalisedESG);
     }
+
+
 }
