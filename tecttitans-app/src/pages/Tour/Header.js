@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Box, Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
+import {SearchBox} from './SearchBox';
 
 // search bar and header functionality
 function Header({ setCoordinates }) {
@@ -23,22 +23,12 @@ function Header({ setCoordinates }) {
 
       <Toolbar className="toolbar">
 
-          <Autocomplete
+          <SearchBox
             onLoad={onLoad}
             onPlaceChanged={onPlaceChanged}
           >
-            <Box className="search">
-              <SearchIcon />
-              <Input
-                type='text'
-                placeholder={searchPlaceholder}
-                classes={{
-                  root: "inputRoot",
-                  input: "inputInput"
-                }}
-              />
-            </Box>
-          </Autocomplete>
+          </SearchBox>
+
       </Toolbar>
     </AppBar>
   );
