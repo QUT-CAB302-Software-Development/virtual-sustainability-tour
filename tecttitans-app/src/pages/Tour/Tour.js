@@ -23,7 +23,10 @@ function Tour() {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 
-                <Header setCoordinates={setCoordinates} />
+                <Header 
+                    places={places}
+                    setCoordinates={setCoordinates} 
+                />
                 <Map 
                     places={places}
                     coordinates={coordinates}

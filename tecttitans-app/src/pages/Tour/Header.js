@@ -1,34 +1,59 @@
-import React, { useState } from "react";
-import { AppBar, Toolbar, Box, Input } from '@mui/material';
+import React from "react";
+import { AppBar, Toolbar, Box, Stack, Autocomplete, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
-import {SearchBox} from './SearchBox';
 
 // search bar and header functionality
-function Header({ setCoordinates }) {
-  const [autocomplete, setAutocomplete] = useState('');
+function Header({ places, setCoordinates }) {
 
-  const onLoad = (autoC) => setAutocomplete(autoC);
-  const onPlaceChanged = () => {
-    const lat = autocomplete.getPlace().geometry.location?.lat();
-    const lng = autocomplete.getPlace().geometry.location?.lng();
-    setCoordinates({ lat, lng });
-  }
-
-  // change to whatever u want
+  const [value, setValue] = React.useState(null);
   const searchPlaceholder = "Search...";
+  const noResults = "No results";
 
   return (
     <AppBar position="static">
-
       <Toolbar className="toolbar">
 
-          <SearchBox
-            onLoad={onLoad}
-            onPlaceChanged={onPlaceChanged}
-          >
-          </SearchBox>
+          <SearchIcon/>
+          <Stack className="search">
 
+            <Autocomplete 
+              id="locations_search"
+              getOptionLabel={(places) => places.name}
+              options={places}
+              noOptionsText={noResults}
+
+              isOptionEqualToValue={(option, value) => 
+                option.name === value.name
+              }
+
+              renderOption={(props, places) => (
+                <Box 
+                  {...props} 
+                  key={places.place_id}
+                >
+                  {places.name}
+                </Box>
+              )}
+
+              renderInput={(params) => 
+                <TextField 
+                  {...params} 
+                  label={searchPlaceholder}
+                />
+              }
+
+              value={value}
+              onChange={(_, newValue) => {
+                const lat = Number(newValue?.geometry.location.lat);
+                const lng = Number(newValue?.geometry.location.lng);
+                setCoordinates({ lat, lng });
+                setValue(null);
+              }}
+
+            />
+
+          </Stack>
       </Toolbar>
     </AppBar>
   );
