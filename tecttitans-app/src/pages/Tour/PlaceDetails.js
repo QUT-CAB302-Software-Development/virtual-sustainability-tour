@@ -7,7 +7,7 @@ import './PlaceDetails.css';
 
 function PlaceDetails({ place, setPlaceClicked }) {
 
-  const [modal, setModal] = useState(false);
+const [modal, setModal] = useState(false);
   const [comments, setComments] = useState([]);
   // GET data from API using React
       useEffect(() => {
@@ -42,8 +42,6 @@ function PlaceDetails({ place, setPlaceClicked }) {
   const esgStarRating = Math.round(100 * esgScore / 6) / 100;
   let esgScoreText = `${Math.round(esgScore)}/30, ESG Score`;
   if(esgScore === "No data") { esgScoreText = 'No ESG Score'; }
-
-
 
   return (
     <div className="details">
@@ -99,9 +97,7 @@ function PlaceDetails({ place, setPlaceClicked }) {
             </Typography>
           )}
         </CardContent>
-
-
-        {/*  Pop up Feedback form for each location*/}
+{/*  Pop up Feedback form for each location*/}
 
 
         <div>
@@ -142,7 +138,6 @@ function PlaceDetails({ place, setPlaceClicked }) {
             }
 
         </div>
-
         <CardActions>
           <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
             {websiteButtonText}
