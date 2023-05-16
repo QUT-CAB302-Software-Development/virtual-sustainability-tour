@@ -51,8 +51,24 @@ public class DbConnection {
         stmt.execute(sql);
         stmt.close();
 
+        sql = "CREATE TABLE IF NOT EXISTS SUSTAINABILITY_DATA (\n" +
+                "  name VARCHAR(255),\n" +
+                "  ghgTotal BIGINT,\n" +
+                "  sales BIGINT,\n" +
+                "  operatingIncome BIGINT,\n" +
+                "  waterWithdrawn BIGINT,\n" +
+                "  waterDischarge BIGINT,\n" +
+                "  sox BIGINT,\n" +
+                "  nox BIGINT,\n" +
+                "  voc BIGINT\n" +
+                ");";
+
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        stmt.close();
+
         sql = "CREATE TABLE IF NOT EXISTS REVIEW " +
-                "(REVIEW_ID VARCHAR(255)," +
+                "(REVIEW_ID bigint auto_increment," +
                 "MESSAGE VARCHAR(255)," +
                 "RATING VARCHAR(255)," +
                 "TIMESTAMP VARCHAR(255)," +

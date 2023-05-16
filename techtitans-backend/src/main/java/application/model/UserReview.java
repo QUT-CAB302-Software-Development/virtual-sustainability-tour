@@ -4,6 +4,8 @@ import application.Exceptions.InvalidMessageException;
 
 public class UserReview {
 
+    private String id;
+
     private String message;
 
     private Integer rating;
@@ -88,5 +90,13 @@ public class UserReview {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

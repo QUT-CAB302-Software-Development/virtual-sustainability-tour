@@ -517,3 +517,15 @@ CREATE TABLE IF NOT EXISTS COMPANY (COMPANY_NAME VARCHAR(255),YEAR VARCHAR(255),
 2023-05-09 11:43:03 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS COMPANY (COMPANY_NAME VARCHAR(255),[*]YEAR VARCHAR(255),PRIMARY KEY (COMPANY_NAME));"; expected "identifier"; SQL statement:
 CREATE TABLE IF NOT EXISTS COMPANY (COMPANY_NAME VARCHAR(255),YEAR VARCHAR(255),PRIMARY KEY (COMPANY_NAME)); [42001-214]
+2023-05-16 11:13:32 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTAINABILITY_DATA" already exists; SQL statement:
+CREATE TABLE sustainability_data ( name VARCHAR(255), ghgTotal BIGINT, sales BIGINT, operatingIncome BIGINT, waterWithdrawn BIGINT, waterDischarge BIGINT, sox BIGINT, nox BIGINT, voc BIGINT ) [42101-214]
+2023-05-16 11:14:46 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTAINABILITY_DATA" already exists; SQL statement:
+CREATE TABLE sustainability_data ( name VARCHAR(255), ghgTotal BIGINT, sales BIGINT, operatingIncome BIGINT, waterWithdrawn BIGINT, waterDischarge BIGINT, sox BIGINT, nox BIGINT, voc BIGINT ) [42101-214]
+2023-05-16 11:19:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTAINABILITY_DATA" already exists; SQL statement:
+CREATE TABLE sustainability_data ( name VARCHAR(255), ghgTotal BIGINT, sales BIGINT, operatingIncome BIGINT, waterWithdrawn BIGINT, waterDischarge BIGINT, sox BIGINT, nox BIGINT, voc BIGINT ) [42101-214]
+2023-05-16 11:27:18 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SUSTINABILITY_DATA" not found; SQL statement:
+select * from SUSTINABILITY_DATA [42102-214]

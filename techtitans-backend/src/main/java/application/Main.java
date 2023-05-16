@@ -4,6 +4,9 @@ import application.database.sustainability.CompanyDatabase;
 import application.database.DbConnection;
 import application.database.UserDatabase;
 import application.database.dummy.Fetcher;
+import application.dummyProducts.DummyProduct;
+import application.dummyProducts.DummyProductFetcher;
+import application.dummyProducts.DummyProducts;
 import application.model.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
@@ -45,6 +48,22 @@ public class Main {
 		Fetcher fetcher = new Fetcher();
 		List<User> users = fetcher.fetchUsers();
 		System.out.println(users);
+
+
+		// Sean's rest api tests
+
+		DummyProductFetcher productFetcher = new DummyProductFetcher();
+
+		DummyProduct firstProduct = productFetcher.fetchProduct(1);
+
+		DummyProduct[] products = productFetcher.fetchAllProducts();
+
+		for (DummyProduct product : products) {
+			System.out.println(product);
+		}
+
+
+		System.out.println(firstProduct);
 
 		SpringApplication.run(Main.class, args);
 		try {
