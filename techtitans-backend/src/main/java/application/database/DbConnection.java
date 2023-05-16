@@ -115,37 +115,3 @@ public class DbConnection {
 
 }
 
-
-
-
-
-//    // Takes list of users as parameter and saves into h2 database using sql query. Not sure if static is an issue?
-//    public void saveUsers(List<User> users) throws SQLException {
-//        String sql = "INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) " +
-//                "VALUES (?, ?, ?, ?, ?)";
-//        PreparedStatement pstmt = connection.prepareStatement(sql);
-//        for (User user : users) {
-//            pstmt.setString(1, user.getUsername());
-//            pstmt.setString(2, user.getName());
-//            pstmt.setString(3, user.getEmail());
-//            pstmt.setString(4, user.getPhone());
-//            pstmt.setString(5, user.getPassword());
-//            pstmt.executeUpdate();
-//        }
-//        pstmt.close();
-//    }
-
-//    public void saveUser(User user) throws SQLException {
-//        String sql = "INSERT INTO users (USERNAME, PHONE, NAME, EMAIL, PASSWORD) " +
-//                "VALUES (?, ?, ?, ?, ?)";
-//        PreparedStatement pstmt = connection.prepareStatement(sql);
-//
-//        pstmt.setString(1, user.getUsername());
-//        pstmt.setString(2, user.getPhone());
-//        pstmt.setString(3, user.getName());
-//        pstmt.setString(4, user.getEmail());
-//        pstmt.setString(5, user.getPassword());
-//        pstmt.executeUpdate();
-//
-//        pstmt.close();
-//    }
