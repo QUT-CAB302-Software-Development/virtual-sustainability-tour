@@ -1,10 +1,10 @@
 import React, {useState, useEffect } from "react";
 import {BrowserRouter as Router} from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Loading from "./components/Loader";
-import './App.css';
 import Lottie from "lottie-react";
+import Loader from "./components/Loader";
 import LoadingAnimation from './videos/LoadingAnimation.json';
+import './App.css';
 
 //  established routing between the four pages of the front end
 function App() {
@@ -25,7 +25,7 @@ function App() {
                 :
                 <Router>
                     <Navbar />
-                    <Loading />
+                    <Loader />
                 </Router>
             }
         </div>
