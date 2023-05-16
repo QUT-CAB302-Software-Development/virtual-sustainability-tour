@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, Box, Input } from '@mui/material';
+import { AppBar, Toolbar, Box, Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 
@@ -16,24 +16,12 @@ function Header({ setCoordinates }) {
   }
 
   // change to whatever u want
-  const headingName = "TOUR";
-  const searchPrompt = "Enter a location";
   const searchPlaceholder = "Search...";
 
   return (
     <AppBar position="static">
 
       <Toolbar className="toolbar">
-
-        <Typography variant="h5" className="title">
-          {headingName}
-        </Typography>
-
-        <Box display="flex">
-
-          <Typography variant="h6" className="title">
-            {searchPrompt}
-          </Typography>
 
           <Autocomplete
             onLoad={onLoad}
@@ -51,8 +39,6 @@ function Header({ setCoordinates }) {
               />
             </Box>
           </Autocomplete>
-
-        </Box>
       </Toolbar>
     </AppBar>
   );

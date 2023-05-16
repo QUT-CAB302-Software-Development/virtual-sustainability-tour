@@ -1,11 +1,11 @@
 .navbar {
-    background: rgba(28, 27, 27, 0.5);
-    height: 80px;
+    background: #2684FF;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    position:sticky;
+    position: static;
     top: 0;
     z-index: 999;
     backdrop-filter: blur(5px);
