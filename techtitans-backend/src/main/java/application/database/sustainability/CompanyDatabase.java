@@ -5,13 +5,14 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+// @Component
 public class CompanyDatabase {
     List<CompanyData> companyData = new ArrayList<>();
     private DbConnection dbConnection;
 
-    public CompanyDatabase() {
 
+    public CompanyDatabase(DbConnection dbConnection) {
+        this.dbConnection = dbConnection;
     }
 
 

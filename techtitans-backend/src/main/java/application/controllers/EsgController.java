@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/esg")
 public class EsgController {
 
-    @Autowired
+    // @Autowired
     private CompanyDatabase companyDatabase;
 
     @GetMapping("/data")

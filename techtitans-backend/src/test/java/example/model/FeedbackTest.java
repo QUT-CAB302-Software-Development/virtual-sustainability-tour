@@ -1,7 +1,7 @@
 package example.model;
 
 import application.Exceptions.InvalidMessageException;
-import application.model.Feedback;
+import application.model.UserReview;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FeedbackTest {
 
-    private Feedback feedback;
+    private UserReview feedback;
 
     @BeforeEach
     void createFeedback() throws InvalidMessageException {
-        feedback = new Feedback(
+        feedback = new UserReview(
                 "I love this place",
                 6,
                 10000000L,

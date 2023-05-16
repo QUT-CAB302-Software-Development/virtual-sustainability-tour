@@ -1,10 +1,10 @@
 package application.model;
 
 import application.Exceptions.InvalidMessageException;
-import application.database.DbConnection;
-import application.database.UserDatabase;
 
-public class Feedback {
+public class UserReview {
+
+    private String id;
 
     private String message;
 
@@ -17,7 +17,7 @@ public class Feedback {
     private String location;
 
 
-    public Feedback(String message, Integer rating, Long timestamp, String username, String location) throws InvalidMessageException {
+    public UserReview(String message, Integer rating, Long timestamp, String username, String location) throws InvalidMessageException {
         setMessage(message);
         setRating(rating);
         setTimestamp(timestamp);
@@ -90,5 +90,13 @@ public class Feedback {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
