@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip, Rating } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -6,6 +6,29 @@ import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
 function PlaceDetails({ place, setPlaceClicked }) {
+
+  const [modal, setModal] = useState(false);
+  const [comments, setComments] = useState([]);
+  // GET data from API using React
+      useEffect(() => {
+          const fetchComments = async () => {
+          try {
+              const response = await fetch('https://dummyjson.com/comments');
+              const data = await response.json();
+//              setComments(data);
+             if (Array.isArray(data.comments)) {
+                    setComments(data.comments);
+                  } else {
+                    console.error('API response is not an array:', data);
+                  }
+          } catch(error) {
+              console.error('Error fetching comment data', error);
+          }
+
+          };
+          fetchComments();
+      }, []);
+
   if(place === null) return;
 
   const websiteButtonText = "Go to Website";
@@ -19,6 +42,8 @@ function PlaceDetails({ place, setPlaceClicked }) {
   const esgStarRating = Math.round(100 * esgScore / 6) / 100;
   let esgScoreText = `${Math.round(esgScore)}/30, ESG Score`;
   if(esgScore === "No data") { esgScoreText = 'No ESG Score'; }
+
+
 
   return (
     <div className="details">
@@ -37,7 +62,7 @@ function PlaceDetails({ place, setPlaceClicked }) {
             <Rating value={starRating} readonly />
             <Typography gutterBottom variant="subtitle1">{starRating}/5, {place.user_ratings_total} reviews</Typography>
           </Box>
-          
+
           <Box display="flex" justifyContent="space-between">
               <Rating size="small" value={esgStarRating} readonly />
               <Typography variant="subtitle1">{esgScoreText}</Typography>
@@ -63,7 +88,7 @@ function PlaceDetails({ place, setPlaceClicked }) {
           {place?.cuisine?.map(({ name }) => (
             <Chip key={name} size="small" label={name} className="chip" />
           ))}
-          
+
           <Typography gutterBottom variant="subtitle2" color="textSecondary" className="subtitle">
             <LocationOnIcon/> {place.formatted_address}
           </Typography>
@@ -74,6 +99,49 @@ function PlaceDetails({ place, setPlaceClicked }) {
             </Typography>
           )}
         </CardContent>
+
+
+        {/*  Pop up Feedback form for each location*/}
+
+
+        <div>
+
+            {!modal && (
+                <button
+                    className='btn'
+                    onClick={() => setModal((value) => !value)}>
+                    Feedback Form
+                    </button>
+            )}
+            {modal &&
+
+            <div className='modal'>
+            <form>
+                <button className='btn'
+                        onClick={() => setModal((value) => !value)}
+                        >X</button>
+                <div className='feedback-form'>
+                    <input className='feedback' placeholder="Feedback" name="Feedback" />
+                    <label className="placeholder">Feedback</label>
+                </div>
+                <button className='btn'>Submit feedback</button>
+
+                    <h3>Customer Feedback</h3>
+                    {comments.length > 0 ? (
+                      comments.map((comment) => (
+                        <div key={comment.id}>
+                          <p className='comments'>{comment.body}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No comments found.</p>
+                    )}
+
+            </form>
+            </div>
+            }
+
+        </div>
 
         <CardActions>
           <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
