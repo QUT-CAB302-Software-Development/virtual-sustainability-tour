@@ -5,6 +5,7 @@ import application.database.sustainability.CompanyDatabase;
 import application.database.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +18,14 @@ public class EsgController {
     // @Autowired
     private CompanyDatabase companyDatabase;
 
-    @GetMapping("/data")
+    @GetMapping("/esg/data")
     public List<CompanyData> getEsgData() {
         return companyDatabase.getAllCompanies();
+    }
+
+    @GetMapping("/esg/score/{name}")
+    public double getEsgScore(@PathVariable String name) {
+        return companyDatabase.calculateESGScoreByName(name);
     }
 
     private UserDatabase userDatabase = Main.userDatabase;

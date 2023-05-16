@@ -1,13 +1,12 @@
 package application.database.sustainability;
 import application.database.DbConnection;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // @Component
 public class CompanyDatabase {
-    List<CompanyData> companyData = new ArrayList<>();
+    List<CompanyData> companyDataList = new ArrayList<>();
     private DbConnection dbConnection;
 
 
@@ -15,13 +14,35 @@ public class CompanyDatabase {
         this.dbConnection = dbConnection;
     }
 
+    public double calculateESGScoreByName(String name) {
+
+        CompanyData companyData = getCompanyDataByName(name);
+
+
+
+        // Calculate the ESG score somehow
+
+//        return SustainabilityAlgo.calculateESG(
+//            companyData.getGHGTotal(),
+//            companyData.getSales(),
+//            companyData.getOperatingIncome(),
+//            companyData.getWaterWithdrawn(),
+//            companyData.getWaterDischarge(),
+//            companyData.getSOx(),
+//            companyData.getNOx(),
+//            companyData.getVOC(),
+//
+//        )
+
+        return 0.0; // placeholder
+    }
 
     public void addCompanyData(CompanyData data) {
-        companyData.add(data);
+        companyDataList.add(data);
     }
 
     public CompanyData getCompanyDataByName(String name) {
-        for (CompanyData data : companyData) {
+        for (CompanyData data : companyDataList) {
             if (data.getCompanyName().equals(name)) {
                 return data;
             }
@@ -30,6 +51,6 @@ public class CompanyDatabase {
     }
 
     public List<CompanyData> getAllCompanies() {
-        return companyData;
+        return companyDataList;
     }
 }

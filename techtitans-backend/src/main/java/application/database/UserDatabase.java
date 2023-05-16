@@ -107,6 +107,15 @@ public class UserDatabase {
 
     }
 
+    public void load() throws SQLException {
+
+        String sql = "SELECT * FROM USERS";
+
+        dbConnection.executeGetStmt(sql);
+
+
+    }
+
     // Save method calls save method from dbconnection
     public void save() {
         try {
@@ -121,4 +130,6 @@ public class UserDatabase {
         Gson gson = new Gson();
         return gson.fromJson(json, UserDatabase.class);
     }
+
+
 }

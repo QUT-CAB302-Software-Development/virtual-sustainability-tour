@@ -82,6 +82,17 @@ public class DbConnection {
         stmt.close();
     }
 
+    public void executeGetStmt(String sqlString) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement(sqlString);
+
+
+        ResultSet rs = pstmt.executeQuery();
+
+        pstmt.close();
+
+
+    }
+
 
     public boolean executeInsertStmt(String sqlString, List<String> data) throws SQLException {
 
