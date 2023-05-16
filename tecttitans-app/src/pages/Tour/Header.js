@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { AppBar, Toolbar, Box, Stack, Autocomplete, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 
 // search bar and header functionality
-function Header({ places, setCoordinates }) {
+function Header({ places, setZoom, setCoordinates }) {
 
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = useState(null);
   const searchPlaceholder = "Search...";
   const noResults = "No results";
 
@@ -48,6 +48,7 @@ function Header({ places, setCoordinates }) {
                 const lat = Number(newValue?.geometry.location.lat);
                 const lng = Number(newValue?.geometry.location.lng);
                 setCoordinates({ lat, lng });
+                setZoom(17);
                 setValue(null);
               }}
 

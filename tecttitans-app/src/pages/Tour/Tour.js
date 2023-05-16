@@ -13,6 +13,7 @@ function Tour() {
     const theme = createTheme();    
     const [placeClicked, setPlaceClicked] = useState(null);
     const [coordinates, setCoordinates] = useState({lat: -27.46794, lng: 153.02809});
+    const [zoom, setZoom] = useState(15);
 
     return(
         <motion.div
@@ -25,10 +26,12 @@ function Tour() {
                 
                 <Header 
                     places={places}
+                    setZoom={setZoom}
                     setCoordinates={setCoordinates} 
                 />
                 <Map 
                     places={places}
+                    zoom={zoom}
                     coordinates={coordinates}
                     setPlaceClicked={setPlaceClicked}
                 />

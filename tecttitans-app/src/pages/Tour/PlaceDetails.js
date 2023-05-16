@@ -5,33 +5,37 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
-function PlaceDetails({ place, setPlaceClicked }) {
 
-const [modal, setModal] = useState(false);
+function PlaceDetails({ place, setPlaceClicked }) {
+  
+  const [modal, setModal] = useState(false);
   const [comments, setComments] = useState([]);
   // GET data from API using React
-      useEffect(() => {
-          const fetchComments = async () => {
-          try {
-              const response = await fetch('https://dummyjson.com/comments');
-              const data = await response.json();
-//              setComments(data);
-             if (Array.isArray(data.comments)) {
-                    setComments(data.comments);
-                  } else {
-                    console.error('API response is not an array:', data);
-                  }
-          } catch(error) {
-              console.error('Error fetching comment data', error);
-          }
-
-          };
-          fetchComments();
-      }, []);
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch('https://dummyjson.com/comments');
+        const data = await response.json();
+        // setComments(data);
+        if (Array.isArray(data.comments)) {
+          setComments(data.comments);
+        } else {
+          console.error('API response is not an array:', data);
+        }
+      } 
+      catch(error) {
+        console.error('Error fetching comment data', error);
+      }
+    };
+    fetchComments();
+    
+  }, []);
 
   if(place === null) return;
 
   const websiteButtonText = "Go to Website";
+  const view360ButtonText = "View Tour";
+  //const feedbackButtonText = "Review";
   const closeButtonText = "Close";
   const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
 
@@ -97,52 +101,58 @@ const [modal, setModal] = useState(false);
             </Typography>
           )}
         </CardContent>
-{/*  Pop up Feedback form for each location*/}
-
 
         <div>
+          {!modal && (
+            <button
+              className='btn'
+              onClick={() => setModal((value) => !value)}>
+              Feedback Form
+            </button>
+          )}
 
-            {!modal && (
-                <button
-                    className='btn'
-                    onClick={() => setModal((value) => !value)}>
-                    Feedback Form
-                    </button>
-            )}
-            {modal &&
-
+          {modal && (
             <div className='modal'>
-            <form>
+              <form>
                 <button className='btn'
-                        onClick={() => setModal((value) => !value)}
-                        >X</button>
+                  onClick={() => setModal((value) => !value)}
+                >
+                  X
+                </button>
+
                 <div className='feedback-form'>
-                    <input className='feedback' placeholder="Feedback" name="Feedback" />
-                    <label className="placeholder">Feedback</label>
+                  <input className='feedback' placeholder="Feedback" name="Feedback" />
+                  <label className="placeholder">Feedback</label>
                 </div>
+
                 <button className='btn'>Submit feedback</button>
 
-                    <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
-                    {comments.length > 0 ? (
-                      comments.map((comment) => (
-                        <div key={comment.id}>
-                          <p className='comments'>{comment.body}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p>No comments found.</p>
-                    )}
-
-            </form>
+                <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
+                {comments.length > 0 ? (
+                  comments.map((comment) => (
+                    <div key={comment.id}>
+                      <p className='comments'>{comment.body}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p>No comments found.</p>
+                )}
+              </form>
             </div>
-            }
-
+          )}
         </div>
+
         <CardActions>
           <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
             {websiteButtonText}
           </Button>
-          <Button size="small" color="primary" onClick={() => {setPlaceClicked(null)}}>
+          <Button size="small" color="primary" onClick={() => setPlaceClicked(null)}>
+            {view360ButtonText}
+          </Button>
+          <Button size="small" color="primary" onClick={() => setPlaceClicked(null)}> 
+           RJ USE THIS AS FEEDBACK BUTTON {/* {feedbackButtonText} */}
+          </Button>
+          <Button size="small" color="primary" onClick={() => setPlaceClicked(null)}>
             {closeButtonText}
           </Button>
         </CardActions>
