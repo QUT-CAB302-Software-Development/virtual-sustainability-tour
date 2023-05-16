@@ -14,17 +14,11 @@
 }
 
 .search {
-    position: relative;
-    border-radius: 4px;
-    width: 100%;
+    width: auto;
 }
 
 .search.searchIcon {
-    padding: 10px;
-    height: 100%;
-    position: absolute;
     pointer-events: none;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -36,12 +30,11 @@
 .search .inputInput {
     padding-left: 4px;
     transition: width 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    width: 100%;
+    width: 80%;
 }
 
 @media (min-width: 960px) {
     .search {
-        margin-left: 24px;
         width: auto;
     }
     .search .inputInput {
@@ -50,6 +43,13 @@
 }
 
 .toolbar {
+    left: 80vw;
+    justify-content: center;
+    width: 300px;
+    height: 20px;
+    margin: 10px;
+    border-radius: 20px;
     display: flex;
-    justify-content: space-between;
+    background-color: #559fff;
+    z-index: 99;
 }
