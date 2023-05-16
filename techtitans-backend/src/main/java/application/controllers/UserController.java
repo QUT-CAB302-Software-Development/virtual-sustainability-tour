@@ -5,16 +5,10 @@ import application.database.UserDatabase;
 import application.model.User;
 import application.model.UserLogin;
 import application.Main;
-
-import application.database.DbConnection;
-
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,7 +66,8 @@ public class UserController {
         String password = user.getPassword();
         String email = user.getEmail();
         String phone = user.getPhone();
-        String name = user.getName();
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
 
         HashMap<String, Object> body = new HashMap<>();
 
@@ -84,7 +79,7 @@ public class UserController {
             body.put("error", false);
             body.put("message", "user created successfully, registration successful");
 
-            userDatabase.createUser(username, phone, name, email, password);
+            userDatabase.createUser(username, phone, firstName, lastName, email, password);
 
             return new ResponseEntity<>(body, headers, HttpStatus.CREATED);
 
