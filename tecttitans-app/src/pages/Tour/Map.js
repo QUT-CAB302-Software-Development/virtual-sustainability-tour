@@ -43,13 +43,12 @@ function placePopUp({ place, apiKey }){
                 <Rating size="small" value={esgStarRating} readonly />
             </Box>
         </div>
-    )
+    );
 }
 
 
 // google maps api usage
-function Map({ places, coordinates, setPlaceClicked }) {
-    const defaultZoom = 14;
+function Map({ places, zoom, coordinates, setPlaceClicked }) {
 
     const circleRadius = 100;
     const circleBorderWidth = 5;
@@ -65,11 +64,12 @@ function Map({ places, coordinates, setPlaceClicked }) {
                 bootstrapURLKeys={{ key: apiKey }}
                 defaultCenter={defaultCoordinates}
                 center={coordinates}
-                defaultZoom={defaultZoom}
+                defaultZoom={zoom}
+                zoom={zoom}
                 margin={[50, 50, 50, 50]}
                 options={{
                     disableDefaultUI: true, 
-                    zoomControl: true, 
+                    zoomControl: false, 
                     mapTypeControl: true,
                     streetViewControl: false,
                     disableDoubleClickZoom: true,

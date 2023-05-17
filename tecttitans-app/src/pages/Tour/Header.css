@@ -14,7 +14,9 @@
 }
 
 .search {
-    width: auto;
+    width: 400px;
+    margin: 20px;
+    color: white;
 }
 
 .search.searchIcon {
@@ -23,33 +25,14 @@
     justify-content: center;
 }
 
-.search .inputRoot {
-    color: inherit;
-}
-
-.search .inputInput {
-    padding-left: 4px;
-    transition: width 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    width: 80%;
-}
-
-@media (min-width: 960px) {
-    .search {
-        width: auto;
-    }
-    .search .inputInput {
-        width: 20ch;
-    }
-}
-
 .toolbar {
-    left: 80vw;
+    left: 75vw;
     justify-content: center;
-    width: 300px;
+    width: 400px;
     height: 20px;
     margin: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     background-color: #559fff;
-    z-index: 99;
+    z-index: 2;
 }
