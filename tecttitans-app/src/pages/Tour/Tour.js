@@ -8,6 +8,7 @@ import places from "../../data/hotels_data.json"
 import PlaceDetails from './PlaceDetails';
 import Header from './Header';
 import Map from './Map';
+import WebGl from './Map';
 
 function Tour() {
     const theme = createTheme();    
