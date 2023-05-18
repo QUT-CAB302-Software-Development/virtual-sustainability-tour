@@ -55,7 +55,7 @@ function placePopUp({ place, apiKey }){
                 <Rating size="small" value={esgStarRating} readonly />
             </Box>
         </div>
-    )
+    );
 }
 
 //webgl overlay function
@@ -103,11 +103,12 @@ function Map({ places, coordinates, setPlaceClicked }) {
                 bootstrapURLKeys={{ key: apiKey }}
                 defaultCenter={defaultCoordinates}
                 center={coordinates}
-                defaultZoom={defaultZoom}
+                defaultZoom={zoom}
+                zoom={zoom}
                 margin={[50, 50, 50, 50]}
                 options={{
                     disableDefaultUI: true, 
-                    zoomControl: true, 
+                    zoomControl: false, 
                     mapTypeControl: true,
                     streetViewControl: false,
                     disableDoubleClickZoom: true,
