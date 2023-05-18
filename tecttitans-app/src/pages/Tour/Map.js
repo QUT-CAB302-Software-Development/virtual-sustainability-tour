@@ -85,7 +85,7 @@ const overlay = new ThreeJSOverlayView({
 // google maps api usage
 function Map({ places, coordinates, setPlaceClicked }) {
 
-    const defaultZoom = 14;
+    const zoom = 14;
 
     const circleRadius = 100;
     const circleBorderWidth = 5;
