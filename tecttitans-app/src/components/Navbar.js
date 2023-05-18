@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Navbar.css';
 import {Link} from "react-router-dom";
 import {Button} from "./Button";
-import techtitanslogo from '../images/techtitanslogo.png';
+import techtitanslogo from '../images/Techwhite.png';
 
 function Navbar() {
     // toggle the hamburger menu and update the state

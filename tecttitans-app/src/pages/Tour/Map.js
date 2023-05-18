@@ -50,6 +50,7 @@ function placePopUp({ place, apiKey }){
 
 // google maps api usage
 function Map({ places, coordinates, setPlaceClicked }) {
+
     const zoom = 17;
     const circleRadius = 100;
     const circleBorderWidth = 5;
@@ -58,11 +59,11 @@ function Map({ places, coordinates, setPlaceClicked }) {
 
     const defaultCoordinates = coordinates;
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
+    
     return (
         <div className="mapContainer">
             
-
+            
             <GoogleMapReact
                 bootstrapURLKeys={{ key: apiKey }}
                 defaultCenter={defaultCoordinates}
