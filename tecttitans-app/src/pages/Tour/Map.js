@@ -6,18 +6,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
-import * as THREE from "three";
-import { ThreeJSOverlayView } from "@googlemaps/three";
-import googleMapReact from "google-map-react";
-import {
-    AmbientLight,
-    DirectionalLight,
-    Matrix4,
-    PerspectiveCamera,
-    Scene,
-    WebGLRenderer,
-  } from "three";
-  import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
 
 
 function getColor(esgScore) {
@@ -58,30 +47,6 @@ function placePopUp({ place, apiKey }){
     );
 }
 
-//webgl overlay function
-async function initWebglOverlay(map) {
-    let scene, renderer, camera;
-    //const webglOverlayView = new google.maps.WebGLOverlayView();
-    // const webglOverlayView = new google.maps.WebGLOverlayView();
-    // webglOverlayView.setMap(map);
-    // webglOverlayView.onAdd = () => {
-
-    //     //some code
-    // };
-    // webglOverlayView.onContextRestored = (gl) => {
-    // }
-
-    // webglOverlayView.onDraw = (gl, coordinateTransformer) => {
-    // }
-
-} 
-const overlay = new ThreeJSOverlayView({
-    anchor: { lat: 37.7793, lng: -122.4192, altitude: 0 },
-    upAxis: "Y",
-  });
-
-
-
 // google maps api usage
 function Map({ places, coordinates, setPlaceClicked }) {
 
@@ -107,6 +72,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
                 zoom={zoom}
                 margin={[50, 50, 50, 50]}
                 options={{
+                    mapTypeId: 'satellite',
                     disableDefaultUI: true, 
                     zoomControl: false, 
                     mapTypeControl: true,
@@ -116,8 +82,8 @@ function Map({ places, coordinates, setPlaceClicked }) {
                     clickableIcons: false,
                     mapId: 'c8d80a179e82f473',
                     tilt: 45,
-                    //styles: MapVisuals
                 }}
+
             >
                 {places.map((place, i) => (
                     <div
