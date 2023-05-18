@@ -78,8 +78,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    //style
-                    //mapId: 'c8d80a179e82f473',
+                    mapId: 'c8d80a179e82f473',
                     tilt: 45,
                     minZoom: zoom,
                 }}
@@ -122,5 +121,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
         </div>
     );
 }
+
+
 
 export default Map;

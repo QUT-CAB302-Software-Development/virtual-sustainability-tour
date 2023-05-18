@@ -14,25 +14,16 @@
 }
 
 .search {
-    width: 400px;
-    margin: 20px;
-    color: white;
-}
-
-.search.searchIcon {
-    pointer-events: none;
-    align-items: center;
-    justify-content: center;
+    width: 300px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: whitesmoke;
 }
 
 .toolbar {
-    left: 75vw;
-    justify-content: center;
-    width: 400px;
-    height: 20px;
-    margin: 10px;
-    border-radius: 10px;
+    justify-content: flex-end;
     display: flex;
-    background-color: #559fff;
+    margin-left: auto;
     z-index: 2;
 }
