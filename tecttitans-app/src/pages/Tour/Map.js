@@ -2,6 +2,7 @@ import React from "react";
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
 import { Typography, Rating, Tooltip, Box } from '@mui/material';
+import { Easing, Tween, update } from "@tweenjs/tween.js";
 import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import getESGScore from "../../data/getESGScore";
@@ -49,9 +50,7 @@ function placePopUp({ place, apiKey }){
 
 // google maps api usage
 function Map({ places, coordinates, setPlaceClicked }) {
-
-    const zoom = 14;
-
+    const zoom = 17;
     const circleRadius = 100;
     const circleBorderWidth = 5;
     const circleTotalRadius = circleBorderWidth + circleRadius;
@@ -72,7 +71,6 @@ function Map({ places, coordinates, setPlaceClicked }) {
                 zoom={zoom}
                 margin={[50, 50, 50, 50]}
                 options={{
-                    mapTypeId: 'satellite',
                     disableDefaultUI: true, 
                     zoomControl: false, 
                     mapTypeControl: true,
@@ -82,6 +80,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
                     clickableIcons: false,
                     mapId: 'c8d80a179e82f473',
                     tilt: 45,
+                    minZoom: zoom,
                 }}
 
             >
