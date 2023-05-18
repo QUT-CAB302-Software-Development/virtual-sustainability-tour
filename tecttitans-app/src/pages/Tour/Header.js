@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AppBar, Toolbar, Box, Stack, Autocomplete, TextField } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 
 // search bar and header functionality
@@ -9,12 +8,10 @@ function Header({ places, setZoom, setCoordinates }) {
   const [value, setValue] = useState(null);
   const searchPlaceholder = "Search...";
   const noResults = "No results";
-
+ 
   return (
     <AppBar position="static">
       <Toolbar className="toolbar">
-
-          <SearchIcon/>
           <Stack className="search">
 
             <Autocomplete 

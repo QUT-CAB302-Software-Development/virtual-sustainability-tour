@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Navbar.css';
 import {Link} from "react-router-dom";
 import {Button} from "./Button";
-import techtitanslogo from '../images/techtitanslogo.png';
+import techtitanslogo from '../images/Techwhite.png';
 
 function Navbar() {
     // toggle the hamburger menu and update the state
@@ -46,11 +46,6 @@ function Navbar() {
                     <li className='nav-item'>
                         <Link to='/tour' className='nav-links' onClick={closeMobileMenu}>
                             Tour
-                        </Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link to='/testing' className='nav-links' onClick={closeMobileMenu}>
-                            Testing
                         </Link>
                     </li>
                     <li className='nav-item'>
