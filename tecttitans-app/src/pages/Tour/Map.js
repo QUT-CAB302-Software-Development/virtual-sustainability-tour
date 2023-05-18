@@ -2,7 +2,6 @@ import React from "react";
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
 import { Typography, Rating, Tooltip, Box } from '@mui/material';
-import { Easing, Tween, update } from "@tweenjs/tween.js";
 import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import getESGScore from "../../data/getESGScore";
@@ -79,7 +78,8 @@ function Map({ places, coordinates, setPlaceClicked }) {
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    mapId: 'c8d80a179e82f473',
+                    //style
+                    //mapId: 'c8d80a179e82f473',
                     tilt: 45,
                     minZoom: zoom,
                 }}
