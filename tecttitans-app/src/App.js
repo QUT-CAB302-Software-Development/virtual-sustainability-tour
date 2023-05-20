@@ -6,13 +6,15 @@ import Loader from "./components/Loader";
 import LoadingAnimation from './videos/LoadingAnimation.json';
 import './App.css';
 
+
+
 //  established routing between the four pages of the front end
 function App() {
 
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true)
-        setTimeout(() => {setLoading(false)}, 1000)
+        setTimeout(() => {setLoading(false)}, 1800)
     }, [])
 
     return (
