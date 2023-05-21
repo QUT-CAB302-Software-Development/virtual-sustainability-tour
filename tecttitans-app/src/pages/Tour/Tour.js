@@ -1,12 +1,12 @@
 import React, {useState } from 'react';
-import '../../App.css';
 import { motion } from 'framer-motion';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import '../../App.css';
 import places from "../../data/hotels_data.json"
 import PlaceDetails from './PlaceDetails';
-import Header from './Header';
+import SearchBox from './SearchBox';
 import Map from './Map';
 
 function Tour() {
@@ -24,7 +24,7 @@ function Tour() {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 
-                <Header 
+                <SearchBox 
                     places={places}
                     setZoom={setZoom}
                     setCoordinates={setCoordinates} 

@@ -12,7 +12,7 @@ function getESGScore(placeName) {
     if (matchingSustainabilityData) {
         return matchingSustainabilityData.esg_score;
     } else {
-        return "No data";
+        return null;
     }
 }
 export default getESGScore;
