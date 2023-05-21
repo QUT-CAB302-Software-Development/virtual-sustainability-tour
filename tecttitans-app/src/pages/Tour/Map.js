@@ -67,7 +67,7 @@ function placePopUp({ place, apiKey }){
 }
 
 // google maps api usage
-function Map({ places, coordinates, setPlaceClicked }) {
+function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
 
     const zoom = 17;
     const circleRadius = 200;
@@ -118,7 +118,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
                                 <PlaceIcon
                                     sx={{ color: getColor(getESGScore(place.name)) }}
                                     fontSize="large"
-                                    onClick={() => setPlaceClicked(place)}
+                                    onClick={() => {setPlaceClicked(place); setPlaceDetailsState(true);}}
                                 />
                                <svg 
                                     className="svg" 

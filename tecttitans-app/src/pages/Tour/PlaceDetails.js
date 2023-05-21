@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, IconButton, Card, CardMedia, CardContent, Rating, CardActions, Collapse } from '@mui/material';
+import { Box, Typography, Button, IconButton, Card, CardMedia, CardContent, Rating, CardActions } from '@mui/material';
 
 import PlaceIcon from '@mui/icons-material/Place';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -47,7 +47,7 @@ function reviewBox({ setReviewBoxState, comments }){
 }
 
 
-function PlaceDetails({ place, setPlaceClicked }) {
+function PlaceDetails({ place, setPlaceDetailsState }) {
   
   const [reviewBoxState, setReviewBoxState] = useState(false);
   const [comments, setComments] = useState([]);
@@ -71,7 +71,6 @@ function PlaceDetails({ place, setPlaceClicked }) {
     fetchComments();
   }, []);
 
-  if (place === null) return;
   const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
   const name = place.name;
   const starRating = Number(place.rating);
@@ -91,7 +90,7 @@ function PlaceDetails({ place, setPlaceClicked }) {
         />
         <Typography variant="subtitle1">{esgScore}%</Typography>
       </Box>
-      <IconButton size="small" color="primary" onClick={() => setPlaceClicked(null)}>
+      <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
         <HelpIcon/>
       </IconButton>
     </Box>
@@ -100,102 +99,99 @@ function PlaceDetails({ place, setPlaceClicked }) {
   
   return (
     <div className="details">
-      <Collapse orientation="horizontal" in={place}>
-        <Card elevation={6}>
+      <Card elevation={6}>
 
-          <div className="close-button-container">
-            <IconButton onClick={() => setPlaceClicked(null)}>
-              <CloseIcon className="close-button"/>
-            </IconButton>
-          </div>
+        <div className="close-button-container">
+          <IconButton onClick={() => setPlaceDetailsState(false)}>
+            <CloseIcon className="close-button"/>
+          </IconButton>
+        </div>
+
+        <CardMedia
+          style={{ height: 275 }}
+          image={imgSrc}
+          title={place.name}
+        />
+
+        <CardContent>
           
-          <CardMedia
-            style={{ height: 275 }}
-            image={imgSrc}
-            title={place.name}
-          />
+          <Box display="flex" justifyContent="space-between"> 
+            <Typography gutterBottom variant="h5">{name}</Typography>
+            <IconButton size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
+              <OpenInNewIcon htmlColor="DimGray" />
+            </IconButton>
+          </Box>
 
-          <CardContent>
-            
-            <Box display="flex" justifyContent="space-between"> 
-              <Typography gutterBottom variant="h5">{name}</Typography>
-              <IconButton size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
-                <OpenInNewIcon htmlColor="DimGray" />
-              </IconButton>
+          <Box display="flex" justifyContent="space-between">
+            <Typography gutterBottom variant="subtitle2" >{place.formatted_address}</Typography>
+            <IconButton size="small" > 
+              <PlaceIcon htmlColor="red" /> 
+            </IconButton>
+          </Box>
+
+          <Box display="flex" justifyContent="space-between">
+            <Box display="flex" justifyContent="flex-start"> 
+              <Rating 
+                value={starRating}
+                icon={<StarIcon htmlColor='DarkOrange' fontSize="small"/>}
+                emptyIcon={<StarBorderIcon fontSize="small"/>}
+                readonly 
+              />
+              <Typography gutterBottom variant="subtitle1">{starRating} ({place.user_ratings_total})</Typography>
             </Box>
+            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}> 
+              <RateReviewIcon />
+            </IconButton>
+          </Box>
 
-            <Box display="flex" justifyContent="space-between">
-              <Typography gutterBottom variant="subtitle2" >{place.formatted_address}</Typography>
-              <IconButton size="small" > 
-                <PlaceIcon htmlColor="red" /> 
-              </IconButton>
+          {esgRatingElem}
+          
+          {/* <Box display="flex" justifyContent="space-between">
+            <Typography variant="subtitle1">Price</Typography>
+            <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
+          </Box>
+
+          <Box display="flex" justifyContent="space-between">
+            <Typography variant="subtitle1">Ranking</Typography>
+            <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
+          </Box>
+
+          {place?.awards?.map((award) => (
+            <Box my={1} display="flex" justifyContent="space-between" alignItems="center">
+              <img src={award.images.small} alt={award.display_name} />
+              <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
             </Box>
+          ))}
 
-            <Box display="flex" justifyContent="space-between">
-              <Box display="flex" justifyContent="flex-start"> 
-                <Rating 
-                  value={starRating}
-                  icon={<StarIcon htmlColor='DarkOrange' fontSize="small"/>}
-                  emptyIcon={<StarBorderIcon fontSize="small"/>}
-                  readonly 
-                />
-                <Typography gutterBottom variant="subtitle1">{starRating} ({place.user_ratings_total})</Typography>
-              </Box>
-              <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}> 
-                <RateReviewIcon />
-              </IconButton>
-            </Box>
+          {place?.types?.map(({ name }) => (
+            <Chip className="chip" key={name} label={name} size="small" />
+          ))}*/}
+        </CardContent>
 
-            {esgRatingElem}
-            
-            {/* <Box display="flex" justifyContent="space-between">
-              <Typography variant="subtitle1">Price</Typography>
-              <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
-            </Box>
+        <CardActions>
+          <Button 
+            size="small" 
+            color="primary" 
+            endIcon={<ThreeDRotationIcon color="primary"/>} 
+            onClick={() => setPlaceDetailsState(false)}
+          >
+            View Tour
+          </Button>
 
-            <Box display="flex" justifyContent="space-between">
-              <Typography variant="subtitle1">Ranking</Typography>
-              <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
-            </Box>
+          <div>
+            {!reviewBoxState && (
+              <button
+                className='btn'
+                onClick={() => setReviewBoxState((value) => !value)}>
+                Feedback Form
+              </button>
+            )}
 
-            {place?.awards?.map((award) => (
-              <Box my={1} display="flex" justifyContent="space-between" alignItems="center">
-                <img src={award.images.small} alt={award.display_name} />
-                <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
-              </Box>
-            ))}
+            {reviewBoxState && (reviewBox({ setReviewBoxState, comments }))}
+          </div>
+        </CardActions>
 
-            {place?.types?.map(({ name }) => (
-              <Chip className="chip" key={name} label={name} size="small" />
-            ))}*/}
-          </CardContent>
-
-          <CardActions>
-            <Button 
-              size="small" 
-              color="primary" 
-              endIcon={<ThreeDRotationIcon color="primary"/>} 
-              onClick={() => setPlaceClicked(null)}
-            >
-              View Tour
-            </Button>
-
-            <div>
-              {!reviewBoxState && (
-                <button
-                  className='btn'
-                  onClick={() => setReviewBoxState((value) => !value)}>
-                  Feedback Form
-                </button>
-              )}
-
-              {reviewBoxState && (reviewBox({ setReviewBoxState, comments }))}
-            </div>
-          </CardActions>
-
-        </Card>
-      </Collapse>
-      
+      </Card>
     </div>
   );
 }
