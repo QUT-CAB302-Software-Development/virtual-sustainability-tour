@@ -16,7 +16,7 @@ export default function Login() {
         password: "",
     });
 
-    const LOGIN_URL = "http://localhost:8080/login";
+    const LOGIN_URL = "http://localhost:8080/user/login";
 
     const inputs = [
     {

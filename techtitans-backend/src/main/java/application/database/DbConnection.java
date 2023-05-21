@@ -7,7 +7,7 @@ import java.util.List;
 // Establishes the database connection and saves file.
 public class DbConnection {
 
-    private Connection connection;
+    public Connection connection;
 
     // Constructor which establishes DbConnection and creates a table if it does not exist
     public DbConnection(String url, String username, String password) throws SQLException {
@@ -32,6 +32,8 @@ public class DbConnection {
         stmt.close();
 
         // theres something wrong with this SQL string and I can't find out why - Sean
+
+
 
         sql = "CREATE TABLE IF NOT EXISTS COMPANY " +
                 "(COMPANY_NAME VARCHAR(255)," +
@@ -82,16 +84,18 @@ public class DbConnection {
         stmt.close();
     }
 
-    public void executeGetStmt(String sqlString) throws SQLException {
+    public boolean executeDeleteAllStmt(String tableName) throws SQLException {
+        String sqlString = "DELETE FROM " + tableName + ";";
         PreparedStatement pstmt = connection.prepareStatement(sqlString);
 
-
-        ResultSet rs = pstmt.executeQuery();
+        pstmt.executeUpdate();
 
         pstmt.close();
 
+        return true;
 
     }
+
 
 
     public boolean executeInsertStmt(String sqlString, List<String> data) throws SQLException {
@@ -103,6 +107,7 @@ public class DbConnection {
         }
 
         pstmt.executeUpdate();
+
 
         pstmt.close();
 
