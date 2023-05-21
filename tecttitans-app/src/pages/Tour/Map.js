@@ -66,7 +66,7 @@ function placePopUp({ place, apiKey }){
     );
 }
 
-// google maps api usage
+// google maps api usage ============================================================================================================
 function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
 
     const zoom = 17;

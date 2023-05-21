@@ -38,7 +38,7 @@ function Tour() {
                     setPlaceClicked={setPlaceClicked}
                     setPlaceDetailsState={setPlaceDetailsState}
                 />
-                <Collapse orientation='horizontal' in={placeDetailsState}>
+                <Collapse orientation='horizontal' in={placeDetailsState} timeout="auto" unmountOnExit>
                     <PlaceDetails
                         place={placeClicked}
                         setPlaceDetailsState={setPlaceDetailsState}
