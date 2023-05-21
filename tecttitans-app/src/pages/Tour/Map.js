@@ -8,6 +8,7 @@ import getESGScore from "../../data/getESGScore";
 import './Map.css';
 
 
+
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
         .domain([0, 30]) // range
@@ -43,14 +44,13 @@ function placePopUp({ place, apiKey }){
                 <Rating size="small" value={esgStarRating} readonly />
             </Box>
         </div>
-    )
+    );
 }
-
 
 // google maps api usage
 function Map({ places, coordinates, setPlaceClicked }) {
-    const defaultZoom = 14;
 
+    const zoom = 17;
     const circleRadius = 100;
     const circleBorderWidth = 5;
     const circleTotalRadius = circleBorderWidth + circleRadius;
@@ -58,25 +58,31 @@ function Map({ places, coordinates, setPlaceClicked }) {
 
     const defaultCoordinates = coordinates;
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
+    
     return (
         <div className="mapContainer">
+            
+            
             <GoogleMapReact
                 bootstrapURLKeys={{ key: apiKey }}
                 defaultCenter={defaultCoordinates}
                 center={coordinates}
-                defaultZoom={defaultZoom}
+                defaultZoom={zoom}
+                zoom={zoom}
                 margin={[50, 50, 50, 50]}
                 options={{
                     disableDefaultUI: true, 
-                    zoomControl: true, 
+                    zoomControl: false, 
                     mapTypeControl: true,
                     streetViewControl: false,
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    //styles: MapVisuals
+                    mapId: 'c8d80a179e82f473',
+                    tilt: 45,
+                    minZoom: zoom,
                 }}
+
             >
                 {places.map((place, i) => (
                     <div
@@ -115,5 +121,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
         </div>
     );
 }
+
+
 
 export default Map;

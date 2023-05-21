@@ -1,44 +1,57 @@
 import React, { useState } from "react";
-import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Box, Input } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { AppBar, Toolbar, Box, Stack, Autocomplete, TextField } from "@mui/material";
 import './Header.css';
 
 // search bar and header functionality
-function Header({ setCoordinates }) {
-  const [autocomplete, setAutocomplete] = useState('');
+function Header({ places, setZoom, setCoordinates }) {
 
-  const onLoad = (autoC) => setAutocomplete(autoC);
-  const onPlaceChanged = () => {
-    const lat = autocomplete.getPlace().geometry.location?.lat();
-    const lng = autocomplete.getPlace().geometry.location?.lng();
-    setCoordinates({ lat, lng });
-  }
-
-  // change to whatever u want
+  const [value, setValue] = useState(null);
   const searchPlaceholder = "Search...";
-
+  const noResults = "No results";
+ 
   return (
     <AppBar position="static">
-
       <Toolbar className="toolbar">
+          <Stack className="search">
 
-          <Autocomplete
-            onLoad={onLoad}
-            onPlaceChanged={onPlaceChanged}
-          >
-            <Box className="search">
-              <SearchIcon />
-              <Input
-                type='text'
-                placeholder={searchPlaceholder}
-                classes={{
-                  root: "inputRoot",
-                  input: "inputInput"
-                }}
-              />
-            </Box>
-          </Autocomplete>
+            <Autocomplete 
+              id="locations_search"
+              getOptionLabel={(places) => places.name}
+              options={places}
+              noOptionsText={noResults}
+
+              isOptionEqualToValue={(option, value) => 
+                option.name === value.name
+              }
+
+              renderOption={(props, places) => (
+                <Box 
+                  {...props} 
+                  key={places.place_id}
+                >
+                  {places.name}
+                </Box>
+              )}
+
+              renderInput={(params) => 
+                <TextField 
+                  {...params} 
+                  label={searchPlaceholder}
+                />
+              }
+
+              value={value}
+              onChange={(_, newValue) => {
+                const lat = Number(newValue?.geometry.location.lat);
+                const lng = Number(newValue?.geometry.location.lng);
+                setCoordinates({ lat, lng });
+                setZoom(17);
+                setValue(null);
+              }}
+
+            />
+
+          </Stack>
       </Toolbar>
     </AppBar>
   );
