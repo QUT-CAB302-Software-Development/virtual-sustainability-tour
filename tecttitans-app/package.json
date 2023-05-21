@@ -25,6 +25,7 @@
     "lottie-web": "^5.11.0",
     "msw": "^1.2.1",
     "react": "^18.2.0",
+    "react-auth-kit": "^2.12.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-leaflet": "^4.2.1",
