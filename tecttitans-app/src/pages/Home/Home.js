@@ -1,19 +1,26 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import '../../App.css';
-import HeroSection from './HeroSection';
+import {Earth} from "../../components/earth";
+import styled from "styled-components";
+import {Canvas } from "@react-three/fiber";
+import {Suspense} from "react";
 
 
+
+const CanvasContainer = styled.div `
+  width: 100%;
+  height: 100%;
+`;
 function Home() {
     return (
-        <motion.div
-            className="home"
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
-        >
-            <HeroSection />
-        </motion.div>
+        <CanvasContainer>
+
+            <Canvas>
+                <Suspense fallback={null}>
+                    <Earth />
+                </Suspense>
+            </Canvas>
+        </CanvasContainer>
     );
 }
 export default Home;
