@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SustainabilityAlgo {
-    private static List<CompanyData> companyData;
+    public static List<CompanyData> companyData;
 
     public SustainabilityAlgo(List<CompanyData> companyData) {
         this.companyData = companyData;
