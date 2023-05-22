@@ -1,17 +1,19 @@
 import React, {useState } from 'react';
-import '../../App.css';
 import { motion } from 'framer-motion';
-import { CssBaseline } from '@mui/material';
+import { Collapse, CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import '../../App.css';
 import places from "../../data/hotels_data.json"
 import PlaceDetails from './PlaceDetails';
-import Header from './Header';
+import SearchBox from './SearchBox';
 import Map from './Map';
+import './PlaceDetails.css';
 
 function Tour() {
     const theme = createTheme();    
-    const [placeClicked, setPlaceClicked] = useState(null);
+    const [placeClicked, setPlaceClicked] = useState(places[0]);
+    const [placeDetailsState, setPlaceDetailsState] = useState(false);
     const [coordinates, setCoordinates] = useState({lat: -27.46794, lng: 153.02809});
     const [zoom, setZoom] = useState(15);
 
@@ -24,7 +26,7 @@ function Tour() {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 
-                <Header 
+                <SearchBox 
                     places={places}
                     setZoom={setZoom}
                     setCoordinates={setCoordinates} 
@@ -34,11 +36,14 @@ function Tour() {
                     zoom={zoom}
                     coordinates={coordinates}
                     setPlaceClicked={setPlaceClicked}
+                    setPlaceDetailsState={setPlaceDetailsState}
                 />
-                <PlaceDetails
-                    place={placeClicked}
-                    setPlaceClicked={setPlaceClicked}
-                />
+                <Collapse orientation='horizontal' in={placeDetailsState} timeout="auto" unmountOnExit>
+                    <PlaceDetails
+                        place={placeClicked}
+                        setPlaceDetailsState={setPlaceDetailsState}
+                    />
+                </Collapse>
             </ThemeProvider>
         </motion.div>
     );

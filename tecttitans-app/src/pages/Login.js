@@ -65,9 +65,10 @@ export default function Login() {
     return(
         <motion.div
             className="sign-up"
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}>
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+        >
             <form onSubmit={handleSubmit}>
             <h1 className="register">Login</h1>
                 {inputs.map((input) => (
