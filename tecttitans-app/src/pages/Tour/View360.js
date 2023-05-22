@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Pano from '../../images/test.jpg';
 
 
 function View360() {
