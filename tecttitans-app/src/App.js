@@ -9,6 +9,7 @@ import { AuthProvider } from 'react-auth-kit';
 
 
 
+
 //  established routing between the four pages of the front end
 function App() {
 
@@ -36,9 +37,14 @@ function App() {
                     <Navbar />
                     <Loader />
                 </Router>
+<<<<<<< HEAD
                 </AuthProvider>
+=======
+
+>>>>>>> origin
             }
         </div>
+
     );
 }
 
