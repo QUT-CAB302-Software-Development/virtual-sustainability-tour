@@ -7,7 +7,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSignIn } from 'react-auth-kit';
 
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from '@leecheuk/react-google-login';
 
 // HTTP request to connect with backend API
 
