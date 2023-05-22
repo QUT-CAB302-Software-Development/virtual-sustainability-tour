@@ -3,6 +3,7 @@ import application.model.User;
 import com.google.gson.Gson;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,8 +84,15 @@ public class UserDatabase {
 
     public void saveUser(User user) throws SQLException {
 
+        String username = user.getUsername();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        String phone = user.getPhone();
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+
         String sql = "INSERT INTO users (USERNAME, PHONE, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) " +
-                "VALUES (?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         List<String> data = Arrays.asList(
             user.getUsername(),
@@ -107,10 +115,34 @@ public class UserDatabase {
 
     }
 
+    public void load() throws SQLException {
+
+        String sql = "SELECT * FROM USERS";
+
+        PreparedStatement pstmt = dbConnection.connection.prepareStatement(sql);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            String username = rs.getString("USERNAME");
+            String firstName = rs.getString("FIRST_NAME");
+            String lastName = rs.getString("LAST_NAME");
+            String phone = rs.getString("PHONE");
+            String email = rs.getString("EMAIL");
+            String password = rs.getString("PASSWORD");
+
+            User user = new User(username, phone, firstName, lastName, email, password);
+
+            users.add(user);
+        }
+
+        pstmt.close();
+    }
+
     // Save method calls save method from dbconnection
     public void save() {
         try {
-            System.out.println(users.size());
+            dbConnection.executeDeleteAllStmt("USERS");
             saveUsers();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,4 +153,6 @@ public class UserDatabase {
         Gson gson = new Gson();
         return gson.fromJson(json, UserDatabase.class);
     }
+
+
 }

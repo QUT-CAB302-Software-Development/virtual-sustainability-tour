@@ -4,8 +4,8 @@ import '../App.css';
 import Home from '../pages/Home/Home';
 import SignUp from '../pages/SignUp';
 import Tour from '../pages/Tour/Tour';
-import Testing from '../pages/Testing/Testing';
 import Login from '../pages/Login';
+import View360 from '../pages/Tour/View360';
 
 import { AnimatePresence } from 'framer-motion';
 function AnimatedRoutes() {
@@ -17,8 +17,8 @@ function AnimatedRoutes() {
             <Route path='/' exact element={Home()} />
              <Route path='/sign-up' element={SignUp()} />
              <Route path='/tour' element={Tour()} />
-             <Route path='/testing' element={Testing()} />
              <Route path='/login' element={Login()} />
+             <Route path='/view360' element={View360()} />
         </Routes>
     </AnimatePresence>
     )

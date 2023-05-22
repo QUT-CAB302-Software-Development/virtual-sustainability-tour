@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 // HTTP request to connect with backend API
 
-
+//
 export default function Login() {
 
     const [values, setValues] = useState({
@@ -16,7 +16,7 @@ export default function Login() {
         password: "",
     });
 
-    const LOGIN_URL = "http://localhost:8080/login";
+    const LOGIN_URL = "http://localhost:8080/user/login";
 
     const inputs = [
     {
@@ -65,9 +65,10 @@ export default function Login() {
     return(
         <motion.div
             className="sign-up"
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}>
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+        >
             <form onSubmit={handleSubmit}>
             <h1 className="register">Login</h1>
                 {inputs.map((input) => (

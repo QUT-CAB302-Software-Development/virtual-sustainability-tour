@@ -61,6 +61,9 @@ h1 {
     }
   }
   
+.global-padding {
+  margin-top: -11vh;
+}
 
 .home,
 .tour,

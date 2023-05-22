@@ -7,7 +7,7 @@ import java.util.List;
 // Establishes the database connection and saves file.
 public class DbConnection {
 
-    private Connection connection;
+    public Connection connection;
 
     // Constructor which establishes DbConnection and creates a table if it does not exist
     public DbConnection(String url, String username, String password) throws SQLException {
@@ -32,6 +32,8 @@ public class DbConnection {
         stmt.close();
 
         // theres something wrong with this SQL string and I can't find out why - Sean
+
+
 
         sql = "CREATE TABLE IF NOT EXISTS COMPANY " +
                 "(COMPANY_NAME VARCHAR(255)," +
@@ -82,6 +84,19 @@ public class DbConnection {
         stmt.close();
     }
 
+    public boolean executeDeleteAllStmt(String tableName) throws SQLException {
+        String sqlString = "DELETE FROM " + tableName + ";";
+        PreparedStatement pstmt = connection.prepareStatement(sqlString);
+
+        pstmt.executeUpdate();
+
+        pstmt.close();
+
+        return true;
+
+    }
+
+
 
     public boolean executeInsertStmt(String sqlString, List<String> data) throws SQLException {
 
@@ -92,6 +107,7 @@ public class DbConnection {
         }
 
         pstmt.executeUpdate();
+
 
         pstmt.close();
 
@@ -104,37 +120,3 @@ public class DbConnection {
 
 }
 
-
-
-
-
-//    // Takes list of users as parameter and saves into h2 database using sql query. Not sure if static is an issue?
-//    public void saveUsers(List<User> users) throws SQLException {
-//        String sql = "INSERT INTO users (USERNAME, NAME, EMAIL, PHONE, PASSWORD) " +
-//                "VALUES (?, ?, ?, ?, ?)";
-//        PreparedStatement pstmt = connection.prepareStatement(sql);
-//        for (User user : users) {
-//            pstmt.setString(1, user.getUsername());
-//            pstmt.setString(2, user.getName());
-//            pstmt.setString(3, user.getEmail());
-//            pstmt.setString(4, user.getPhone());
-//            pstmt.setString(5, user.getPassword());
-//            pstmt.executeUpdate();
-//        }
-//        pstmt.close();
-//    }
-
-//    public void saveUser(User user) throws SQLException {
-//        String sql = "INSERT INTO users (USERNAME, PHONE, NAME, EMAIL, PASSWORD) " +
-//                "VALUES (?, ?, ?, ?, ?)";
-//        PreparedStatement pstmt = connection.prepareStatement(sql);
-//
-//        pstmt.setString(1, user.getUsername());
-//        pstmt.setString(2, user.getPhone());
-//        pstmt.setString(3, user.getName());
-//        pstmt.setString(4, user.getEmail());
-//        pstmt.setString(5, user.getPassword());
-//        pstmt.executeUpdate();
-//
-//        pstmt.close();
-//    }

@@ -1,18 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../../App.css';
-import HeroSection from './HeroSection';
 
-function Home() {
-    return (
+
+function View360() {
+
+    return(
         <motion.div
-            className="home"
+            className="sign-up"
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
         >
-            <HeroSection />
         </motion.div>
     );
 }
-export default Home;
+
+export default View360;
