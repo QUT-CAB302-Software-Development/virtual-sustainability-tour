@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/esg")
 public class EsgController {
 
     // @Autowired
-    private CompanyDatabase companyDatabase;
+    private CompanyDatabase companyDatabase = Main.companyDatabase;
 
     @GetMapping("/esg/data")
     public List<CompanyData> getEsgData() {
@@ -25,7 +24,14 @@ public class EsgController {
 
     @GetMapping("/esg/score/{name}")
     public double getEsgScore(@PathVariable String name) {
-        return companyDatabase.calculateESGScoreByName(name);
+
+        System.out.println("Received");
+
+        double score = companyDatabase.calculateESGScoreByName(name);
+
+        System.out.println(score);
+
+        return score;
     }
 
     private UserDatabase userDatabase = Main.userDatabase;
