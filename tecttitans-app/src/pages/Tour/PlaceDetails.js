@@ -140,9 +140,18 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
               />
               <Typography gutterBottom variant="subtitle1">{starRating} ({place.user_ratings_total})</Typography>
             </Box>
-            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}> 
+           <div>
+             {!reviewBoxState && (
+               <IconButton
+                 onClick={() => setReviewBoxState((value) => !value)}>
+            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}>
               <RateReviewIcon />
             </IconButton>
+               </IconButton>
+             )}
+
+             {reviewBoxState && (reviewBox({ setReviewBoxState, comments }))}
+           </div>
           </Box>
 
           {esgRatingElem}
@@ -178,18 +187,6 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
           >
             View Tour
           </Button>
-
-          <div>
-            {!reviewBoxState && (
-              <button
-                className='btn'
-                onClick={() => setReviewBoxState((value) => !value)}>
-                Feedback Form
-              </button>
-            )}
-
-            {reviewBoxState && (reviewBox({ setReviewBoxState, comments }))}
-          </div>
         </CardActions>
 
       </Card>
