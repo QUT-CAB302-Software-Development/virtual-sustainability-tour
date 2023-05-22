@@ -10,7 +10,6 @@ import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
-import { useEffect } from 'react';
 const [tilt, heading] = [45, 0]
 
 function getColor(esgScore) {
