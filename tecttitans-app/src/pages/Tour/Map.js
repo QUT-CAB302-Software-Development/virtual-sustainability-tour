@@ -14,8 +14,8 @@ const [tilt, heading] = [45, 0]
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-        .domain([0, 100]) // range
-        .range(['#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
+        .domain([0, 40]) // range
+        .range(['#00FF00', '#FFA000', '#FF0000' ]); // use a color scale that goes from red to yellow to green
     
     if(esgScore === null) { return '#B0B0B0'; }
     return colorScale(esgScore);

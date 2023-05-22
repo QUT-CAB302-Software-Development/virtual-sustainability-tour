@@ -21,16 +21,16 @@ export function Earth() {
     useFrame(({ clock }) => {
         const elapsedTime = clock.getElapsedTime();
 
-        earthRef.current.rotation.y = elapsedTime / 6;
-        cloudsRef.current.rotation.y = elapsedTime / 6;
+        earthRef.current.rotation.y = elapsedTime / 15;
+        cloudsRef.current.rotation.y = elapsedTime / 15;
     });
 
     return (
         <>
             {/* <ambientLight intensity={1} /> */}
-            <pointLight color="#f6f3ea" position={[2, 0, 5]} intensity={1.2} />
+            <pointLight color="#f6f3ea" position={[2, 0, 5]} intensity={6} />
             <Stars
-                radius={300}
+                radius={200}
                 depth={60}
                 count={20000}
                 factor={7}
@@ -41,7 +41,7 @@ export function Earth() {
                 <sphereGeometry args={[1.005, 32, 32]} />
                 <meshPhongMaterial
                     map={cloudsMap}
-                    opacity={0.4}
+                    opacity={0.5}
                     depthWrite={true}
                     transparent={true}
                     side={THREE.DoubleSide}
@@ -53,16 +53,16 @@ export function Earth() {
                 <meshStandardMaterial
                     map={colorMap}
                     normalMap={normalMap}
-                    metalness={0.4}
-                    roughness={0.7}
+                    metalness={0}
+                    roughness={0.9}
                 />
                 <OrbitControls
                   enableZoom={true}
                   enablePan={true}
                   enableRotate={true}
                   zoomSpeed={0.6}
-                  panSpeed={0.5}
-                  rotateSpeed={0.4}
+                  panSpeed={0.1}
+                  rotateSpeed={0.1}
                 />
             </mesh>
         </>
