@@ -34,12 +34,11 @@ function ReviewBox({ setReviewBoxState, comments }){
 
         <div className='feedback-form'>
           <input className='feedback' placeholder="Feedback" name="Feedback" />
-          <label className="placeholder">Feedback</label>
         </div>
 
-        <button className='btn'>Submit feedback</button>
+        <button className='submit-btn'>Submit feedback</button>
 
-        <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
+        <p className="h3text">Other Customer Feedback</p> {/*  used dummy data can be improved to look better*/}
         {displayedComments?.map((comment) => (
             <div key={comment.id}>
               <p className='comments'>{comment.body}</p>
