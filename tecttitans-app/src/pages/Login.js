@@ -7,9 +7,13 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSignIn } from 'react-auth-kit';
 
+import { GoogleLogin } from 'react-google-login';
+
 // HTTP request to connect with backend API
 
 //
+
+const clientId = "353588049838-0uanbho4sp1tqs675r5brmse59132g4a.apps.googleusercontent.com";
 export default function Login() {
 
     const [values, setValues] = useState({
@@ -19,6 +23,14 @@ export default function Login() {
     const signIn = useSignIn();
 
     const LOGIN_URL = "http://localhost:8080/user/login";
+
+    const onSuccess = (res) => {
+        console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
+    }
+
+    const onFailure = (res) => {
+        console.log("LOGIN FAILED! res: ", res);
+    }
 
     const inputs = [
     {
@@ -94,7 +106,17 @@ export default function Login() {
                         onChange={onChange}
                     />
                 ))}
-                <button className="register-button" type="submit">Submit</button>
+                <div>
+                    <GoogleLogin
+                        clientId={clientId}
+                        buttonText="Login"
+                        onSuccess={onSuccess}
+                        onFailure={onFailure}
+                        cookiePolicy={'single_host_origin'}
+                        isSignedIn={true}
+                    />
+                    <button className="register-button" type="submit">Submit</button>
+                </div>
                 <p className="loginredirect"><a href='/sign-up'>Don&apos;t have an account?</a></p>
 
             </form>

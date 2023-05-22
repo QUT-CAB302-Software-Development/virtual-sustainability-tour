@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-google-login": "^5.2.2",
     "react-tsparticles": "^2.9.3"
   }
 }
