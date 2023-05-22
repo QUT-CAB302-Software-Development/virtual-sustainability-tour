@@ -3,17 +3,14 @@ import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
 import { Typography, Rating, Tooltip, Stack } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
-
 import PlaceIcon from '@mui/icons-material/Place';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
-
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
-
-
+const [tilt, heading] = [45, 0]
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
@@ -66,25 +63,23 @@ function placePopUp({ place, apiKey }){
     );
 }
 
-// google maps api usage ============================================================================================================
-function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
 
+// google maps api usage ============================================================================================================
+function Map({ places, setPlaceClicked, setPlaceDetailsState }) {
     const zoom = 17;
     const circleRadius = 200;
     const circleBorderWidth = 5;
     const circleTotalRadius = circleBorderWidth + circleRadius;
     const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
-
-    const defaultCoordinates = coordinates;
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    
+    //const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
     return (
         <div className="mapContainer">
             
             <GoogleMapReact
                 bootstrapURLKeys={{ key: apiKey }}
-                defaultCenter={defaultCoordinates}
-                center={coordinates}
+                defaultCenter={[-27.4711435,153.0274624]}
+                center={[-27.4711435,153.0274624]}
                 defaultZoom={zoom}
                 zoom={zoom}
                 margin={[50, 50, 50, 50]}
@@ -96,8 +91,9 @@ function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    mapId: 'c8d80a179e82f473',
-                    tilt: 45,
+                    mapId: 'ebe080360377ac36',
+                    heading: heading,                    
+                    tilt: tilt,
                     minZoom: zoom,
                 }}
 
@@ -139,6 +135,8 @@ function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
         </div>
     );
 }
+
+
 
 
 
