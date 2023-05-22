@@ -37,11 +37,8 @@ function App() {
                     <Navbar />
                     <Loader />
                 </Router>
-<<<<<<< HEAD
                 </AuthProvider>
-=======
 
->>>>>>> origin
             }
         </div>
 
