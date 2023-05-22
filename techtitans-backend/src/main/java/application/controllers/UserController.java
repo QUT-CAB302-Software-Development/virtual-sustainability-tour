@@ -50,11 +50,15 @@ public class UserController {
             body.put("message", "user login successful");
             body.put("token", token);
 
+            System.out.println("LOGIN SUCCESS");
+
             return new ResponseEntity<>(body, headers, HttpStatus.OK);
         } else {
 
             body.put("error", true);
             body.put("message", "incorrect username or password, login failed");
+
+            System.out.println("LOGIN FAILED");
 
             return new ResponseEntity<>(body, headers, HttpStatus.UNAUTHORIZED);
         }
@@ -82,8 +86,6 @@ public class UserController {
 
             userDatabase.addUser(user);
 
-            // userDatabase.createUser(username, phone, name, email, password);
-
             return new ResponseEntity<>(body, headers, HttpStatus.CREATED);
 
         } else {
@@ -110,6 +112,10 @@ public class UserController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf("application/json"));
+
+        // data validation
+
+
 
         if (userDatabase.passwordMatch(username, password)) {
             // user found
