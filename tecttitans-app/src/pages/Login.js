@@ -5,6 +5,7 @@ import '../components/FormInput.css'
 import { useState } from "react";
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useSignIn } from 'react-auth-kit';
 
 // HTTP request to connect with backend API
 
@@ -15,6 +16,7 @@ export default function Login() {
         username: "",
         password: "",
     });
+    const signIn = useSignIn();
 
     const LOGIN_URL = "http://localhost:8080/user/login";
 
@@ -49,8 +51,21 @@ export default function Login() {
         })
         .then((response) => {
             // successful login, redirect to tour
+            // window.location.href = "/tour";
+
+            signIn({
+                token: response.data.token,
+                expiresIn: 3600,
+                tokenType: "Bearer",
+                authState: { username: values.username}
+            });
+
+            // clear form after successful login
+            setValues({ username: '', password: ''})
+            // navigate to tour
             window.location.href = "/tour";
         })
+
         .catch((error) => {
             // error in login, print error message in console
             console.log(error);

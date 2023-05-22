@@ -30,7 +30,7 @@ function App() {
                     authType={"cookie"}
                     authName={"_auth"}
                     cookieDomain={window.location.hostname}
-                    cookieSecure
+                    cookieSecure={false}
                  >
                 <Router>
                     <Navbar />
