@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import '../../App.css';
 import HeroSection from './HeroSection';
 
-
 function Home() {
     return (
         <motion.div

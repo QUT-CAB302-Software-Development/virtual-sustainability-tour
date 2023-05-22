@@ -10,9 +10,18 @@ import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
-import mapStyles from '../../data/styles.json';
-
-
+import { useEffect, useState } from 'react';
+import {
+    AmbientLight,
+    DirectionalLight,
+    Matrix4,
+    PerspectiveCamera,
+    Scene,
+    WebGLRenderer,
+  } from "three";
+  
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+const [tilt, heading] = [45, 0]
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
@@ -65,9 +74,28 @@ function placePopUp({ place, apiKey }){
     );
 }
 
+
+function Animation() {
+    useEffect(() => {
+        const animationFrame = () => {
+          heading += 0.005;
+          requestAnimationFrame(animationFrame);
+        };
+    
+        requestAnimationFrame(animationFrame);
+    
+        return () => {
+          cancelAnimationFrame(animationFrame);
+        };
+      }, []);
+    
+      return <div>{heading}</div>; // Replace with your desired animation output
+}
+
+
+
 // google maps api usage ============================================================================================================
 function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
-
     const zoom = 17;
     const circleRadius = 200;
     const circleBorderWidth = 5;
@@ -75,7 +103,6 @@ function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
     const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
     const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
-
     return (
         <div className="mapContainer">
             
@@ -95,7 +122,8 @@ function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
                     fullscreenControl: false,
                     clickableIcons: false,
                     mapId: 'ebe080360377ac36',
-                    tilt: 45,
+                    heading: heading,                    
+                    tilt: tilt,
                     minZoom: zoom,
                 }}
 
@@ -137,6 +165,8 @@ function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
         </div>
     );
 }
+
+
 
 
 
