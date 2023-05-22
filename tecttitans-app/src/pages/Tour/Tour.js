@@ -14,8 +14,9 @@ function Tour() {
     const theme = createTheme();    
     const [placeClicked, setPlaceClicked] = useState(places[0]);
     const [placeDetailsState, setPlaceDetailsState] = useState(false);
-    const [coordinates, setCoordinates] = useState({lat: -27.46794, lng: 153.02809});
-    const [zoom, setZoom] = useState(15);
+    const [coordinates, setCoordinates] = useState({lat: -27.4711435, lng: 153.0274624});
+    const [zoom, setZoom] = useState(16);
+    const placePhotoAPI = process.env.REACT_APP_GMAPS_PHOTO_KEY;
 
     return(
         <motion.div
@@ -33,6 +34,7 @@ function Tour() {
                 />
                 <Map 
                     places={places}
+                    placePhotoAPI={placePhotoAPI}
                     zoom={zoom}
                     coordinates={coordinates}
                     setPlaceClicked={setPlaceClicked}
@@ -41,6 +43,7 @@ function Tour() {
                 <Collapse orientation='horizontal' in={placeDetailsState} timeout="auto" unmountOnExit>
                     <PlaceDetails
                         place={placeClicked}
+                        placePhotoAPI={placePhotoAPI}
                         setPlaceDetailsState={setPlaceDetailsState}
                     />
                 </Collapse>
