@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import './Landing.css';
 import {Earth} from "../../components/earth";
 import styled from "styled-components";
 import {Canvas } from "@react-three/fiber";
@@ -8,10 +8,10 @@ import {Suspense} from "react";
 
 
 const CanvasContainer = styled.div `
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 90vh;
 `;
-function Home() {
+function Landing() {
     return (
         <CanvasContainer>
 
@@ -23,4 +23,4 @@ function Home() {
         </CanvasContainer>
     );
 }
-export default Home;
+export default Landing;
