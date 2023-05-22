@@ -1,9 +1,11 @@
 package application.database;
 
+import application.Exceptions.InvalidMessageException;
 import application.model.User;
 import application.model.UserReview;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,9 +67,32 @@ public class ReviewDatabase {
 
     }
 
+    public void load() throws SQLException, InvalidMessageException {
+
+        String sql = "SELECT * FROM REVIEW";
+
+        PreparedStatement pstmt = dbConnection.connection.prepareStatement(sql);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            String message = rs.getString("MESSAGE");
+            String location = rs.getString("LOCATION");
+            Integer rating = Integer.parseInt(rs.getString("RATING"));
+            Long timestamp = Long.parseLong(rs.getString("TIMESTAMP"));
+            String username = rs.getString("USERNAME");
+
+            UserReview review = new UserReview(message, rating, timestamp, username, location);
+
+            reviews.add(review);
+        }
+
+        pstmt.close();
+    }
+
     public void save() {
         try {
-            System.out.println(reviews.size());
+            dbConnection.executeDeleteAllStmt("REVIEW");
             saveReviews();
         } catch (SQLException e) {
             e.printStackTrace();

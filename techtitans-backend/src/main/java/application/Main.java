@@ -1,4 +1,5 @@
 package application;
+import application.Exceptions.InvalidMessageException;
 import application.database.ReviewDatabase;
 import application.database.sustainability.CompanyDatabase;
 import application.database.DbConnection;
@@ -39,37 +40,12 @@ public class Main {
 	public static ReviewDatabase reviewDatabase = new ReviewDatabase(dbConnection);
 
 	// Main program entry point
-	public static void main(String[] args) {
-
-		String url = "jdbc:h2:file:./techtitans-backend/src/main/data/demo";
-		String username = "sa";
-		String password = "password";
-
-		Fetcher fetcher = new Fetcher();
-		List<User> users = fetcher.fetchUsers();
-		System.out.println(users);
-
-
-		// Sean's rest api tests
-
-		DummyProductFetcher productFetcher = new DummyProductFetcher();
-
-		// DummyProduct firstProduct = productFetcher.fetchProduct(1);
-
-		DummyProduct[] products = productFetcher.fetchAllProducts();
-
-		for (DummyProduct product : products) {
-			System.out.println(product);
-		}
-
+	public static void main(String[] args) throws SQLException, InvalidMessageException {
 
 		SpringApplication.run(Main.class, args);
-		try {
-			dbConnection = new DbConnection(url, username, password);
-			// Call methods on the DbConnection object to interact with the database
-			dbConnection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+		userDatabase.load();
+		reviewDatabase.load();
+
 	}
 }
