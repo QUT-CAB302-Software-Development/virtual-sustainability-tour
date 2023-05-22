@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const TopSectionContainer = styled.div`
   position: absolute;
@@ -70,13 +71,20 @@ const MadeBy = styled.h3`
 `;
 
 export function TopSection() {
+    const history = useNavigate();
+
+    const handleExploreClick = () => {
+        // Redirect to the desired page when the button is clicked
+        history("/tour");
+    };
+
     return (
         <TopSectionContainer>
             <Logo>TECHTITANS</Logo>
             <Logo>VIRTUAL SUSTAINABLE TOUR</Logo>
             <Slogan>Experience more green accommodation from the comfort of your couch</Slogan>
 
-            <ExploreButton>Explore Tour</ExploreButton>
+            <ExploreButton onClick={handleExploreClick}>Explore Tour</ExploreButton>
 
         </TopSectionContainer>
     );
