@@ -13,6 +13,7 @@ function Logout() {
                 clientId={clientId}
                 buttonText={"Logout"}
                 onLogoutSuccess={onSuccess}
+            />
         </div>
     )
 }
