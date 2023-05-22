@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 import { motion } from 'framer-motion';
 import '../../App.css'
 import './HeroSection.css';
+import '../../components/Globe'
+
 
 
 const LoopingTypingHeading = ({ texts }) => {
@@ -55,48 +57,7 @@ function HeroSection() {
             animate={{opacity: 1}}
             exit={{opacity: 0}}
         >
-            <div className="starfall">
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-                <div className="falling-star"></div>
-            </div>
+
             <img src={hero} alt=""/>
             <LoopingTypingHeading texts={texts} />
             <p>Experience Brisbane Sustainability from your own couch</p>
