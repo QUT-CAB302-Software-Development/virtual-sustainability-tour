@@ -19,15 +19,18 @@ import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
 
-function reviewBox({ setReviewBoxState, comments }){
+function ReviewBox({ setReviewBoxState, comments }){
+
+    // display only three comments
+
+    const displayedComments = comments?.slice(0,3);
   return(
-    <div className='modal'>
-      <form>
-        <button className='btn'
-          onClick={() => setReviewBoxState((value) => !value)}
-        >
-          X
-        </button>
+    <Card className='review-card'>
+        <CardContent>
+            <form>
+                <IconButton className='close-button' onClick={() => setReviewBoxState((value) => !value)}>
+                    <CloseIcon />
+                </IconButton>
 
         <div className='feedback-form'>
           <input className='feedback' placeholder="Feedback" name="Feedback" />
@@ -37,15 +40,16 @@ function reviewBox({ setReviewBoxState, comments }){
         <button className='btn'>Submit feedback</button>
 
         <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
-        {comments?.map((comment) => (
+        {displayedComments?.map((comment) => (
             <div key={comment.id}>
               <p className='comments'>{comment.body}</p>
             </div>
           ))}
       </form>
-    </div>
+        </CardContent>
+    </Card>
   )
-}
+};
 
 
 function PlaceDetails({ place, setPlaceDetailsState }) {
@@ -140,18 +144,9 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
               />
               <Typography gutterBottom variant="subtitle1">{starRating} ({place.user_ratings_total})</Typography>
             </Box>
-           <div>
-             {!reviewBoxState && (
-               <IconButton
-                 onClick={() => setReviewBoxState((value) => !value)}>
-            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}>
-              <RateReviewIcon />
-            </IconButton>
-               </IconButton>
-             )}
-
-             {reviewBoxState && (reviewBox({ setReviewBoxState, comments }))}
-           </div>
+            <IconButton size="small" color="primary" onClick={() => setReviewBoxState((value) => !value)}>
+               <RateReviewIcon />
+             </IconButton>
           </Box>
 
           {esgRatingElem}
@@ -190,6 +185,7 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
         </CardActions>
 
       </Card>
+      {reviewBoxState && <ReviewBox setReviewBoxState={setReviewBoxState} comments={comments} />}
     </div>
   );
 }
