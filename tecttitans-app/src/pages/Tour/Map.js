@@ -6,6 +6,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import Zoom from '@mui/material/Zoom';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
+import mapStyles from './styles.json';
 
 
 
@@ -55,18 +56,17 @@ function Map({ places, coordinates, setPlaceClicked }) {
     const circleBorderWidth = 5;
     const circleTotalRadius = circleBorderWidth + circleRadius;
     const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
-
-    const defaultCoordinates = coordinates;
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    
+    const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
+
     return (
         <div className="mapContainer">
             
             
             <GoogleMapReact
                 bootstrapURLKeys={{ key: apiKey }}
-                defaultCenter={defaultCoordinates}
-                center={coordinates}
+                defaultCenter={[-27.4711435,153.0274624]}
+                center={[-27.4711435,153.0274624]}
                 defaultZoom={zoom}
                 zoom={zoom}
                 margin={[50, 50, 50, 50]}
@@ -78,7 +78,7 @@ function Map({ places, coordinates, setPlaceClicked }) {
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    mapId: 'c8d80a179e82f473',
+                    mapId: 'ebe080360377ac36',
                     tilt: 45,
                     minZoom: zoom,
                 }}
