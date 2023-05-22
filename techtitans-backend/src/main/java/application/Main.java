@@ -46,6 +46,7 @@ public class Main {
 
 		userDatabase.load();
 		reviewDatabase.load();
+		companyDatabase.load();
 
 	}
 }
