@@ -8,6 +8,7 @@ import './App.css';
 
 
 
+
 //  established routing between the four pages of the front end
 function App() {
 
@@ -29,8 +30,10 @@ function App() {
                     <Navbar />
                     <Loader />
                 </Router>
+
             }
         </div>
+
     );
 }
 
