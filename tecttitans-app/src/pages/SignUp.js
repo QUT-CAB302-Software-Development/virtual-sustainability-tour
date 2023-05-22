@@ -19,7 +19,7 @@ function SignUp(){
     const [error, setError] = useState(null);
 
 
-    const REGISTER_URL = "http://localhost:8080/register"
+    const REGISTER_URL = "http://localhost:8080/user/register"
 
     const inputs = [
         {
@@ -33,15 +33,24 @@ function SignUp(){
         },
         {
             id: 2,
-            name:"name",
+            name:"firstName",
             type:"text",
             placeholder:"Name",
             errorMessage:"Name must be minimum 3 characters and may not include special characters!",
-            label:"Name",
+            label:"First Name",
             required: true,
         },
         {
             id: 3,
+            name:"lastName",
+            type:"text",
+            placeholder:"Name",
+            errorMessage:"Name must be minimum 3 characters and may not include special characters!",
+            label:"Last Name",
+            required: true,
+        },
+        {
+            id: 4,
             name:"email",
             type:"text",
             placeholder:"Email",
@@ -50,7 +59,7 @@ function SignUp(){
             required: true,
         },
         {
-            id: 4,
+            id: 5,
             name:"phone",
             type:"integer",
             placeholder:"Phone Number",
@@ -59,7 +68,7 @@ function SignUp(){
             required: true,
         },
         {
-            id: 5,
+            id: 6,
             name:"password",
             type:"password",
             placeholder:"Password",
