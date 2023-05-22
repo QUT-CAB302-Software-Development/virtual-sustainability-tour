@@ -2,13 +2,12 @@ import React from 'react';
 import '../App.css';
 import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSignIn } from 'react-auth-kit';
-
 import { GoogleLogin } from '@leecheuk/react-google-login';
-
+import { gapi } from 'gapi-script';
 // HTTP request to connect with backend API
 
 //
@@ -52,6 +51,18 @@ export default function Login() {
         required: true,
     }
     ]
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: ""
+            })
+        };
+
+        gapi.load('client:auth2', start);
+
+    });
 
 
 
@@ -106,7 +117,7 @@ export default function Login() {
                         onChange={onChange}
                     />
                 ))}
-                <div>
+                <div className='buttons'>
                     <GoogleLogin
                         clientId={clientId}
                         buttonText="Login"
@@ -114,6 +125,7 @@ export default function Login() {
                         onFailure={onFailure}
                         cookiePolicy={'single_host_origin'}
                         isSignedIn={true}
+                        className='google-login-button'
                     />
                     <button className="register-button" type="submit">Submit</button>
                 </div>
