@@ -4,7 +4,7 @@ import {Earth} from "../../components/earth";
 import styled from "styled-components";
 import {Canvas } from "@react-three/fiber";
 import {Suspense} from "react";
-
+import {TopSection} from "./TopSection/topSection";
 
 
 const CanvasContainer = styled.div `
@@ -14,7 +14,7 @@ const CanvasContainer = styled.div `
 function Landing() {
     return (
         <CanvasContainer>
-
+            <TopSection />
             <Canvas>
                 <Suspense fallback={null}>
                     <Earth />
