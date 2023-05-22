@@ -14,7 +14,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 
-import View3D from "./View360";
+import View360 from "./demo/View360";
 import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
@@ -174,7 +174,7 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
             size="small" 
             color="primary" 
             endIcon={<ThreeDRotationIcon color="primary"/>} 
-            onClick={() => View3D({place})}
+            onClick={() => View360({place})}
           >
             View Tour
           </Button>
