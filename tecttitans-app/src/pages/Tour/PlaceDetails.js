@@ -79,7 +79,7 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
   let esgRatingElem = null;
 
   if (esgScore !== null) {
-    const esgStarRating = esgScore * 0.1;
+    const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
     esgRatingElem = 
     <Box display="flex" justifyContent="space-between">
       <Box display="flex" justifyContent="flex-start">

@@ -29,7 +29,7 @@ function placePopUp({ place, placePhotoAPI }){
     let esgRatingElem = null;
 
     if (esgScore !== null) {
-        const esgStarRating = esgScore * 0.1; // starRating = (rawData / 50) * 5
+        const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
         esgRatingElem = 
             <Rating 
                 value={esgStarRating}
