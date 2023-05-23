@@ -19,33 +19,35 @@ import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
 
-function reviewBox({ setReviewBoxState, comments }) {
-  return (
-    <div className='modal'>
-      <form>
-        <button className='btn'
-          onClick={() => setReviewBoxState((value) => !value)}
-        >
-          X
-        </button>
+function ReviewBox({ setReviewBoxState, comments }){
 
+    // display only three comments
+
+    const displayedComments = comments?.slice(0,3);
+  return(
+    <Card className='review-card'>
+        <CardContent>
+            <form>
+                <IconButton className='close-button' onClick={() => setReviewBoxState((value) => !value)}>
+                    <CloseIcon />
+                </IconButton>
         <div className='feedback-form'>
           <input className='feedback' placeholder="Feedback" name="Feedback" />
-          <label className="placeholder">Feedback</label>
         </div>
 
-        <button className='btn'>Submit feedback</button>
+        <button className='submit-btn'>Submit feedback</button>
 
-        <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
-        {comments?.map((comment) => (
-          <div key={comment.id}>
-            <p className='comments'>{comment.body}</p>
-          </div>
-        ))}
+        <p className="h3text">Other Customer Feedback</p> {/*  used dummy data can be improved to look better*/}
+        {displayedComments?.map((comment) => (
+            <div key={comment.id}>
+              <p className='comments'>{comment.body}</p>
+            </div>
+          ))}
       </form>
-    </div>
+        </CardContent>
+    </Card>
   )
-}
+};
 
 
 function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
@@ -140,9 +142,9 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
               />
               <Typography gutterBottom variant="subtitle1">{starRating} ({place.user_ratings_total})</Typography>
             </Box>
-            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}>
-              <RateReviewIcon />
-            </IconButton>
+            <IconButton size="small" color="primary" onClick={() => setReviewBoxState((value) => !value)}>
+               <RateReviewIcon />
+             </IconButton>
           </Box>
 
           {esgRatingElem}
@@ -165,21 +167,10 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
           >
             <Typography variant="h5" sx={{fontWeight: "bold" }} >View 360 Tour</Typography>
           </Button>
-
-          <div>
-            {!reviewBoxState && (
-              <button
-                className='btn'
-                onClick={() => setReviewBoxState((value) => !value)}>
-                Feedback Form
-              </button>
-            )}
-
-            {reviewBoxState && (reviewBox({ setReviewBoxState, comments }))}
-          </div>
         </CardActions>
 
       </Card>
+      {reviewBoxState && <ReviewBox setReviewBoxState={setReviewBoxState} comments={comments} />}
     </div>
   );
 }

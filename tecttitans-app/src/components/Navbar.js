@@ -3,6 +3,7 @@ import './Navbar.css';
 import {Link} from "react-router-dom";
 import {Button} from "./Button";
 import techtitanslogo from '../images/Techwhite.png';
+// import Logout from "../pages/Logout.js";
 
 function Navbar() {
     // toggle the hamburger menu and update the state
@@ -58,6 +59,9 @@ function Navbar() {
                             {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
                         </Link>
                     </li>
+                     {/* <li className='nav-item'>
+                        <Logout />
+                    </li> */}
                 </ul>
                 {/* <Link to='/sign-up'>
                 {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
