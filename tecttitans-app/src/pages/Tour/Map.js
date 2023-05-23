@@ -1,13 +1,9 @@
 import React from "react";
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
-import { Typography, Rating, Tooltip, Stack } from '@mui/material';
+import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
 import PlaceIcon from '@mui/icons-material/Place';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
-import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
 
