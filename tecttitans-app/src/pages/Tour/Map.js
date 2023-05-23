@@ -42,12 +42,11 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    mapId: 'ebe080360377ac36',
+                    mapId: process.env.REACT_APP_GMAPS_ID,
                     minZoom: minZoom,
                     heading: heading,
                     tilt: tilt,
                 }}
-
             >
                 {places.map((place, i) => (
                     <div

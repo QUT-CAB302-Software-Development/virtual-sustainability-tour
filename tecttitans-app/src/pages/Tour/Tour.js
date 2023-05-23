@@ -11,6 +11,7 @@ import Map from './Map';
 import './Tour.css';
 import '../../App.css';
 import './demo/style.css';
+import ExplainESG from './ExplainESG';
 
 
 
@@ -20,6 +21,8 @@ function Tour() {
 
     const [coordinates, setCoordinates] = useState({lat: -27.4711435, lng: 153.0274624});
     const [zoom, setZoom] = useState(16);
+
+    const [explainESGState, setExplainESGState] = useState(false);
 
     const [placeDetailsState, setPlaceDetailsState] = useState(false);
     const [placeClicked, setPlaceClicked] = useState(places[0]);
@@ -82,6 +85,7 @@ function Tour() {
                                         place={placeClicked}
                                         setPlaceDetailsState={setPlaceDetailsState}
                                         setReviewBoxState={setReviewBoxState}
+                                        setExplainESGState={setExplainESGState}
                                     />
                                 </div>
                             </Slide>
@@ -90,6 +94,13 @@ function Tour() {
                                     <ReviewBox
                                         setReviewBoxState={setReviewBoxState}
                                         comments={comments}
+                                    />
+                                </div>
+                            </Slide>
+                            <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
+                                <div>
+                                    <ExplainESG
+                                        setExplainESGState={setExplainESGState}
                                     />
                                 </div>
                             </Slide>

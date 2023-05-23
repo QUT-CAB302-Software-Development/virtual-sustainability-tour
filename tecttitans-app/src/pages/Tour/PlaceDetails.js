@@ -16,11 +16,11 @@ import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeaf
 
 import View360 from "./demo/View360";
 import getESGScore from "../../data/getESGScore";
-import './PlaceDetails.css';
+import './Card.css';
 
 
 
-function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
+function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {
 
   const starRating = Number(place.rating);
   const esgScore = getESGScore(place.name);
@@ -28,7 +28,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
 
 
   return (
-    <Card elevation={6} sx={{ borderRadius: '28px', width: "320px", }} className='card'>
+    <Card elevation={6} sx={{ borderRadius: '28px' }} className='card'>
 
         <div className="close-button-container">
           <IconButton onClick={() => {setPlaceDetailsState(false);setReviewBoxState(false);}}>
@@ -55,7 +55,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
           <Box display="flex" justifyContent="space-between">
             <Typography gutterBottom variant="subtitle2" >{place.formatted_address}</Typography>
             <IconButton size="small" >
-              <PlaceIcon htmlColor="red" />
+              <PlaceIcon htmlColor="Red" />
             </IconButton>
           </Box>
 
@@ -85,7 +85,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
               />
               <Typography variant="subtitle1">ESG {esgScore}</Typography>
             </Box>
-            <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
+            <IconButton size="small" color="primary" onClick={() => setExplainESGState((value) => !value)}>
               <HelpIcon />
             </IconButton>
           </Box>}
