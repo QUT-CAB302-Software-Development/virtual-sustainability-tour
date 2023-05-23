@@ -5,7 +5,7 @@ import SignUp from '../pages/SignUp';
 import Tour from '../pages/Tour/Tour';
 import Login from '../pages/Login';
 import View360 from '../pages/Tour/demo/View360';
-import Landing from '../pages/LandingPage/Landing'
+import Landing from '../pages/Home/Landing'
 
 import { AnimatePresence } from 'framer-motion';
 function AnimatedRoutes() {

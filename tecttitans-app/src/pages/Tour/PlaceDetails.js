@@ -16,38 +16,10 @@ import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeaf
 
 import View360 from "./demo/View360";
 import getESGScore from "../../data/getESGScore";
+import ReviewBox from './ReviewBox';
 import './PlaceDetails.css';
+import { Stack } from '@mui/material';
 
-
-function ReviewBox({ setReviewBoxState, comments }){
-
-    // display only three comments
-
-    const displayedComments = comments?.slice(0,3);
-  return(
-    <Card className='review-card'>
-        <CardContent>
-            <form>
-                <IconButton className='close-button' onClick={() => setReviewBoxState((value) => !value)}>
-                    <CloseIcon />
-                </IconButton>
-        <div className='feedback-form'>
-          <input className='feedback' placeholder="Feedback" name="Feedback" />
-        </div>
-
-        <button className='submit-btn'>Submit feedback</button>
-
-        <p className="h3text">Other Customer Feedback</p> {/*  used dummy data can be improved to look better*/}
-        {displayedComments?.map((comment) => (
-            <div key={comment.id}>
-              <p className='comments'>{comment.body}</p>
-            </div>
-          ))}
-      </form>
-        </CardContent>
-    </Card>
-  )
-};
 
 
 function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {

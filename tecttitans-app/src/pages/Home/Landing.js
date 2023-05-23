@@ -1,10 +1,10 @@
 import React from 'react';
-import './Landing.css';
+import './Home.css';
 import {Earth} from "../../components/earth";
 import styled from "styled-components";
 import {Canvas } from "@react-three/fiber";
 import {Suspense} from "react";
-import {TopSection} from "./topSection";
+import {TopSection} from "./TopSection";
 
 
 const CanvasContainer = styled.div `
