@@ -130,3 +130,16 @@ form{
   height: 100vh;
 }
 
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.google-login-button {
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
