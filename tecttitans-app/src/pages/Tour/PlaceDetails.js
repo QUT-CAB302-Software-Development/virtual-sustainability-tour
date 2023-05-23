@@ -14,7 +14,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 
-import View3D from "./View360";
+import View360 from "./demo/View360";
 import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
@@ -48,7 +48,7 @@ function reviewBox({ setReviewBoxState, comments }){
 }
 
 
-function PlaceDetails({ place, setPlaceDetailsState }) {
+function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
   
   const [reviewBoxState, setReviewBoxState] = useState(false);
   const [comments, setComments] = useState([]);
@@ -72,14 +72,14 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
     fetchComments();
   }, []);
 
-  const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+  const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${placePhotoAPI}`;
   const name = place.name;
   const starRating = Number(place.rating);
   const esgScore = getESGScore(name);
   let esgRatingElem = null;
 
   if (esgScore !== null) {
-    const esgStarRating = esgScore * 5 / 100;
+    const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
     esgRatingElem = 
     <Box display="flex" justifyContent="space-between">
       <Box display="flex" justifyContent="flex-start">
@@ -89,7 +89,7 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
           emptyIcon={<EnergySavingsLeafOutlinedIcon fontSize="small"/>}
           readonly 
         />
-        <Typography variant="subtitle1">{esgScore}%</Typography>
+        <Typography variant="subtitle1">ESG {esgScore}</Typography>
       </Box>
       <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
         <HelpIcon/>
@@ -174,7 +174,7 @@ function PlaceDetails({ place, setPlaceDetailsState }) {
             size="small" 
             color="primary" 
             endIcon={<ThreeDRotationIcon color="primary"/>} 
-            onClick={() => View3D({place})}
+            onClick={() => View360({place})}
           >
             View Tour
           </Button>
