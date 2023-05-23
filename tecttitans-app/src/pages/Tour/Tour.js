@@ -93,6 +93,7 @@ function Tour() {
                             <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
                                 <div>
                                     <ReviewBox
+                                        place={placeClicked}
                                         setReviewBoxState={setReviewBoxState}
                                         comments={comments}
                                     />
@@ -101,6 +102,7 @@ function Tour() {
                             <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
                                 <div>
                                     <ExplainESG
+                                        place={placeClicked}
                                         setExplainESGState={setExplainESGState}
                                     />
                                 </div>
