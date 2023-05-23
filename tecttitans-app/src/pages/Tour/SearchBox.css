@@ -16,9 +16,7 @@
 .search {
     width: 300px;
     margin-top: 20px;
-    margin-right: 20px;
-    border-radius: 5px;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .toolbar {
