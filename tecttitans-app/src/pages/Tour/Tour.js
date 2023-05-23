@@ -67,6 +67,7 @@ function Tour() {
                     setPlaceClicked={setPlaceClicked}
                     setPlaceDetailsState={setPlaceDetailsState}
                     setReviewBoxState={setReviewBoxState}
+                    setExplainESGState={setExplainESGState}
                 />
 
                 <div className='elements-grid'>
