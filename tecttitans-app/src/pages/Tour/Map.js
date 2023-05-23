@@ -1,6 +1,5 @@
 import React from "react";
 import { scaleQuantize } from 'd3-scale';
-import { delay } from 'framer-motion';
 import GoogleMapReact from 'google-map-react';
 import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
