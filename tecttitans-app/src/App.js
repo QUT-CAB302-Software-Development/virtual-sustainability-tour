@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import Loader from "./components/Loader";
 import LoadingAnimation from './videos/LoadingAnimation.json';
 import './App.css';
+import { AuthProvider } from 'react-auth-kit';
 
 
 
@@ -26,10 +27,17 @@ function App() {
                     <Lottie animationData={LoadingAnimation} />
                 </div>
                 :
+                 <AuthProvider
+                    authType={"cookie"}
+                    authName={"_auth"}
+                    cookieDomain={window.location.hostname}
+                    cookieSecure={false}
+                 >
                 <Router>
                     <Navbar />
                     <Loader />
                 </Router>
+                </AuthProvider>
 
             }
         </div>
