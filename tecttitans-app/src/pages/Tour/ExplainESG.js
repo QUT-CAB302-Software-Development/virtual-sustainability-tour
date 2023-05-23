@@ -6,12 +6,9 @@ import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import './ReviewBox.css';
 import './Card.css';
 import './ExplainESG.css';
-import Sustainability from '../../data/Sustainability.json';
-import { Box } from '@mui/material';
 
 
-
-function ExplainESG({ setExplainESGState }){
+function ExplainESG({ place, setExplainESGState }){
 
 
 

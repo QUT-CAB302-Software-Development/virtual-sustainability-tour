@@ -11,7 +11,7 @@ import '../../components/Button.css';
 
 
 
-function ReviewBox({ setReviewBoxState, comments }){
+function ReviewBox({ place, setReviewBoxState, comments }){
 
     const displayedComments = comments?.slice(0,3); // display only three comments
 
