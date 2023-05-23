@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import './Landing.css';
+import './Home.css';
 import '../../App.css'
 
 const ExploreButton = styled.button`
@@ -80,8 +80,8 @@ export function TopSection() {
     return (
         <div className= 'topSectionContainer' data-tilt>
           <LoopingTypingHeading texts={texts} />
-          <p>Experience Brisbane Sustainability from your own couch</p>
-          <ExploreButton onClick={handleExploreClick}>Explore Tour </ExploreButton>
+          <p>Experience Brisbane's sustainability from the comfort of your own couch</p>
+          <ExploreButton onClick={handleExploreClick}> Explore Tour </ExploreButton>
         </div>
     );
 }

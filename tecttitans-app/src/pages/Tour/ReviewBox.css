@@ -1,0 +1,51 @@
+  .feedback {
+    background-color: #ddd;
+    border: none;
+    height: 210px;
+  }
+
+  .feedback-form {
+    position: 'relative';
+    margin-bottom:10px;
+  }
+
+  .comments {
+    color: blue;
+    text-align: center;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .review-card {
+     position: absolute;
+     top: 0;
+     right: 0;
+     z-index: 2;
+     width: 300px;
+     padding: 20px;
+     overflow-y: auto;
+     height: 275;
+     display: block;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     padding: 6px;
+ }
+
+ .submit-btn {
+     background-color: orange;
+     color: white;
+     padding: 5px 10px;
+     letter-spacing: 4px;
+     font-size: 20px;
+     font-weight: normal;
+     text-transform: uppercase;
+ }
+
+ .h3text {
+        text-align: center;
+        padding: 5px 0;
+        font-size: 14px;
+        color: black;
+        font-weight: bold;
+ }
+
