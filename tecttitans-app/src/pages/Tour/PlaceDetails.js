@@ -16,82 +16,37 @@ import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeaf
 
 import View360 from "./demo/View360";
 import getESGScore from "../../data/getESGScore";
-import ReviewBox from './ReviewBox';
 import './PlaceDetails.css';
-import { Stack } from '@mui/material';
 
 
 
-function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
+function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
 
-  const [reviewBoxState, setReviewBoxState] = useState(false);
-  const [comments, setComments] = useState([]);
-  // GET data from API using React
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const response = await fetch('https://dummyjson.com/comments');
-        const data = await response.json();
-        // setComments(data);
-        if (Array.isArray(data.comments)) {
-          setComments(data.comments);
-        } else {
-          console.error('API response is not an array:', data);
-        }
-      }
-      catch (error) {
-        console.error('Error fetching comment data', error);
-      }
-    };
-    fetchComments();
-  }, []);
-
-  const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${placePhotoAPI}`;
-  const name = place.name;
   const starRating = Number(place.rating);
-  const esgScore = getESGScore(name);
-  let esgRatingElem = null;
-
-  if (esgScore !== null) {
-    const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
-    esgRatingElem =
-      <Box display="flex" justifyContent="space-between">
-        <Box display="flex" justifyContent="flex-start">
-          <Rating
-            value={esgStarRating}
-            icon={<EnergySavingsLeafIcon htmlColor='LimeGreen' fontSize="small" />}
-            emptyIcon={<EnergySavingsLeafOutlinedIcon fontSize="small" />}
-            readonly
-          />
-          <Typography variant="subtitle1">ESG {esgScore}</Typography>
-        </Box>
-        <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
-          <HelpIcon />
-        </IconButton>
-      </Box>
-  }
+  const esgScore = getESGScore(place.name);
+  const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
 
 
   return (
-    <div className="details">
-      <Card elevation={6} sx={{ borderRadius: '28px', }}>
+    <Card elevation={6} sx={{ borderRadius: '28px', width: "320px", }} className='card'>
 
         <div className="close-button-container">
-          <IconButton onClick={() => setPlaceDetailsState(false)}>
+          <IconButton onClick={() => {setPlaceDetailsState(false);setReviewBoxState(false);}}>
             <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
           </IconButton>
         </div>
 
         <CardMedia
           style={{ height: 'calc(100vh - 480px)' }}
-          image={imgSrc}
+          image={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${process.env.REACT_APP_GMAPS_PHOTO_KEY}`}
           title={place.name}
         />
+
 
         <CardContent>
 
           <Box display="flex" justifyContent="space-between">
-            <Typography gutterBottom variant="h5">{name}</Typography>
+            <Typography gutterBottom variant="h5">{place.name}</Typography>
             <IconButton size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
               <OpenInNewIcon htmlColor="DimGray" />
             </IconButton>
@@ -119,8 +74,24 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
              </IconButton>
           </Box>
 
-          {esgRatingElem}
+          {esgScore &&
+          <Box display="flex" justifyContent="space-between">
+            <Box display="flex" justifyContent="flex-start">
+              <Rating
+                value={esgStarRating}
+                icon={<EnergySavingsLeafIcon htmlColor='LimeGreen' fontSize="small" />}
+                emptyIcon={<EnergySavingsLeafOutlinedIcon fontSize="small" />}
+                readonly
+              />
+              <Typography variant="subtitle1">ESG {esgScore}</Typography>
+            </Box>
+            <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
+              <HelpIcon />
+            </IconButton>
+          </Box>}
+
         </CardContent>
+
 
         <CardActions
           sx={{
@@ -133,7 +104,7 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
             size="large"
             variant="contained"
             color="primary"
-            sx={{ borderRadius : '32px', padding: "16px", paddingX: "32px", }}
+            sx={{ borderRadius : '32px', paddingX: "32px", paddingY: "16px", }}
             endIcon={<ThreeDRotationIcon htmlColor="White" fontSize="large" />}
             onClick={() => View360({ place })}
           >
@@ -142,8 +113,6 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
         </CardActions>
 
       </Card>
-      {reviewBoxState && <ReviewBox setReviewBoxState={setReviewBoxState} comments={comments} />}
-    </div>
   );
 }
 

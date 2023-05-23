@@ -1,27 +1,6 @@
-.title {
-    display: none;
-}
-
-@media (min-width: 600px) {
-    .title {
-        display: block;
-    }
-}
-
-.global-padding {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-.search {
-    width: 300px;
-    margin-top: 20px;
+.search-box {
+    width: 100%;
+    border-radius: 36px;
     background-color: white;
-}
-
-.toolbar {
-    justify-content: flex-end;
-    display: flex;
-    margin-left: auto;
-    z-index: 2;
+    position: relative;
 }

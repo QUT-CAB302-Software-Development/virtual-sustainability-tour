@@ -1,5 +1,6 @@
 import React from "react";
 import { scaleQuantize } from 'd3-scale';
+import { delay } from 'framer-motion';
 import GoogleMapReact from 'google-map-react';
 import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
@@ -19,16 +20,13 @@ function getColor(esgScore) {
 
 
 // google maps api usage ============================================================================================================
-function Map({ places, placePhotoAPI, zoom, coordinates, setPlaceClicked, setPlaceDetailsState }) {
+function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState }) {
     
     const tilt = 45;
     const heading = 0;
     const minZoom = 14;
-    // const circleRadius = 200;
-    // const circleBorderWidth = 5;
-    // const circleTotalRadius = circleBorderWidth + circleRadius;
-    // const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
-    //const mapId = process.env.REACT_APP_GMAPS_ID;
+    const animationDuration = 250;
+
 
     return (
         <div className="mapContainer">
@@ -68,7 +66,12 @@ function Map({ places, placePhotoAPI, zoom, coordinates, setPlaceClicked, setPla
                                 className="icon"
                                 sx={{ color: getColor(getESGScore(place.name)) }}
                                 fontSize="large"
-                                onClick={() => {setPlaceClicked(place); setPlaceDetailsState(true);}}
+                                onClick={() => {
+                                    setPlaceDetailsState(false);
+                                    setReviewBoxState(false);
+                                    setTimeout(() => setPlaceDetailsState(true), animationDuration);
+                                    setPlaceClicked(place);
+                                }}
                             />
                         </Tooltip>
                     </div>
