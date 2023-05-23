@@ -40,7 +40,7 @@ function Navbar() {
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                        <Link to='/animate' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                             Home
                         </Link>
                     </li>
@@ -51,7 +51,7 @@ function Navbar() {
                     </li>
                     <li className='nav-item'>
                         <Link to='/view360' className='nav-links' onClick={closeMobileMenu}>
-                            view3D
+                            view360
                         </Link>
                     </li>
                     <li className='nav-item'>

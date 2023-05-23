@@ -10,26 +10,26 @@ import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
-const [tilt, heading] = [45, 0]
+
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-        .domain([0, 100]) // range
-        .range(['#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
+        .domain([0, 50]) // range
+        .range(['#00FF00', '#FFA000', '#FF0000' ]); // use a color scale that goes from red to yellow to green
     
     if(esgScore === null) { return '#B0B0B0'; }
     return colorScale(esgScore);
 }
 
-function placePopUp({ place, apiKey }){
-    const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${apiKey}`;
+function placePopUp({ place, placePhotoAPI }){
+    const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${placePhotoAPI}`;
     const name = place.name;
     const starRating = Number(place.rating);
     const esgScore = getESGScore(name);
     let esgRatingElem = null;
 
     if (esgScore !== null) {
-        const esgStarRating = esgScore * 5 / 100;
+        const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
         esgRatingElem = 
             <Rating 
                 value={esgStarRating}
@@ -65,24 +65,24 @@ function placePopUp({ place, apiKey }){
 
 
 // google maps api usage ============================================================================================================
-function Map({ places, setPlaceClicked, setPlaceDetailsState }) {
-    const zoom = 17;
-    const circleRadius = 200;
-    const circleBorderWidth = 5;
-    const circleTotalRadius = circleBorderWidth + circleRadius;
-    const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
-    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    //const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
+function Map({ places, placePhotoAPI, zoom, coordinates, setPlaceClicked, setPlaceDetailsState }) {
+    
+    const tilt = 45;
+    const heading = 0;
+    const minZoom = 14;
+    // const circleRadius = 200;
+    // const circleBorderWidth = 5;
+    // const circleTotalRadius = circleBorderWidth + circleRadius;
+    // const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
+    //const mapId = process.env.REACT_APP_GMAPS_ID;
+
     return (
         <div className="mapContainer">
             
             <GoogleMapReact
-                bootstrapURLKeys={{ key: apiKey }}
-                defaultCenter={[-27.4711435,153.0274624]}
-                center={[-27.4711435,153.0274624]}
-                defaultZoom={zoom}
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_STYLE_KEY }}
+                center={coordinates}
                 zoom={zoom}
-                margin={[50, 50, 50, 50]}
                 options={{
                     disableDefaultUI: true, 
                     zoomControl: false, 
@@ -92,9 +92,9 @@ function Map({ places, setPlaceClicked, setPlaceDetailsState }) {
                     fullscreenControl: false,
                     clickableIcons: false,
                     mapId: 'ebe080360377ac36',
-                    heading: heading,                    
+                    minZoom: minZoom,
+                    heading: heading,
                     tilt: tilt,
-                    minZoom: zoom,
                 }}
 
             >
@@ -108,7 +108,7 @@ function Map({ places, setPlaceClicked, setPlaceDetailsState }) {
                         <Tooltip
                             className="tooltip"
                             TransitionComponent={Zoom}
-                            title={ placePopUp({ place, apiKey }) }
+                            title={ placePopUp({ place, placePhotoAPI }) }
                         >
                             <div className="icon">
                                 <PlaceIcon
@@ -116,7 +116,7 @@ function Map({ places, setPlaceClicked, setPlaceDetailsState }) {
                                     fontSize="large"
                                     onClick={() => {setPlaceClicked(place); setPlaceDetailsState(true);}}
                                 />
-                               <svg 
+                               {/* <svg 
                                     className="svg" 
                                     viewBox={circleViewBox}
                                >
@@ -126,7 +126,7 @@ function Map({ places, setPlaceClicked, setPlaceDetailsState }) {
                                         r={circleRadius}
                                         stroke-width={circleBorderWidth}
                                     />
-                                </svg>
+                                </svg> */}
                             </div>
                         </Tooltip>
                     </div>
