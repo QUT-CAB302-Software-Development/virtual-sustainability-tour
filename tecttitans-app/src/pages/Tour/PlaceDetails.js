@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, IconButton, Card, CardMedia, CardContent, Rating, CardActions } from '@mui/material';
+import { Box, Typography, Button, IconButton, Card, CardMedia, CardContent, Rating, CardActions, Stack, Chip, Paper } from '@mui/material';
 
 import PlaceIcon from '@mui/icons-material/Place';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -19,8 +19,8 @@ import getESGScore from "../../data/getESGScore";
 import './PlaceDetails.css';
 
 
-function reviewBox({ setReviewBoxState, comments }){
-  return(
+function reviewBox({ setReviewBoxState, comments }) {
+  return (
     <div className='modal'>
       <form>
         <button className='btn'
@@ -38,10 +38,10 @@ function reviewBox({ setReviewBoxState, comments }){
 
         <h3>Other Customer Feedback</h3> {/*  used dummy data can be improved to look better*/}
         {comments?.map((comment) => (
-            <div key={comment.id}>
-              <p className='comments'>{comment.body}</p>
-            </div>
-          ))}
+          <div key={comment.id}>
+            <p className='comments'>{comment.body}</p>
+          </div>
+        ))}
       </form>
     </div>
   )
@@ -49,7 +49,7 @@ function reviewBox({ setReviewBoxState, comments }){
 
 
 function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
-  
+
   const [reviewBoxState, setReviewBoxState] = useState(false);
   const [comments, setComments] = useState([]);
   // GET data from API using React
@@ -64,8 +64,8 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
         } else {
           console.error('API response is not an array:', data);
         }
-      } 
-      catch(error) {
+      }
+      catch (error) {
         console.error('Error fetching comment data', error);
       }
     };
@@ -80,43 +80,43 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
 
   if (esgScore !== null) {
     const esgStarRating = 5 - (esgScore * 0.1); // starRating = 5 - (rawData / 50) * 5
-    esgRatingElem = 
-    <Box display="flex" justifyContent="space-between">
-      <Box display="flex" justifyContent="flex-start">
-        <Rating 
-          value={esgStarRating}
-          icon={<EnergySavingsLeafIcon htmlColor='LimeGreen' fontSize="small"/>}
-          emptyIcon={<EnergySavingsLeafOutlinedIcon fontSize="small"/>}
-          readonly 
-        />
-        <Typography variant="subtitle1">ESG {esgScore}</Typography>
+    esgRatingElem =
+      <Box display="flex" justifyContent="space-between">
+        <Box display="flex" justifyContent="flex-start">
+          <Rating
+            value={esgStarRating}
+            icon={<EnergySavingsLeafIcon htmlColor='LimeGreen' fontSize="small" />}
+            emptyIcon={<EnergySavingsLeafOutlinedIcon fontSize="small" />}
+            readonly
+          />
+          <Typography variant="subtitle1">ESG {esgScore}</Typography>
+        </Box>
+        <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
+          <HelpIcon />
+        </IconButton>
       </Box>
-      <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
-        <HelpIcon/>
-      </IconButton>
-    </Box>
   }
 
-  
+
   return (
     <div className="details">
-      <Card elevation={6}>
+      <Card elevation={6} sx={{ borderRadius: '28px', }}>
 
         <div className="close-button-container">
           <IconButton onClick={() => setPlaceDetailsState(false)}>
-            <CloseIcon className="close-button"/>
+            <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
           </IconButton>
         </div>
 
         <CardMedia
-          style={{ height: 275 }}
+          style={{ height: 'calc(100vh - 480px)' }}
           image={imgSrc}
           title={place.name}
         />
 
         <CardContent>
-          
-          <Box display="flex" justifyContent="space-between"> 
+
+          <Box display="flex" justifyContent="space-between">
             <Typography gutterBottom variant="h5">{name}</Typography>
             <IconButton size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
               <OpenInNewIcon htmlColor="DimGray" />
@@ -125,58 +125,45 @@ function PlaceDetails({ place, placePhotoAPI, setPlaceDetailsState }) {
 
           <Box display="flex" justifyContent="space-between">
             <Typography gutterBottom variant="subtitle2" >{place.formatted_address}</Typography>
-            <IconButton size="small" > 
-              <PlaceIcon htmlColor="red" /> 
+            <IconButton size="small" >
+              <PlaceIcon htmlColor="red" />
             </IconButton>
           </Box>
 
           <Box display="flex" justifyContent="space-between">
-            <Box display="flex" justifyContent="flex-start"> 
-              <Rating 
+            <Box display="flex" justifyContent="flex-start">
+              <Rating
                 value={starRating}
-                icon={<StarIcon htmlColor='DarkOrange' fontSize="small"/>}
-                emptyIcon={<StarBorderIcon fontSize="small"/>}
-                readonly 
+                icon={<StarIcon htmlColor='DarkOrange' fontSize="small" />}
+                emptyIcon={<StarBorderIcon fontSize="small" />}
+                readonly
               />
               <Typography gutterBottom variant="subtitle1">{starRating} ({place.user_ratings_total})</Typography>
             </Box>
-            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}> 
+            <IconButton size="small" color="primary" onClick={() => reviewBox({ setReviewBoxState, comments })}>
               <RateReviewIcon />
             </IconButton>
           </Box>
 
           {esgRatingElem}
-          
-          {/* <Box display="flex" justifyContent="space-between">
-            <Typography variant="subtitle1">Price</Typography>
-            <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
-          </Box>
-
-          <Box display="flex" justifyContent="space-between">
-            <Typography variant="subtitle1">Ranking</Typography>
-            <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
-          </Box>
-
-          {place?.awards?.map((award) => (
-            <Box my={1} display="flex" justifyContent="space-between" alignItems="center">
-              <img src={award.images.small} alt={award.display_name} />
-              <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
-            </Box>
-          ))}
-
-          {place?.types?.map(({ name }) => (
-            <Chip className="chip" key={name} label={name} size="small" />
-          ))}*/}
         </CardContent>
 
-        <CardActions>
-          <Button 
-            size="small" 
-            color="primary" 
-            endIcon={<ThreeDRotationIcon color="primary"/>} 
-            onClick={() => View360({place})}
+        <CardActions
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingBottom: '20px',
+          }}
+        >
+          <Button
+            size="large"
+            variant="contained"
+            color="primary"
+            sx={{ borderRadius : '32px', padding: "16px", paddingX: "32px", }}
+            endIcon={<ThreeDRotationIcon htmlColor="White" fontSize="large" />}
+            onClick={() => View360({ place })}
           >
-            View Tour
+            <Typography variant="h5" sx={{fontWeight: "bold" }} >View 360 Tour</Typography>
           </Button>
 
           <div>

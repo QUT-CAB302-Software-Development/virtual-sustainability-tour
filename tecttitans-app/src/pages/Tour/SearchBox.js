@@ -12,20 +12,19 @@ function Header({ places, setZoom, setCoordinates }) {
   return (
     <AppBar position="static">
       <Toolbar className="toolbar">
-          <Stack className="search">
+          <Stack sx={{ borderRadius: '36px' }} className="search">
 
             <Autocomplete 
               id="locations_search"
               getOptionLabel={(places) => places.name}
               options={places}
               noOptionsText={noResults}
-
               isOptionEqualToValue={(option, value) => 
                 option.name === value.name
               }
 
               renderOption={(props, places) => (
-                <Box 
+                <Box
                   {...props} 
                   key={places.place_id}
                 >
@@ -37,6 +36,12 @@ function Header({ places, setZoom, setCoordinates }) {
                 <TextField 
                   {...params} 
                   label={<SearchIcon/>}
+                  inputProps={{
+                    ...params.inputProps,
+                    style: {
+                        padding: "6px",
+                    },
+                }}
                 />
               }
 
@@ -48,7 +53,18 @@ function Header({ places, setZoom, setCoordinates }) {
                 setZoom(17);
                 setValue(null);
               }}
-
+              
+              sx={{
+                // border: "1px solid blue",
+                "& .MuiOutlinedInput-root": {
+                    borderRadius: "36px",
+                    padding: "10px",
+                    boxShadow: 4,
+                },
+                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    border: "3px solid Gray",
+                },
+              }}
             />
 
           </Stack>
