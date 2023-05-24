@@ -20,7 +20,7 @@ function getColor(esgScore) {
 
 
 // google maps api usage ============================================================================================================
-function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState }) {
+function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {
     
     const tilt = 45;
     const heading = 0;
@@ -43,12 +43,11 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                     disableDoubleClickZoom: true,
                     fullscreenControl: false,
                     clickableIcons: false,
-                    mapId: 'ebe080360377ac36',
+                    mapId: process.env.REACT_APP_GMAPS_ID,
                     minZoom: minZoom,
                     heading: heading,
                     tilt: tilt,
                 }}
-
             >
                 {places.map((place, i) => (
                     <div
@@ -69,6 +68,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                                 onClick={() => {
                                     setPlaceDetailsState(false);
                                     setReviewBoxState(false);
+                                    setExplainESGState(false);
                                     setTimeout(() => setPlaceDetailsState(true), animationDuration);
                                     setPlaceClicked(place);
                                 }}

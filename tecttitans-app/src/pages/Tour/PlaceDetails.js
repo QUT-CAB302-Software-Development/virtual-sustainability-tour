@@ -14,13 +14,12 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
 import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
 
-import View360 from "./demo/View360";
 import getESGScore from "../../data/getESGScore";
-import './PlaceDetails.css';
+import './Card.css';
 
 
 
-function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
+function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState, setExplainESGState, setView360State }) {
 
   const starRating = Number(place.rating);
   const esgScore = getESGScore(place.name);
@@ -28,23 +27,26 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
 
 
   return (
-    <Card elevation={6} sx={{ borderRadius: '28px', width: "320px", }} className='card'>
+    <Card elevation={6} sx={{ borderRadius: '28px' }} className='card'>
 
+        {/* Close button */}
         <div className="close-button-container">
           <IconButton onClick={() => {setPlaceDetailsState(false);setReviewBoxState(false);}}>
             <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
           </IconButton>
         </div>
 
+        {/* Image */}
         <CardMedia
           style={{ height: 'calc(100vh - 480px)' }}
           image={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${process.env.REACT_APP_GMAPS_PHOTO_KEY}`}
           title={place.name}
         />
 
-
+        
         <CardContent>
 
+          {/* Place name and website link */}
           <Box display="flex" justifyContent="space-between">
             <Typography gutterBottom variant="h5">{place.name}</Typography>
             <IconButton size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
@@ -52,13 +54,15 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
             </IconButton>
           </Box>
 
+          {/* address */}
           <Box display="flex" justifyContent="space-between">
             <Typography gutterBottom variant="subtitle2" >{place.formatted_address}</Typography>
             <IconButton size="small" >
-              <PlaceIcon htmlColor="red" />
+              <PlaceIcon htmlColor="Red" />
             </IconButton>
           </Box>
 
+          {/* user ratings */}
           <Box display="flex" justifyContent="space-between">
             <Box display="flex" justifyContent="flex-start">
               <Rating
@@ -74,6 +78,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
              </IconButton>
           </Box>
 
+          {/* esg score */}
           {esgScore &&
           <Box display="flex" justifyContent="space-between">
             <Box display="flex" justifyContent="flex-start">
@@ -85,7 +90,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
               />
               <Typography variant="subtitle1">ESG {esgScore}</Typography>
             </Box>
-            <IconButton size="small" color="primary" onClick={() => setPlaceDetailsState(false)}>
+            <IconButton size="small" color="primary" onClick={() => setExplainESGState((value) => !value)}>
               <HelpIcon />
             </IconButton>
           </Box>}
@@ -100,13 +105,14 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState }) {
             paddingBottom: '20px',
           }}
         >
+          {/* TOUR BUTTON */}
           <Button
             size="large"
             variant="contained"
             color="primary"
             sx={{ borderRadius : '32px', paddingX: "32px", paddingY: "16px", }}
             endIcon={<ThreeDRotationIcon htmlColor="White" fontSize="large" />}
-            onClick={() => View360({ place })}
+            onClick={() => setView360State(true)}
           >
             <Typography variant="h5" sx={{fontWeight: "bold" }} >View 360 Tour</Typography>
           </Button>
