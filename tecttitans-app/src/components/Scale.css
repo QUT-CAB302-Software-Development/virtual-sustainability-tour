@@ -1,10 +1,8 @@
 .scale {
-    border-radius: 15px;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 0px;
-    background-color: rgba(240, 248, 255, 0.749);
+    background-color: rgba(240, 248, 255, 0.75);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
