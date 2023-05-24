@@ -9,7 +9,6 @@ import { AuthProvider } from 'react-auth-kit';
 
 
 
-
 //  established routing between the four pages of the front end
 function App() {
 
