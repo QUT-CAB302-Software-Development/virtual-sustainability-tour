@@ -2,13 +2,14 @@ import React from 'react';
 import { ReactPhotoSphereViewer } from 'react-photo-sphere-viewer';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import test360 from '../../images/test360.jpeg';
 import './Card.css';
 
 
 function View360({ place, setView360State }) {
-
-    // const panoImage = place.panoimage;
+    let image;
+    try   { image = require(`../../images/panoramas/${place.name}.jpg`); }
+    catch { image = require(`../../images/nullPanorama.jpg`); }
+    
 
     return (
         <>
@@ -17,7 +18,7 @@ function View360({ place, setView360State }) {
                     <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
                 </IconButton>
             </div>
-                <ReactPhotoSphereViewer src={test360} height={'90vh'} width={'100%'} />
+            <ReactPhotoSphereViewer src={image} height={'90vh'} width={"100%"} defaultYaw={-90} minFov={50} maxFov={100}/>
         </>
     );
 }

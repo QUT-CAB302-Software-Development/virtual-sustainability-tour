@@ -30,7 +30,7 @@ function ExplainESG({ place, setExplainESGState }){
 
             <CardContent>
                 <Typography gutterBottom variant="subtitle1">
-                    https://www.sustainalytics.com/esg-ratings
+                    https://www.sustainalytics.com/esg-ratings {place.name}
                 </Typography>
             </CardContent>
         </Card>
