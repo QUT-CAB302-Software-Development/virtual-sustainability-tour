@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Slide, CssBaseline, Stack } from '@mui/material';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Slide, CssBaseline, Stack, Fade } from '@mui/material';
 
 import places from "../../data/hotels_data.json"
 import PlaceDetails from './PlaceDetails';
 import SearchBox from './SearchBox';
 import ReviewBox from './ReviewBox';
-import Map from './Map';
-import './Tour.css';
-import '../../App.css';
-import './demo/style.css';
 import ExplainESG from './ExplainESG';
+import View360 from './View360';
+import Map from './Map';
+
+import './Tour.css';
+import './Card.css';
+import '../../App.css';
 
 
 
@@ -19,15 +22,15 @@ function Tour() {
 
     const theme = createTheme();    
 
+    const [placeClicked, setPlaceClicked] = useState(places[0]);
     const [coordinates, setCoordinates] = useState({lat: -27.4711435, lng: 153.0274624});
     const [zoom, setZoom] = useState(16);
 
+    const [view360State, setView360State] = useState(false);
     const [explainESGState, setExplainESGState] = useState(false);
-
     const [placeDetailsState, setPlaceDetailsState] = useState(false);
-    const [placeClicked, setPlaceClicked] = useState(places[0]);
-
     const [reviewBoxState, setReviewBoxState] = useState(false);
+
     const [comments, setComments] = useState([]);
     // GET data from API using React
     useEffect(() => {
@@ -59,7 +62,6 @@ function Tour() {
         >
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-
                 <Map 
                     places={places}
                     zoom={zoom}
@@ -70,7 +72,12 @@ function Tour() {
                     setExplainESGState={setExplainESGState}
                 />
 
+
+
                 <div className='elements-grid'>
+
+
+
                     <div className='search-container'>
                         <SearchBox 
                             places={places}
@@ -78,37 +85,59 @@ function Tour() {
                             setCoordinates={setCoordinates} 
                         />
                     </div>
+
+
+
                     <div className='card-container'>
-                        <Stack direction="row" spacing={2}>
-                            <Slide direction='right' in={placeDetailsState} mountOnEnter unmountOnExit>
-                                <div>
-                                    <PlaceDetails
-                                        place={placeClicked}
-                                        setPlaceDetailsState={setPlaceDetailsState}
-                                        setReviewBoxState={setReviewBoxState}
-                                        setExplainESGState={setExplainESGState}
-                                    />
-                                </div>
-                            </Slide>
-                            <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
-                                <div>
-                                    <ReviewBox
-                                        place={placeClicked}
-                                        setReviewBoxState={setReviewBoxState}
-                                        comments={comments}
-                                    />
-                                </div>
-                            </Slide>
-                            <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
-                                <div>
-                                    <ExplainESG
-                                        place={placeClicked}
-                                        setExplainESGState={setExplainESGState}
-                                    />
-                                </div>
-                            </Slide>
-                        </Stack>
+                    <Stack direction="row" spacing={2}>
+
+                        <Slide direction='right' in={placeDetailsState} mountOnEnter unmountOnExit>
+                        <div>
+                            <PlaceDetails
+                                place={placeClicked}
+                                setPlaceDetailsState={setPlaceDetailsState}
+                                setReviewBoxState={setReviewBoxState}
+                                setExplainESGState={setExplainESGState}
+                                setView360State={setView360State}
+                            />
+                        </div>
+                        </Slide>
+
+                        <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
+                        <div>
+                            <ReviewBox
+                                place={placeClicked}
+                                setReviewBoxState={setReviewBoxState}
+                                comments={comments}
+                            />
+                        </div>
+                        </Slide>
+
+                        <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
+                        <div>
+                            <ExplainESG
+                                place={placeClicked}
+                                setExplainESGState={setExplainESGState}
+                            />
+                        </div>
+                        </Slide>
+
+                    </Stack>
                     </div>
+
+
+
+                    <Fade className='view360-container' in={view360State} mountOnEnter unmountOnExit>
+                    <div>
+                        <View360 
+                            place={placeClicked}
+                            setView360State={setView360State}
+                        />
+                    </div>
+                    </Fade>
+
+
+
                 </div>
                 
                 
