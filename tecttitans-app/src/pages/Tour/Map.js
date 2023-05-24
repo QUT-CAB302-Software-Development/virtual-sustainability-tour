@@ -68,8 +68,10 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                                     setPlaceDetailsState(false);
                                     setReviewBoxState(false);
                                     setExplainESGState(false);
-                                    setTimeout(() => setPlaceDetailsState(true), animationDuration);
-                                    setPlaceClicked(place);
+                                    setTimeout(() => {
+                                        setPlaceDetailsState(true);
+                                        setPlaceClicked(place);
+                                    }, animationDuration);
                                 }}
                             />
                         </Tooltip>

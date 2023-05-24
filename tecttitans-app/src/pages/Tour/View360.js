@@ -2,13 +2,15 @@ import React from 'react';
 import { ReactPhotoSphereViewer } from 'react-photo-sphere-viewer';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import test360 from '../../images/test360.jpeg';
+import Novotel_Brisbane_South_Bank from '../../images/panoramas/Novotel_Brisbane_South_Bank.jpg'
 import './Card.css';
 
 
 function View360({ place, setView360State }) {
 
-    // const panoImage = place.panoimage;
+    const image = place.panorama
+
+    console.log({image})
 
     return (
         <>
@@ -17,7 +19,7 @@ function View360({ place, setView360State }) {
                     <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
                 </IconButton>
             </div>
-            <ReactPhotoSphereViewer src={test360} height={'100vh'} width={"100%"}/>
+            <ReactPhotoSphereViewer src={Novotel_Brisbane_South_Bank} height={'100vh'} width={"100%"}/>
         </>
     );
 }

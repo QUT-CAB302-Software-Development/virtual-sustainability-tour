@@ -67,6 +67,7 @@
       "icon_background_color" : "#909CE1",
       "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
       "name" : "Novotel Brisbane South Bank",
+      "panorama" : "../images/panoramas/Novotel_Brisbane_South_Bank.jpg",
       "photos" : [
          {
             "height" : 3673,
