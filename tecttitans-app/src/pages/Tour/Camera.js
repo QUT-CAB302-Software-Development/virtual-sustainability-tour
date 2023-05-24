@@ -16,13 +16,13 @@ const mapOptions = {
 
 function initMap() {
   const mapDiv = document.getElementById("map");
-  map = new google.maps.Map(mapDiv, mapOptions);
+  map = new window.google.maps.Map(mapDiv, mapOptions);
   initWebglOverlayView(map);
 }
 
 function initWebglOverlayView(map) {
   let scene, renderer, camera, loader;
-  const webglOverlayView = new google.maps.WebGLOverlayView();
+  const webglOverlayView = new window.google.maps.WebGLOverlayView();
 
   webglOverlayView.onAdd = () => {
     // initialise scene, camera, loader
