@@ -17,7 +17,7 @@ function View360({ place, setView360State }) {
                     <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
                 </IconButton>
             </div>
-            <ReactPhotoSphereViewer src={test360} height={'100vh'} width={"100%"}/>
+                <ReactPhotoSphereViewer src={test360} height={'90vh'} width={'100%'} />
         </>
     );
 }
