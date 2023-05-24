@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PanoramaViewer from './PanoramaViewer';
 
 
 function View360() {
@@ -11,7 +12,7 @@ function View360() {
             animate={{opacity: 1}}
             exit={{opacity: 0}}
         >
-        
+            <PanoramaViewer/>
         </motion.div>
     );
 }

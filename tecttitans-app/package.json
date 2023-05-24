@@ -29,6 +29,7 @@
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.11.0",
     "msw": "^1.2.1",
+    "panolens": "^0.12.1",
     "react": "^18.2.0",
     "react-auth-kit": "^2.12.2",
     "react-dom": "^18.2.0",
@@ -39,7 +40,7 @@
     "react-spinners": "^0.13.8",
     "react-tsparticles": "^2.9.3",
     "styled-components": "^5.3.10",
-    "three": "^0.152.2",
+    "three": "^0.126.0",
     "vanilla-tilt": "^1.8.0",
     "web-vitals": "^2.1.4"
   },
