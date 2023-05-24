@@ -10,7 +10,7 @@ function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true)
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false)
+    const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
         if(window.innerWidth <= 960){
@@ -47,11 +47,6 @@ function Navbar() {
                     <li className='nav-item'>
                         <Link to='/tour' className='nav-links' onClick={closeMobileMenu}>
                             Tour
-                        </Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link to='/view360' className='nav-links' onClick={closeMobileMenu}>
-                            view360
                         </Link>
                     </li>
                     <li className='nav-item'>
