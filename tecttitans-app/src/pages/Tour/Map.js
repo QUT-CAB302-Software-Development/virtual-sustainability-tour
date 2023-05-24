@@ -6,12 +6,13 @@ import Zoom from '@mui/material/Zoom';
 import PlaceIcon from '@mui/icons-material/Place';
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
+import Scale from '../../components/Scale';
 
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-        .domain([0, 50]) // range
-        .range(['#00FF00', '#FFA000', '#FF0000' ]); // use a color scale that goes from red to yellow to green
+        .domain([5, 45]) // range
+        .range(['#008000', '#9acd32', '#ffff00', '#ffa500','#ff4500']); // use a color scale that goes from red to yellow to green
     
     if(esgScore === null) { return '#B0B0B0'; }
     return colorScale(esgScore);
@@ -23,7 +24,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
     
     const tilt = 45;
     const heading = 0;
-    const minZoom = 14;
+    const minZoom = 17;
     const animationDuration = 250;
 
 
@@ -78,6 +79,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                     </div>
                 ))}
             </GoogleMapReact>
+            <Scale/>
         </div>
     );
 }
