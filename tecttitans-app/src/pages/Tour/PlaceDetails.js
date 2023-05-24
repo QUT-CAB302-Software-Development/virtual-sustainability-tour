@@ -31,7 +31,11 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState, setExpla
 
         {/* Close button */}
         <div className="close-button-container">
-          <IconButton onClick={() => {setPlaceDetailsState(false);setReviewBoxState(false);}}>
+          <IconButton onClick={() => {
+              setPlaceDetailsState(false);
+              setReviewBoxState(false);
+              setExplainESGState(false);
+            }}>
             <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
           </IconButton>
         </div>
