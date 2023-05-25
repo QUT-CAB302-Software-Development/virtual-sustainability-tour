@@ -1,6 +1,7 @@
 .card {
   position: relative;
   width: 320px;
+  height: fit-content;
 }
 
 .close-button-container {
@@ -14,4 +15,5 @@
   color: white;
   background-color: black;
   opacity: 0.75;
+  border-radius: 50%;
 }

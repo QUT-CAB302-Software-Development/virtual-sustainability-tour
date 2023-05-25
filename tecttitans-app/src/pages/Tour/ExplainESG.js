@@ -13,13 +13,13 @@ function ExplainESG({ place, setExplainESGState }){
 
 
     return (
-        <Card elevation={6} sx={{ borderRadius: '28px', height: 'fit-content' }} className='card'>
+        <Card elevation={6} sx={{ borderRadius: '28px' }} className='card'>
 
             <CardHeader
                 avatar={<EnergySavingsLeafIcon htmlColor="LimeGreen" fontSize='large'/>}
                 action={
                     <IconButton onClick={() => setExplainESGState(false)}>
-                        <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
+                        <CloseIcon className="close-button" />
                     </IconButton>
                 }
                 title={<Typography gutterBottom variant="h5">

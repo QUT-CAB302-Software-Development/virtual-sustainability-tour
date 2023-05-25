@@ -36,7 +36,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState, setExpla
               setReviewBoxState(false);
               setExplainESGState(false);
             }}>
-            <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
+            <CloseIcon className="close-button" />
           </IconButton>
         </div>
 
