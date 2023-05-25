@@ -20,6 +20,9 @@ html,
   pointer-events: none;
 }
 .containerText {
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
     pointer-events: all;
     align-items: center;
 }
