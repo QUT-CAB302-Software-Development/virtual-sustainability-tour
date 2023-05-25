@@ -63,8 +63,12 @@ export function Earth() {
                   zoomSpeed={0.6}
                   panSpeed={0.1}
                   rotateSpeed={0.1}
-                  minDistance={3} // Set the minimum distance for zooming
-                  maxDistance={10} // Set the maximum distance for zooming
+                  maxPolarAngle={2}
+                  minPolarAngle={-2}
+                  maxAzimuthAngle={0.5}
+                  minAzimuthAngle={-0.5}
+                  minDistance={4.3} // Set the minimum distance for zooming
+                  maxDistance={8} // Set the maximum distance for zooming
                 />
             </mesh>
         </>
