@@ -8,19 +8,19 @@ import Landing from '../pages/Home/Landing'
 import '../App.css';
 
 
-function AnimatedRoutes() {
+function Loader() {
     const location = useLocation();
 
     return (
     <AnimatePresence>
         <Routes location={location} key={location.pathname}>
             <Route path='/' exact element={Landing()} />
-             <Route path='/sign-up' element={SignUp()} />
-             <Route path='/tour' element={Tour()} />
-             <Route path='/login' element={Login()} />
+            <Route path='/sign-up' element={SignUp()} />
+            <Route path='/tour' element={Tour()} />
+            <Route path='/login' element={Login()} />
         </Routes>
     </AnimatePresence>
     )
 }
 
-export default AnimatedRoutes;
+export default Loader;

@@ -17,6 +17,11 @@ html,
   align-items: center;
   padding-top: 19%;
   z-index: 99;
+  pointer-events: none;
+}
+.containerText {
+    pointer-events: all;
+    align-items: center;
 }
 
 .logo {
