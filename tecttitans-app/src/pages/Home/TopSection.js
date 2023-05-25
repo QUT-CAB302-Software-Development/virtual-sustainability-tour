@@ -79,9 +79,11 @@ export function TopSection() {
 
     return (
         <div className= 'topSectionContainer' data-tilt>
-          <LoopingTypingHeading texts={texts} />
-          <p>Experience Brisbane's sustainability from the comfort of your own couch</p>
-          <ExploreButton onClick={handleExploreClick}> Explore Tour </ExploreButton>
+            <div className = 'containerText'>
+                <LoopingTypingHeading texts={texts} />
+                <p>Experience Brisbane's sustainability from the comfort of your own couch</p>
+                <ExploreButton onClick={handleExploreClick}> Explore Tour </ExploreButton>
+            </div>
         </div>
     );
 }
