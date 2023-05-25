@@ -103,24 +103,27 @@ function Tour() {
                         </div>
                         </Slide>
 
-                        <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
-                        <div>
-                            <ReviewBox
-                                place={placeClicked}
-                                setReviewBoxState={setReviewBoxState}
-                                comments={comments}
-                            />
-                        </div>
-                        </Slide>
+                        <Stack spacing={2}>
+                            <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
+                            <div>
+                                <ReviewBox
+                                    place={placeClicked}
+                                    setReviewBoxState={setReviewBoxState}
+                                    comments={comments}
+                                />
+                            </div>
+                            </Slide>
 
-                        <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
-                        <div>
-                            <ExplainESG
-                                place={placeClicked}
-                                setExplainESGState={setExplainESGState}
-                            />
-                        </div>
-                        </Slide>
+                            <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
+                            <div>
+                                <ExplainESG
+                                    place={placeClicked}
+                                    setExplainESGState={setExplainESGState}
+                                />
+                            </div>
+                            </Slide>
+                        </Stack>
+
 
                     </Stack>
                     </div>
