@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
 import { Tooltip } from '@mui/material';
@@ -9,7 +9,6 @@ import './Map.css';
 import Scale from '../../components/Scale';
 import { Typography } from '@mui/material';
 
-
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
         .domain([5, 45]) // range
@@ -19,23 +18,74 @@ function getColor(esgScore) {
     return colorScale(esgScore);
 }
 
-
 // google maps api usage ============================================================================================================
-function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {
-    
-    const animationDelay = 250;//ms
-    const tilt = 45;
-    const heading = 0;
-    const minZoom = 10;
+function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {   
+    const [tilt, setTilt] = useState(0);
+    const [heading, setHeading] = useState(60);
+    const minZoom = 17.2;
 
+    function animate() {
+        setTilt((prevTilt) => {
+            const targetTilt = 60;
+            const easingFactor = 0.08; // Adjust this value for different easing effects
+
+            const distanceTilt = targetTilt - prevTilt;
+            const deltaTilt = distanceTilt * easingFactor;
+
+            if (Math.abs(deltaTilt) > 0.1) {
+                setHeading((prevHeading) => {
+                    const targetHeading = 0;
+                    const distanceHeading = targetHeading - prevHeading;
+                    const deltaHeading = distanceHeading * easingFactor;
+
+                    if (Math.abs(deltaHeading) > 0.1 && prevTilt > 45) {
+                        return prevHeading + deltaHeading;
+                    } 
+                    else {
+                        return targetHeading;
+                    }
+                });
+
+                return prevTilt + deltaTilt;
+            }  
+            else {
+                setHeading(0);
+                return targetTilt;
+            }
+            });
+        }
+
+      
+      
+      useEffect(() => {
+        let animationLoop;
+        let counter = 0;
+      
+        const animateMultipleTimes = () => {
+          animate();
+          if (counter < 100) {
+            animationLoop = setTimeout(animateMultipleTimes, 20); // Delay between animate calls adjusted to 5ms
+          }
+          counter++;
+        };
+      
+        const initialAnimationTimeout = setTimeout(() => {
+          animationLoop = setTimeout(animateMultipleTimes, 20); // Start animation loop after 3-second delay
+        }, 2000);
+      
+        return () => {
+          clearTimeout(initialAnimationTimeout);
+          clearTimeout(animationLoop);
+        };
+      }, []);
+    const cardAnimationDelay = 50; // ms
 
     return (
         <div className="map-container">
-            
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_STYLE_KEY }}
                 center={coordinates}
-                zoom={zoom}
+                zoom={minZoom}
                 options={{
                     mapId: process.env.REACT_APP_GMAPS_ID,
                     disableDefaultUI: true, 
@@ -76,7 +126,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                                     setTimeout(() => {
                                         setPlaceDetailsState(true);
                                         setPlaceClicked(place);
-                                    }, animationDelay);
+                                    }, cardAnimationDelay);
                                 }}
                             />
                         </Tooltip>
@@ -88,9 +138,5 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
         </div>
     );
 }
-
-
-
-
 
 export default Map;
