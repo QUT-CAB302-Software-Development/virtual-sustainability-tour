@@ -58,17 +58,17 @@ function Navbar() {
                             Tour
                         </Link>
                     </li>
-{isLoggedIn ? ( // Check login status
-            <li className="nav-item">
-              <Logout onLogout={handleLoginStatusChange} /> {/* Pass callback to handle logout */}
-            </li>
-          ) : (
-            <li className="nav-item">
-              <Link to="/sign-up" className="nav-links" onClick={closeMobileMenu}>
-                {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
-              </Link>
-            </li>
-          )}
+                    {isLoggedIn ? ( // Check login status
+                        <li className="nav-item">
+                            <Logout onLogout={handleLoginStatusChange} /> {/* Pass callback to handle logout */}
+                        </li>
+                     ) : (
+                        <li className="nav-item">
+                            <Link to="/user/register" className="nav-links" onClick={closeMobileMenu}>
+                                {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
+                            </Link>
+                        </li>
+                     )}
                 </ul>
                 {/* <Link to='/sign-up'>
                 {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}

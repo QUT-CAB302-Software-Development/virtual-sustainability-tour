@@ -19,7 +19,7 @@ function SignUp(){
     const [error, setError] = useState(null);
 
 
-    const REGISTER_URL = "http://localhost:8080/user/register"
+    const REGISTER_URL = "http://localhost:3000/user/register"
 
     const inputs = [
         {
@@ -142,7 +142,7 @@ function SignUp(){
                     />
                 ))}
                 <button className="register-button" type="submit">Submit</button>
-                <p className="loginredirect"><a href='/login'>Already have an account?</a></p>
+                <p className="loginredirect"><a href='/user/login'>Already have an account?</a></p>
 
             </form>
         </motion.div>

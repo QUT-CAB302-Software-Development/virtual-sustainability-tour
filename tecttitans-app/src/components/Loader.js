@@ -15,9 +15,9 @@ function Loader() {
     <AnimatePresence>
         <Routes location={location} key={location.pathname}>
             <Route path='/' exact element={Landing()} />
-            <Route path='/sign-up' element={SignUp()} />
+            <Route path='/user/register' element={SignUp()} />
             <Route path='/tour' element={Tour()} />
-            <Route path='/login' element={Login()} />
+            <Route path='/user/login' element={Login()} />
         </Routes>
     </AnimatePresence>
     )

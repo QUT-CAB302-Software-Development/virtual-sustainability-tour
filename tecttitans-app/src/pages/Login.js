@@ -21,7 +21,7 @@ export default function Login() {
     });
     const signIn = useSignIn();
 
-    const LOGIN_URL = "http://localhost:8080/user/login";
+    const LOGIN_URL = "http://localhost:3000/user/login";
 
     const onSuccess = (res) => {
         console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
@@ -129,7 +129,7 @@ export default function Login() {
                     />
                     <button className="register-button" type="submit">Submit</button>
                 </div>
-                <p className="loginredirect"><a href='/sign-up'>Don&apos;t have an account?</a></p>
+                <p className="loginredirect"><a href='/user/register'>Don&apos;t have an account?</a></p>
 
             </form>
         </motion.div>
