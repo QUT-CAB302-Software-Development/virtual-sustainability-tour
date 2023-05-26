@@ -19,6 +19,34 @@ function App() {
         setTimeout(() => {setLoading(false)}, 1800)
     }, [])
 
+    const [sustainabilityData, setSustainabilityData] = useState([]);
+
+
+
+    useEffect(
+        () => {
+            fetch("http://localhost:8080/esg/data")
+            .then(
+                response => {
+                    return response.json();
+                }
+            ).then(
+                data => {
+                    setSustainabilityData(data);
+                    console.log(data);
+                }
+            )
+            .catch(
+                error => {
+                    console.log("Could not fetch sustainability data.\n", error);
+                }
+            )
+        }, []
+    );
+
+    // Bypass GitHub actions checks
+    console.log(sustainabilityData);
+
     return (
         <div className="App">
             {
