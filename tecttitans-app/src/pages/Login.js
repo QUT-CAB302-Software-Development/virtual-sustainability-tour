@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useSignIn } from 'react-auth-kit';
+import { Link } from 'react-router-dom';
 import { GoogleLogin } from '@leecheuk/react-google-login';
 import { gapi } from 'gapi-script';
 // HTTP request to connect with backend API
@@ -136,7 +137,7 @@ export default function Login({ setUser }) {
                     />
                     <button className="register-button" type="submit">Submit</button>
                 </div>
-                <p className="loginredirect"><a href='/user/register'>Don&apos;t have an account?</a></p>
+                <p className="loginredirect">Don&apos;t have an account?<Link to="/user/register">Register here</Link></p>
 
             </form>
         </motion.div>

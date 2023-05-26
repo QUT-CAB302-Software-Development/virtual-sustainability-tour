@@ -4,6 +4,7 @@ import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
 import { useState } from "react";
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function SignUp(){
 
@@ -142,7 +143,7 @@ function SignUp(){
                     />
                 ))}
                 <button className="register-button" type="submit">Submit</button>
-                <p className="loginredirect"><a href='/user/login'>Already have an account?</a></p>
+                <p className="loginredirect">Already have an account?<Link to="/user/login">Login here</Link></p>
 
             </form>
         </motion.div>
