@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import * as THREE from "three";
+import { TextureLoader } from "three";
 
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
-import { TextureLoader } from "three";
 
 export function Earth() {
     const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -28,7 +28,9 @@ export function Earth() {
     return (
         <>
             {/* <ambientLight intensity={1} /> */}
-            <pointLight color="#f6f3ea" position={[2, 0, 5]} intensity={6} />
+            {/* THis is the sun */}
+            <pointLight color="#f6f3ea" position={[2, 0, 5]} intensity={10} />  
+            
             <Stars
                 radius={200}
                 depth={60}
@@ -37,6 +39,8 @@ export function Earth() {
                 saturation={0}
                 fade={true}
             />
+
+            {/* CLOUDS */}
             <mesh ref={cloudsRef} position={[0, 0, 3]}>
                 <sphereGeometry args={[1.005, 32, 32]} />
                 <meshPhongMaterial
@@ -47,6 +51,8 @@ export function Earth() {
                     side={THREE.DoubleSide}
                 />
             </mesh>
+
+            {/* EARTH */}
             <mesh ref={earthRef} position={[0, 0, 3]}>
                 <sphereGeometry args={[1, 32, 32]} />
                 <meshPhongMaterial specularMap={specularMap} />
@@ -63,12 +69,8 @@ export function Earth() {
                   zoomSpeed={0.6}
                   panSpeed={0.1}
                   rotateSpeed={0.1}
-                  maxPolarAngle={2}
-                  minPolarAngle={-2}
-                  maxAzimuthAngle={0.5}
-                  minAzimuthAngle={-0.5}
-                  minDistance={4.3} // Set the minimum distance for zooming
-                  maxDistance={8} // Set the maximum distance for zooming
+                  minDistance={3} // Set the minimum distance for zooming
+                  maxDistance={10} // Set the maximum distance for zooming
                 />
             </mesh>
         </>

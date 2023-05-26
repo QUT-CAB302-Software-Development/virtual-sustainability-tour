@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -30,29 +30,6 @@ function Tour() {
     const [explainESGState, setExplainESGState] = useState(false);
     const [placeDetailsState, setPlaceDetailsState] = useState(false);
     const [reviewBoxState, setReviewBoxState] = useState(false);
-
-    const [comments, setComments] = useState([]);
-    // GET data from API using React
-    useEffect(() => {
-        const fetchComments = async () => {
-        try {
-            const response = await fetch('https://dummyjson.com/comments');
-            const data = await response.json();
-            // setComments(data);
-            if (Array.isArray(data.comments)) {
-            setComments(data.comments);
-            } else {
-            console.error('API response is not an array:', data);
-            }
-        }
-        catch (error) {
-            console.error('Error fetching comment data', error);
-        }
-        };
-        fetchComments();
-    }, []);
-
-
 
     return(
         <motion.div
@@ -102,17 +79,7 @@ function Tour() {
                             />
                         </div>
                         </Slide>
-
-                        <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
-                        <div>
-                            <ReviewBox
-                                place={placeClicked}
-                                setReviewBoxState={setReviewBoxState}
-                                comments={comments}
-                            />
-                        </div>
-                        </Slide>
-
+                        
                         <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
                         <div>
                             <ExplainESG
@@ -121,6 +88,19 @@ function Tour() {
                             />
                         </div>
                         </Slide>
+
+                        <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
+                        <div>
+                            <ReviewBox
+                                place={placeClicked}
+                                setReviewBoxState={setReviewBoxState}
+                            />
+                        </div>
+                        </Slide>
+
+                        {/* <Stack spacing={2}>
+                        </Stack> */}
+
 
                     </Stack>
                     </div>
