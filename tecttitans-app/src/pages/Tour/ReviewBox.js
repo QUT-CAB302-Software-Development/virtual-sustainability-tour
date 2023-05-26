@@ -38,7 +38,7 @@ function ReviewBox({ place, setReviewBoxState }){
         fetchComments();
     }, []);
 
-    const displayedComments = comments?.slice(0,3); // display only three comments
+    const displayedComments = comments?.slice(0,6); // display only 6 comments
     const placeHolderText = "Enter your review..."
 
 
@@ -99,7 +99,7 @@ function ReviewBox({ place, setReviewBoxState }){
                 <Typography gutterBottom variant="h6" textAlign="center">Other Customer Feedback</Typography> {/*  used dummy data can be improved to look better*/}
                 {displayedComments?.map((comment) => (
                     <div key={comment.id}>
-                        <p className='comments'>{comment.body}</p>
+                        <Typography className='comments' gutterBottom variant="subtitle2">{comment.body}</Typography>
                     </div>
                 ))}
 
