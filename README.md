@@ -1,44 +1,39 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-8d59dc4de5201274e310e4c54b9627a8934c3b88527886e3b421487c677d23eb.svg)](https://classroom.github.com/a/cgVKkZfY)
-# Web Application with React, Spring boot, and H2 Database
 
-## PR Documentation:
+# Virtual Sustainability Tour of Brisbane
 
-### Describe your changes
 
-### Issue ticket number and link
 
-### Checklist before requesting a review
-- [] I have performed a self-review of my code
-- [] I have tested the extensively tested the code
-- [] Added comments to code to follow best practice
+![Hi](https://imgur.com/a/8XDrT8w)
+![Hi](https://imgur.com/a/8XDrT8w)
 
-## Dependencies
 
-This project uses the following dependencies:
+## 🛠 Technologies
+Frontend: ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) 
+![Node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Threejs](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-- Amazon Corretto 18
-- Spring Boot 3.0.4
-- Spring H2
-- React
+Backend:
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
 
-## Software Requirements
+Testing & CI:
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+	![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 
-## Getting Started
 
-To get started, clone this repository and open the project in IntelliJ IDEA Ultimate. Maven will download the required dependencies defined in the `pom.xml` file.
 
-### 1. Configure the Project SDK
 
-To configure the project SDK, goto `File > Project Structure...` and select the `Project` tab. In the `SDK` dropdown, select `corretto-18`. 
+## Usage
 
-If the `corretto-18` SDK is not available, you will need to download and install it. This can be done by clicking the `Add SDK > Download JDK...` button and select `Version: 18`, `Vendor: Amazon Corretto 18.0.2`.
+Clone and start this project
 
-### 2. Running the Application
-
-To run the application, run the `main` method in the `example.application.Main` class, found in `demo/src/main/java/example/application/DemoApplication.java`.
-
-This will start the application on port 8080. You can access the application by navigating to `http://localhost:8080/login` in your browser.
-
-### Project Structure
-
-In this project, the Java code is located in the `src/main/java` directory, and the HTML templates are located in the `src/main/resources/templates` directory. Test files are located in the `src/test/java` directory.
+```bash
+  git clone 
+  cd web-application-project-techtitans
+  cd tecttitans-app // navigate to frontend
+  npm i // install dependencies
+  npm start
+```
+    
