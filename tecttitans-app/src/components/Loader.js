@@ -8,16 +8,16 @@ import Home from '../pages/Home/Home'
 import '../App.css';
 
 
-function Loader() {
+function Loader({ setUser }) {
     const location = useLocation();
 
     return (
     <AnimatePresence>
         <Routes location={location} key={location.pathname}>
             <Route path='/' exact element={Home()} />
-            <Route path='/sign-up' element={SignUp()} />
+            <Route path='/user/register' element={SignUp()} />
             <Route path='/tour' element={Tour()} />
-            <Route path='/login' element={Login()} />
+            <Route path='/user/login' element={<Login setUser={setUser} />} />
         </Routes>
     </AnimatePresence>
     )
