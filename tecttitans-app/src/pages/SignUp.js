@@ -20,7 +20,7 @@ function SignUp(){
     const [error, setError] = useState(null);
 
 
-    const REGISTER_URL = "http://localhost:3000/user/register"
+    const REGISTER_URL = "http://localhost:8080/user/register"
 
     const inputs = [
         {
