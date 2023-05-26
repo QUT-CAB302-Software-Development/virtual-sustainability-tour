@@ -34,7 +34,7 @@ function SignUp(){
         },
         {
             id: 2,
-            name:"firstName",
+            name:"name",
             type:"text",
             placeholder:"Name",
             errorMessage:"Name must be minimum 3 characters and may not include special characters!",

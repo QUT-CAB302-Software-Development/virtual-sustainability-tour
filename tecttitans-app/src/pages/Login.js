@@ -23,7 +23,7 @@ export default function Login({ setUser }) {
     });
     const signIn = useSignIn();
 
-    const LOGIN_URL = "http://localhost:8000/user/login";
+    const LOGIN_URL = "http://localhost:8080/user/login";
 
     const onSuccess = (res) => {
         console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
