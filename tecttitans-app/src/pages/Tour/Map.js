@@ -1,145 +1,142 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { scaleQuantize } from 'd3-scale';
 import GoogleMapReact from 'google-map-react';
-import { Typography, Rating, Tooltip, Stack } from '@mui/material';
+import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
-
 import PlaceIcon from '@mui/icons-material/Place';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
-import EnergySavingsLeafOutlinedIcon from '@mui/icons-material/EnergySavingsLeafOutlined';
-
 import getESGScore from "../../data/getESGScore";
 import './Map.css';
-
-
+import Scale from '../../components/Scale';
+import { Typography } from '@mui/material';
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-        .domain([0, 100]) // range
-        .range(['#FF0000', '#FFA000', '#00FF00' ]); // use a color scale that goes from red to yellow to green
+        .domain([5, 45]) // range
+        .range(['#008000', '#9acd32', '#ffff00', '#ffa500','#ff4500']); // use a color scale that goes from red to yellow to green
     
     if(esgScore === null) { return '#B0B0B0'; }
     return colorScale(esgScore);
 }
 
-function placePopUp({ place, apiKey }){
-    const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${apiKey}`;
-    const name = place.name;
-    const starRating = Number(place.rating);
-    const esgScore = getESGScore(name);
-    let esgRatingElem = null;
-
-    if (esgScore !== null) {
-        const esgStarRating = esgScore * 5 / 100;
-        esgRatingElem = 
-            <Rating 
-                value={esgStarRating}
-                icon={<EnergySavingsLeafIcon htmlColor='LimeGreen' fontSize='small'/>}
-                emptyIcon={<EnergySavingsLeafOutlinedIcon fontSize='small'/>}
-                readonly 
-            />
-    }
-
-    return(
-        <div className="popup">
-            
-            <Typography variant="subtitle1" gutterBottom>{name}</Typography>
-
-            <img 
-                className="pointer"
-                src={imgSrc}
-                alt={name}
-            />
-           
-            <Stack margin="auto">
-                <Rating margin="auto"
-                  value={starRating}
-                  icon={<StarIcon htmlColor='DarkOrange' fontSize='small'/>}
-                  emptyIcon={<StarBorderIcon fontSize='small'/>}
-                  readonly 
-                />
-                {esgRatingElem}
-            </Stack>
-        </div>
-    );
-}
-
 // google maps api usage ============================================================================================================
-function Map({ places, coordinates, setPlaceClicked, setPlaceDetailsState }) {
+function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {   
+    const [tilt, setTilt] = useState(0);
+    const [heading, setHeading] = useState(60);
+    const minZoom = 17.2;
 
-    const zoom = 17;
-    const circleRadius = 200;
-    const circleBorderWidth = 5;
-    const circleTotalRadius = circleBorderWidth + circleRadius;
-    const circleViewBox = "0 0 " + (circleTotalRadius * 2) + ' ' + (circleTotalRadius * 2);
+    function animate() {
+        setTilt((prevTilt) => {
+            const targetTilt = 60;
+            const easingFactor = 0.08; // Adjust this value for different easing effects
 
-    const defaultCoordinates = coordinates;
-    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    
+            const distanceTilt = targetTilt - prevTilt;
+            const deltaTilt = distanceTilt * easingFactor;
+
+            if (Math.abs(deltaTilt) > 0.1) {
+                setHeading((prevHeading) => {
+                    const targetHeading = 0;
+                    const distanceHeading = targetHeading - prevHeading;
+                    const deltaHeading = distanceHeading * easingFactor;
+
+                    if (Math.abs(deltaHeading) > 0.1 && prevTilt > 45) {
+                        return prevHeading + deltaHeading;
+                    } 
+                    else {
+                        return targetHeading;
+                    }
+                });
+
+                return prevTilt + deltaTilt;
+            }  
+            else {
+                setHeading(0);
+                return targetTilt;
+            }
+            });
+        }
+
+      
+      
+      useEffect(() => {
+        let animationLoop;
+        let counter = 0;
+      
+        const animateMultipleTimes = () => {
+          animate();
+          if (counter < 100) {
+            animationLoop = setTimeout(animateMultipleTimes, 20); // Delay between animate calls adjusted to 5ms
+          }
+          counter++;
+        };
+      
+        const initialAnimationTimeout = setTimeout(() => {
+          animationLoop = setTimeout(animateMultipleTimes, 20); // Start animation loop after 3-second delay
+        }, 2000);
+      
+        return () => {
+          clearTimeout(initialAnimationTimeout);
+          clearTimeout(animationLoop);
+        };
+      }, []);
+    const animationDelay = 50; // ms
+
     return (
-        <div className="mapContainer">
-            
+        <div className="map-container">
             <GoogleMapReact
-                bootstrapURLKeys={{ key: apiKey }}
-                defaultCenter={defaultCoordinates}
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_STYLE_KEY }}
                 center={coordinates}
-                defaultZoom={zoom}
-                zoom={zoom}
-                margin={[50, 50, 50, 50]}
+                zoom={minZoom}
                 options={{
+                    mapId: process.env.REACT_APP_GMAPS_ID,
                     disableDefaultUI: true, 
-                    zoomControl: false, 
-                    mapTypeControl: true,
-                    streetViewControl: false,
                     disableDoubleClickZoom: true,
+                    zoomControl: false, 
+                    streetViewControl: false,
                     fullscreenControl: false,
+                    mapTypeControl: false,
                     clickableIcons: false,
-                    mapId: 'c8d80a179e82f473',
-                    tilt: 45,
-                    minZoom: zoom,
+                    minZoom: minZoom,
+                    heading: heading,
+                    tilt: tilt,
                 }}
-
             >
                 {places.map((place, i) => (
                     <div
-                        className="markerContainer"
+                        className="marker-container"
                         lat={Number(place.geometry.location.lat)}
                         lng={Number(place.geometry.location.lng)}
                         key={i}
                     >
                         <Tooltip
-                            className="tooltip"
                             TransitionComponent={Zoom}
-                            title={ placePopUp({ place, apiKey }) }
+                            title={ 
+                                <Typography variant="subtitle1" align="center">
+                                    {place.name}
+                                </Typography>
+                            }
+                            arrow
                         >
-                            <div className="icon">
-                                <PlaceIcon
-                                    sx={{ color: getColor(getESGScore(place.name)) }}
-                                    fontSize="large"
-                                    onClick={() => {setPlaceClicked(place); setPlaceDetailsState(true);}}
-                                />
-                               <svg 
-                                    className="svg" 
-                                    viewBox={circleViewBox}
-                               >
-                                    <circle 
-                                        cx={circleTotalRadius}
-                                        cy={circleTotalRadius}
-                                        r={circleRadius}
-                                        stroke-width={circleBorderWidth}
-                                    />
-                                </svg>
-                            </div>
+                            <PlaceIcon 
+                                className="icon"
+                                sx={{ color: getColor(getESGScore(place.name)), fontSize: 48 }}
+                                onClick={() => {
+                                    setPlaceDetailsState(false);
+                                    setReviewBoxState(false);
+                                    setExplainESGState(false);
+                                    setTimeout(() => {
+                                        setPlaceDetailsState(true);
+                                        setPlaceClicked(place);
+                                    }, animationDelay);
+                                }}
+                            />
                         </Tooltip>
                     </div>
                 ))}
             </GoogleMapReact>
+            
+            <Scale/>
         </div>
     );
 }
-
-
 
 export default Map;

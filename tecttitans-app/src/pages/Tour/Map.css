@@ -1,49 +1,21 @@
-  .popup {
-    padding: 2px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 140px;
-  }
-
-  .mapContainer {
+  .map-container {
     position: absolute;
     top: 10vh;
     height: 90vh;
     width: 100%;
   }
   
-  .markerContainer {
+  .marker-container {
     display: flex;
     align-items: center;
     position: relative;
-  }
-  
-  .tooltip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    border-radius: 30px;
+
   }
 
-  .svg {
-    position: absolute;
-    z-index: -1;
-    transform: translate(0%, 50%);
-    opacity: 0.3;
-    stroke: black;
-    stroke-opacity: 1;
-  }
-  
   .icon {
     stroke: black;
+    height: 50px;
     stroke-width: 0.8px;
     transform: translate(-50%, -100%);
   }
-  
-  .pointer {
-    cursor: pointer;
-  }
+ 

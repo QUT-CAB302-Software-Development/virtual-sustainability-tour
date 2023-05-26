@@ -3,13 +3,14 @@ import './Navbar.css';
 import {Link} from "react-router-dom";
 import {Button} from "./Button";
 import techtitanslogo from '../images/Techwhite.png';
+// import Logout from "../pages/Logout.js";
 
 function Navbar() {
     // toggle the hamburger menu and update the state
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true)
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false)
+    const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
         if(window.innerWidth <= 960){
@@ -49,15 +50,13 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/view360' className='nav-links' onClick={closeMobileMenu}>
-                            view3D
-                        </Link>
-                    </li>
-                    <li className='nav-item'>
                         <Link to='/sign-up' className='nav-links' onClick={closeMobileMenu}>
                             {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
                         </Link>
                     </li>
+                     {/* <li className='nav-item'>
+                        <Logout />
+                    </li> */}
                 </ul>
                 {/* <Link to='/sign-up'>
                 {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}

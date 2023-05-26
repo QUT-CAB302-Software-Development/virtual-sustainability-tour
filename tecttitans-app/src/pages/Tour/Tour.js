@@ -1,21 +1,58 @@
-import React, {useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Collapse, CssBaseline } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import '../../App.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Slide, CssBaseline, Stack, Fade } from '@mui/material';
+
 import places from "../../data/hotels_data.json"
 import PlaceDetails from './PlaceDetails';
 import SearchBox from './SearchBox';
+import ReviewBox from './ReviewBox';
+import ExplainESG from './ExplainESG';
+import View360 from './View360';
 import Map from './Map';
-import './PlaceDetails.css';
+
+import './Tour.css';
+import './Card.css';
+import '../../App.css';
+
+
 
 function Tour() {
+
     const theme = createTheme();    
+
     const [placeClicked, setPlaceClicked] = useState(places[0]);
+    const [coordinates, setCoordinates] = useState({lat: -27.4711435, lng: 153.0274624});
+    const [zoom, setZoom] = useState(16);
+
+    const [view360State, setView360State] = useState(false);
+    const [explainESGState, setExplainESGState] = useState(false);
     const [placeDetailsState, setPlaceDetailsState] = useState(false);
-    const [coordinates, setCoordinates] = useState({lat: -27.46794, lng: 153.02809});
-    const [zoom, setZoom] = useState(15);
+    const [reviewBoxState, setReviewBoxState] = useState(false);
+
+    const [comments, setComments] = useState([]);
+    // GET data from API using React
+    useEffect(() => {
+        const fetchComments = async () => {
+        try {
+            const response = await fetch('https://dummyjson.com/comments');
+            const data = await response.json();
+            // setComments(data);
+            if (Array.isArray(data.comments)) {
+            setComments(data.comments);
+            } else {
+            console.error('API response is not an array:', data);
+            }
+        }
+        catch (error) {
+            console.error('Error fetching comment data', error);
+        }
+        };
+        fetchComments();
+    }, []);
+
+
 
     return(
         <motion.div
@@ -25,25 +62,85 @@ function Tour() {
         >
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                
-                <SearchBox 
-                    places={places}
-                    setZoom={setZoom}
-                    setCoordinates={setCoordinates} 
-                />
                 <Map 
                     places={places}
                     zoom={zoom}
                     coordinates={coordinates}
                     setPlaceClicked={setPlaceClicked}
                     setPlaceDetailsState={setPlaceDetailsState}
+                    setReviewBoxState={setReviewBoxState}
+                    setExplainESGState={setExplainESGState}
                 />
-                <Collapse orientation='horizontal' in={placeDetailsState} timeout="auto" unmountOnExit>
-                    <PlaceDetails
-                        place={placeClicked}
-                        setPlaceDetailsState={setPlaceDetailsState}
-                    />
-                </Collapse>
+
+
+
+                <div className='elements-grid'>
+
+
+
+                    <div className='search-container'>
+                        <SearchBox 
+                            places={places}
+                            setZoom={setZoom}
+                            setCoordinates={setCoordinates} 
+                        />
+                    </div>
+
+
+
+                    <div className='card-container'>
+                    <Stack direction="row" spacing={2}>
+
+                        <Slide direction='right' in={placeDetailsState} mountOnEnter unmountOnExit>
+                        <div>
+                            <PlaceDetails
+                                place={placeClicked}
+                                setPlaceDetailsState={setPlaceDetailsState}
+                                setReviewBoxState={setReviewBoxState}
+                                setExplainESGState={setExplainESGState}
+                                setView360State={setView360State}
+                            />
+                        </div>
+                        </Slide>
+
+                        <Slide direction='right' in={reviewBoxState} mountOnEnter unmountOnExit>
+                        <div>
+                            <ReviewBox
+                                place={placeClicked}
+                                setReviewBoxState={setReviewBoxState}
+                                comments={comments}
+                            />
+                        </div>
+                        </Slide>
+
+                        <Slide direction='right' in={explainESGState} mountOnEnter unmountOnExit>
+                        <div>
+                            <ExplainESG
+                                place={placeClicked}
+                                setExplainESGState={setExplainESGState}
+                            />
+                        </div>
+                        </Slide>
+
+                    </Stack>
+                    </div>
+
+
+
+                    <Fade className='view360-container' in={view360State} mountOnEnter unmountOnExit>
+                    <div>
+                        <View360 
+                            place={placeClicked}
+                            setView360State={setView360State}
+                        />
+                    </div>
+                    </Fade>
+
+
+
+                </div>
+                
+                
             </ThemeProvider>
         </motion.div>
     );
