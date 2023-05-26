@@ -1,0 +1,42 @@
+[
+  {
+    "hotel_name": "Sofitel",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Pullman",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Novotel",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Mercure",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Ibis",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Rydges",
+    "esg_score": 14.6
+  },
+  {
+    "hotel_name": "Event Cinemas",
+    "esg_score": 14.6
+  },
+  {
+    "hotel_name": "Hilton",
+    "esg_score": 17.0
+  },
+  {
+    "hotel_name": "Marriott",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Hyatt",
+    "esg_score": 30.0
+  }
+]

@@ -1,0 +1,21 @@
+  .map-container {
+    position: absolute;
+    top: 10vh;
+    height: 90vh;
+    width: 100%;
+  }
+  
+  .marker-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+  }
+
+  .icon {
+    stroke: black;
+    height: 50px;
+    stroke-width: 0.8px;
+    transform: translate(-50%, -100%);
+  }
+ 

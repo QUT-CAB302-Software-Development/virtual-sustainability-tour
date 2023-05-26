@@ -1,0 +1,17 @@
+.card {
+  position: relative;
+  width: 320px;
+}
+
+.close-button-container {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 2;
+}
+  
+.close-button {
+  color: white;
+  background-color: black;
+  opacity: 0.75;
+}
