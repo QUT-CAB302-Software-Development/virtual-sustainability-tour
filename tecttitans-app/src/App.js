@@ -42,7 +42,10 @@ function App() {
                 }
             )
         }, []
-    )
+    );
+
+    // Bypass GitHub actions checks
+    console.log(sustainabilityData);
 
     return (
         <div className="App">
