@@ -4,12 +4,15 @@ import application.database.sustainability.CompanyData;
 import application.database.sustainability.CompanyDatabase;
 import application.database.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class EsgController {
@@ -25,11 +28,7 @@ public class EsgController {
     @GetMapping("/esg/score/{name}")
     public double getEsgScore(@PathVariable String name) {
 
-        System.out.println("Received");
-
         double score = companyDatabase.calculateESGScoreByName(name);
-
-        System.out.println(score);
 
         return score;
     }
