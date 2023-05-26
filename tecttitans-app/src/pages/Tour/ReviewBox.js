@@ -47,7 +47,7 @@ function ReviewBox({ place, setReviewBoxState }){
         <Card elevation={6} sx={{ borderRadius: '28px' }} className='card'>
 
             <CardHeader
-                avatar={<RateReviewIcon color="primary" fontSize='large'/>}
+                avatar={<RateReviewIcon color="primary" sx={{fontSize: '50px'}}/>}
                 action={
                     <IconButton onClick={() => setReviewBoxState(false)}>
                         <CloseIcon className="close-button" />

@@ -1,21 +1,22 @@
 import React from 'react';
-import './Home.css';
-import {Earth} from "../../components/earth";
 import styled from "styled-components";
-import {Canvas } from "@react-three/fiber";
+import {Earth} from "./Earth";
+import { Canvas } from "@react-three/fiber";
 import {Suspense} from "react";
 import {TopSection} from "./TopSection";
 
 
 const CanvasContainer = styled.div `
   width: 100vw;
-  height: 90vh;
+  height: 160vh;
 `;
-function Landing() {
+
+
+function Home() {
     return (
         <CanvasContainer>
             <TopSection />
-            <Canvas>
+            <Canvas style={{position: 'fixed', overflow: 'hidden'}}> 
                 <Suspense fallback={null}>
                     <Earth />
                 </Suspense>
@@ -23,4 +24,4 @@ function Landing() {
         </CanvasContainer>
     );
 }
-export default Landing;
+export default Home;
