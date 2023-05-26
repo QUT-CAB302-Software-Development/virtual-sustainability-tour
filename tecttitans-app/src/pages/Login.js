@@ -13,7 +13,8 @@ import { gapi } from 'gapi-script';
 //
 
 const clientId = "353588049838-0uanbho4sp1tqs675r5brmse59132g4a.apps.googleusercontent.com";
-export default function Login() {
+export default function Login({ setUser }) {
+
 
     const [values, setValues] = useState({
         username: "",
@@ -62,7 +63,7 @@ export default function Login() {
 
         gapi.load('client:auth2', start);
 
-    });
+    }, []);
 
 
 
@@ -76,6 +77,12 @@ export default function Login() {
             // successful login, redirect to tour
             // window.location.href = "/tour";
 
+            const { token, expiresIn, user } = response.data;
+            const authState = { username: values.username };
+            onSuccess( {token, expiresIn, authState, user });
+            setValues( {username: '', password: ''});
+            setUser({ token, expiresIn, authState });
+
             signIn({
                 token: response.data.token,
                 expiresIn: 3600,
@@ -85,8 +92,8 @@ export default function Login() {
 
             // clear form after successful login
             setValues({ username: '', password: ''})
-            // navigate to tour
-            window.location.href = "/tour";
+            // navigate to landing page
+            window.location.href = "/";
         })
 
         .catch((error) => {

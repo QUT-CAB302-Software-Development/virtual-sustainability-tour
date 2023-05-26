@@ -5,7 +5,7 @@ import {Button} from "./Button";
 import techtitanslogo from '../images/Techwhite.png';
 import Logout from "../pages/Logout.js";
 
-function Navbar() {
+function Navbar({ user }) {
     // toggle the hamburger menu and update the state
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
@@ -38,6 +38,7 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-container">
+                {user && <span>Welcome, {user.email}</span>}
                 <Link to="/" onClick={closeMobileMenu}>
                     <img src={techtitanslogo} className="navbar-logo" alt="TechTitans Logo" />
                 </Link>

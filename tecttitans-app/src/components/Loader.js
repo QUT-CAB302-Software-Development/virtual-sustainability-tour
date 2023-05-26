@@ -8,7 +8,7 @@ import Landing from '../pages/Home/Landing'
 import '../App.css';
 
 
-function Loader() {
+function Loader({ setUser}) {
     const location = useLocation();
 
     return (
@@ -17,7 +17,9 @@ function Loader() {
             <Route path='/' exact element={Landing()} />
             <Route path='/user/register' element={SignUp()} />
             <Route path='/tour' element={Tour()} />
-            <Route path='/user/login' element={Login()} />
+            <Route
+               path="/user/login"
+               element={<Login setUser={setUser} />} />
         </Routes>
     </AnimatePresence>
     )

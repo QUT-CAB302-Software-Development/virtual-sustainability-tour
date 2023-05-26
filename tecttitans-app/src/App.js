@@ -13,6 +13,7 @@ import { AuthProvider } from 'react-auth-kit';
 function App() {
 
     const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState(null);
     useEffect(() => {
         setLoading(true)
         setTimeout(() => {setLoading(false)}, 1800)
@@ -33,8 +34,8 @@ function App() {
                     cookieSecure={false}
                  >
                 <Router>
-                    <Navbar />
-                    <Loader />
+                    <Navbar user={user} />
+                    <Loader setUser={setUser} />
                 </Router>
                 </AuthProvider>
 
