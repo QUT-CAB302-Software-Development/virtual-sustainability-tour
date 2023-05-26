@@ -52,7 +52,7 @@ const LoopingTypingHeading = ({ texts }) => {
               // Start the 10-second timeout
               setTimeout(() => {
                   setCurrentText('T');
-              }, 10000);
+              }, 1000);
           }
       }, 100);
 
@@ -78,7 +78,7 @@ export function TopSection() {
     };
 
     return (
-        <div className= 'topSectionContainer' data-tilt>
+        <div className= 'topSectionContainer' >
             <div className = 'containerText'>
                 <LoopingTypingHeading texts={texts} />
                 <p>Experience Brisbane's sustainability from the comfort of your own couch</p>
