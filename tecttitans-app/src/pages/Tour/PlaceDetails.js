@@ -36,7 +36,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState, setExpla
               setReviewBoxState(false);
               setExplainESGState(false);
             }}>
-            <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
+            <CloseIcon className="close-button" />
           </IconButton>
         </div>
 
@@ -45,6 +45,7 @@ function PlaceDetails({ place, setPlaceDetailsState, setReviewBoxState, setExpla
           style={{ height: 'calc(100vh - 480px)' }}
           image={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${place.photos[0].photo_reference}&sensor=false&maxheight=400&maxwidth=250&key=${process.env.REACT_APP_GMAPS_PHOTO_KEY}`}
           title={place.name}
+          sx={{ borderRadius: '20px', boxShadow: '4' }}
         />
 
         
