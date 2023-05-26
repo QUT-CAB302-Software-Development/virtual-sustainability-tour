@@ -14,7 +14,6 @@
 
   .icon {
     stroke: black;
-    height: 50px;
     stroke-width: 0.8px;
     transform: translate(-50%, -100%);
   }

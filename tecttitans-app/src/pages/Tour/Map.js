@@ -11,8 +11,8 @@ import { Typography } from '@mui/material';
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-        .domain([5, 45]) // range
-        .range(['#008000', '#9acd32', '#ffff00', '#ffa500','#ff4500']); // use a color scale that goes from red to yellow to green
+    .domain([5, 45]) // range
+    .range(['#008000', '#9acd32', '#ffff00', '#ffa500','#ff4500']); // use a color scale that goes from red to yellow to green
     
     if(esgScore === null) { return '#B0B0B0'; }
     return colorScale(esgScore);
@@ -20,6 +20,7 @@ function getColor(esgScore) {
 
 // google maps api usage ============================================================================================================
 function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {   
+    const cardAnimationDelay = 100; // ms
     const [tilt, setTilt] = useState(0);
     const [heading, setHeading] = useState(60);
     const minZoom = 17.2;
@@ -78,7 +79,6 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
           clearTimeout(animationLoop);
         };
       }, []);
-    const animationDelay = 50; // ms
 
     return (
         <div className="map-container">
@@ -126,7 +126,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                                     setTimeout(() => {
                                         setPlaceDetailsState(true);
                                         setPlaceClicked(place);
-                                    }, animationDelay);
+                                    }, cardAnimationDelay);
                                 }}
                             />
                         </Tooltip>

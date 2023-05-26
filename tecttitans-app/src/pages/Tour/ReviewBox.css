@@ -1,68 +1,22 @@
-<<<<<<<< HEAD:tecttitans-app/src/pages/Tour/ReviewBox.css
-  .feedback {
+  .input {
     background-color: #ddd;
+    border-radius: 12px;
+    margin-block: 12px;
+    padding: 12px;
+    width: 100%;
+    min-height: 100px;
+    max-height: 200px;
     border: none;
-    height: 210px;
+    resize: none;
   }
 
   .feedback-form {
     position: 'relative';
-    margin-bottom:10px;
+    margin-bottom: 12px;
   }
 
   .comments {
     color: blue;
     text-align: center;
-    font-size: 14px;
-    margin: 5px 0;
+    font-size: 16px;
   }
-
-  .review-card {
-     position: absolute;
-     top: 0;
-     right: 0;
-     z-index: 2;
-     width: 300px;
-     padding: 20px;
-     overflow-y: auto;
-     height: 275;
-     display: block;
-     border: 1px solid #ccc;
-     border-radius: 5px;
-     padding: 6px;
- }
-
- .submit-btn {
-     background-color: orange;
-     color: white;
-     padding: 5px 10px;
-     letter-spacing: 4px;
-     font-size: 20px;
-     font-weight: normal;
-     text-transform: uppercase;
- }
-
- .h3text {
-        text-align: center;
-        padding: 5px 0;
-        font-size: 14px;
-        color: black;
-        font-weight: bold;
- }
-
-.card {
-  position: relative;
-}
-
-.close-button-container {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  z-index: 2;
-}
-
-.close-button {
-  color: white;
-  background-color: black;
-  opacity: 0.75;
-}

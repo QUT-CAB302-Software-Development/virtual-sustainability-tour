@@ -1,11 +1,7 @@
-import React from "react";
-import { IconButton, Card, CardContent, Typography, CardHeader } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import React from 'react';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
+import { Typography } from '@mui/material';
 
-import './ReviewBox.css';
-import './Card.css';
-import './ExplainESG.css';
 
 
 const desc = [
@@ -15,36 +11,22 @@ const desc = [
     "Weights are assigned to each metric to reflect its importance. The normalized scores for each metric are multiplied by their respective weights, and the weighted scores are summed up to obtain an overall ESG score for the company. This score is rounded, multiplied by a normalization factor, and returned as the final result."
 ]
 
-
-function ExplainESG({ place, setExplainESGState }){
-
-
-
+function AboutESG() {
     return (
-        <Card elevation={6} sx={{ borderRadius: '28px' }} className='card'>
+        <div elevation={6} sx={{ borderRadius: '28px' }} className='card'>
 
-            <CardHeader
-                avatar={<EnergySavingsLeafIcon htmlColor="LimeGreen" sx={{fontSize: '50px'}}/>}
-                action={
-                    <IconButton onClick={() => setExplainESGState(false)}>
-                        <CloseIcon className="close-button" />
-                    </IconButton>
-                }
-                title={<Typography gutterBottom variant="h5">
+                    <Typography gutterBottom variant="h5">
                         How Do We Rate Sustainability?
                     </Typography>
-                }/>
+                    <EnergySavingsLeafIcon htmlColor="LimeGreen" fontSize='large'/>
+           
 
-
-            <CardContent sx={{ marginX: "4px", marginTop: "-24px" }}>
                 {desc.map((para) => (
                     <Typography gutterBottom variant="subtitle2" align="center" fontWeight="normal">
                         {para}
                     </Typography>
                 ))}
-            </CardContent>
-        </Card>
-    )
-};
-
-export default ExplainESG;
+        </div>
+    );
+}
+export default AboutESG;
