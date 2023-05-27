@@ -1,0 +1,8 @@
+.topSectionContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    top: 25vh;
+    z-index: 2;
+}
