@@ -8,6 +8,7 @@ import getESGScore from "../../data/getESGScore";
 import './Map.css';
 import Scale from '../../components/Scale';
 import { Typography } from '@mui/material';
+import MapSwitch from '../../components/MapSwitch';
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
@@ -24,6 +25,12 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
     const [heading, setHeading] = useState(60);
     const minZoom = 17.2;
     const cardAnimationDelay = 100; // ms
+    const [mapId, setMapId] = useState(process.env.REACT_APP_GMAPS_ID);
+
+    const handleToggle = (isChecked) => {
+        const newMapId = isChecked ? process.env.REACT_APP_GMAPS_ID2 : process.env.REACT_APP_GMAPS_ID;
+        setMapId(newMapId);
+      };
 
     function animate() {
         setTilt((prevTilt) => {
@@ -55,8 +62,6 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
             }
             });
         }
-
-      
       
       useEffect(() => {
         let animationLoop;
@@ -81,60 +86,60 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
       }, []);
 
     return (
-        <div className="map-container">            
+        <div className="map-container">    
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_STYLE_KEY }}
                 center={coordinates}
-                zoom={minZoom}
+                zoom={zoom}
                 options={{
-                    disableDefaultUI: true, 
-                    disableDoubleClickZoom: true,
-                    zoomControl: false, 
-                    streetViewControl: false,
-                    fullscreenControl: false,
-                    mapTypeControl: false,
-                    clickableIcons: false,
-                    minZoom: minZoom,
-                    heading: heading,
-                    tilt: tilt,
-                    mapId: process.env.REACT_APP_GMAPS_ID,
+                disableDefaultUI: true,
+                disableDoubleClickZoom: true,
+                zoomControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                mapTypeControl: false,
+                clickableIcons: false,
+                minZoom: minZoom,
+                heading: heading,
+                tilt: tilt,
+                mapId: mapId,
                 }}
             >
                 {places.map((place, i) => (
-                    <div
-                        className="marker-container"
-                        lat={Number(place.geometry.location.lat)}
-                        lng={Number(place.geometry.location.lng)}
-                        key={i}
+                <div
+                    className="marker-container"
+                    lat={Number(place.geometry.location.lat)}
+                    lng={Number(place.geometry.location.lng)}
+                    key={i}
+                >
+                    <Tooltip
+                    TransitionComponent={Zoom}
+                    title={
+                        <Typography variant="subtitle1" align="center">
+                        {place.name}
+                        </Typography>
+                    }
+                    arrow
                     >
-                        <Tooltip
-                            TransitionComponent={Zoom}
-                            title={ 
-                                <Typography variant="subtitle1" align="center">
-                                    {place.name}
-                                </Typography>
-                            }
-                            arrow
-                        >
-                            <PlaceIcon 
-                                className="icon"
-                                sx={{ color: getColor(getESGScore(place.name)), fontSize: 48 }}
-                                onClick={() => {
-                                    setPlaceDetailsState(false);
-                                    setReviewBoxState(false);
-                                    setExplainESGState(false);
-                                    setTimeout(() => {
-                                        setPlaceDetailsState(true);
-                                        setPlaceClicked(place);
-                                    }, cardAnimationDelay) // ms);
-                                }}
-                            />
-                        </Tooltip>
-                    </div>
+                    <PlaceIcon
+                        className="icon"
+                        sx={{ color: getColor(getESGScore(place.name)), fontSize: 48 }}
+                        onClick={() => {
+                        setPlaceDetailsState(false);
+                        setReviewBoxState(false);
+                        setExplainESGState(false);
+                        setTimeout(() => {
+                            setPlaceDetailsState(true);
+                            setPlaceClicked(place);
+                        }, cardAnimationDelay);
+                        }}
+                    />
+                    </Tooltip>
+                </div>
                 ))}
             </GoogleMapReact>
-            
-            <Scale/>
+            <MapSwitch onToggle={handleToggle}/> 
+            <Scale/> 
         </div>
     );
 }
