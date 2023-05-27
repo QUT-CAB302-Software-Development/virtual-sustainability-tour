@@ -63,14 +63,12 @@ export function Earth() {
                     roughness={0.9}
                 />
                 <OrbitControls
-                  enableZoom={true}
+                  enableZoom={false}
                   enablePan={true}
                   enableRotate={true}
                   zoomSpeed={0.6}
                   panSpeed={0.1}
                   rotateSpeed={0.1}
-                  minDistance={3} // Set the minimum distance for zooming
-                  maxDistance={10} // Set the maximum distance for zooming
                 />
             </mesh>
         </>

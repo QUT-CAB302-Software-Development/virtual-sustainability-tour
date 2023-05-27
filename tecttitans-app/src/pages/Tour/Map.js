@@ -97,7 +97,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                     minZoom: minZoom,
                     heading: heading,
                     tilt: tilt,
-                    mapId: process.env.REACT_APP_GMAPS_ID2,
+                    mapId: process.env.REACT_APP_GMAPS_ID,
                 }}
             >
                 {places.map((place, i) => (
