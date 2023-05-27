@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import SignUp from '../pages/SignUp';
 import Tour from '../pages/Tour/Tour';
 import Login from '../pages/Login';
-import Landing from '../pages/Home/Landing'
+import Home from '../pages/Home/Home'
 import '../App.css';
 
 
@@ -14,7 +14,7 @@ function Loader() {
     return (
     <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-            <Route path='/' exact element={Landing()} />
+            <Route path='/' exact element={Home()} />
             <Route path='/sign-up' element={SignUp()} />
             <Route path='/tour' element={Tour()} />
             <Route path='/login' element={Login()} />
