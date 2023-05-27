@@ -4,6 +4,7 @@ import FormInput from '../components/FormInput';
 import '../components/FormInput.css'
 import { useState } from "react";
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function SignUp(){
 
@@ -19,7 +20,7 @@ function SignUp(){
     const [error, setError] = useState(null);
 
 
-    const REGISTER_URL = "http://localhost:8080/user/register"
+    const REGISTER_URL = "http://localhost:8080/user/login";
 
     const inputs = [
         {
@@ -33,7 +34,7 @@ function SignUp(){
         },
         {
             id: 2,
-            name:"firstName",
+            name:"name",
             type:"text",
             placeholder:"Name",
             errorMessage:"Name must be minimum 3 characters and may not include special characters!",
@@ -142,7 +143,7 @@ function SignUp(){
                     />
                 ))}
                 <button className="register-button" type="submit">Submit</button>
-                <p className="loginredirect"><a href='/login'>Already have an account?</a></p>
+                <p className="loginredirect">Already have an account?<Link to="/user/login">Login here</Link></p>
 
             </form>
         </motion.div>
