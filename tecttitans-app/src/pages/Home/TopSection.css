@@ -1,107 +1,36 @@
 html,
 #root {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.topSectionContainer {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 16%;
-  z-index: 99;
-  pointer-events: none;
-}
-
-.explainESGContainer {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50%;
-    pointer-events: none;
-    z-index: 99;
-  }
-
-.containerText {
-    display: flex;
-    flex-direction: column;
-    margin-inline: 20%;
-    align-items: center;
-    pointer-events: all;
-    z-index: 99;
-}
-
-.logo {
-    margin: 0;
-    color: #00ff7b9c;
-    font-weight: 800;
-    font-size: 50px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-}
-
-.slogan {
-  margin: 0;
-  color: #fff;
-  font-weight: 700;
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-
-#root {
     background-color: #01040c;
 }
 
-body {
-    margin: 0;
-}
 
-.Home {
-    text-align: center;
-}
-
-.Home-logo {
-    height: 40vmin;
+.contentContainer {
+    position: absolute;
+    text-shadow: 2px 2px 2px black;
+    margin-inline: 20%;
     pointer-events: none;
+    z-index: 2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .Home-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.Home-header {
-    background-color: #282c34;
-    min-height: 100vh;
+.title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    pointer-events: none;
+    padding-top: 35vh;
 }
 
-.Home-link {
-    color: #61dafb;
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    pointer-events: all;
+    padding-top: 48px;
 }
 
-@keyframes Home-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.ESG {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    padding-top: 65vh;
 }

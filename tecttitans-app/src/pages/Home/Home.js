@@ -7,20 +7,20 @@ import {TopSection} from "./TopSection";
 
 
 const CanvasContainer = styled.div `
-  width: 100vw;
-  height: 160vh;
+  width: 100%;
+  height: 180vh;
 `;
 
 
 function Home() {
     return (
         <CanvasContainer>
-            <TopSection />
             <Canvas style={{position: 'fixed', overflow: 'hidden'}}> 
                 <Suspense fallback={null}>
                     <Earth />
                 </Suspense>
             </Canvas>
+            <TopSection/>
         </CanvasContainer>
     );
 }
