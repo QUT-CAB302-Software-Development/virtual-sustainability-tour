@@ -3,12 +3,15 @@ import './Navbar.css';
 import {Link} from "react-router-dom";
 import {Button} from "./Button";
 import techtitanslogo from '../images/Techwhite.png';
-// import Logout from "../pages/Logout.js";
+import Logout from "../pages/Logout.js";
 
-function Navbar() {
+function Navbar({ user }) {
     // toggle the hamburger menu and update the state
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true)
+    const [button, setButton] = useState(true);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
 
@@ -26,9 +29,16 @@ function Navbar() {
 
 
     window.addEventListener('resize', showButton);
+
+      // Handle user login status change
+      const handleLoginStatusChange = (loggedIn) => {
+        setIsLoggedIn(loggedIn);
+      };
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
+                {user && <span>Welcome, {user.email}</span>}
                 <Link to="/" onClick={closeMobileMenu}>
                     <img src={techtitanslogo} className="navbar-logo" alt="TechTitans Logo" />
                 </Link>
@@ -49,14 +59,17 @@ function Navbar() {
                             Tour
                         </Link>
                     </li>
-                    <li className='nav-item'>
-                        <Link to='/sign-up' className='nav-links' onClick={closeMobileMenu}>
-                            {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
-                        </Link>
-                    </li>
-                     {/* <li className='nav-item'>
-                        <Logout />
-                    </li> */}
+                    {isLoggedIn ? ( // Check login status
+                        <li className="nav-item">
+                            <Logout onLogout={handleLoginStatusChange} /> {/* Pass callback to handle logout */}
+                        </li>
+                     ) : (
+                        <li className="nav-item">
+                            <Link to="/user/register" className="nav-links" onClick={closeMobileMenu}>
+                                {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
+                            </Link>
+                        </li>
+                     )}
                 </ul>
                 {/* <Link to='/sign-up'>
                 {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
