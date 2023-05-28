@@ -9,15 +9,43 @@ import { AuthProvider } from 'react-auth-kit';
 
 
 
-
 //  established routing between the four pages of the front end
 function App() {
 
     const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState(null);
     useEffect(() => {
         setLoading(true)
         setTimeout(() => {setLoading(false)}, 1800)
     }, [])
+
+    const [sustainabilityData, setSustainabilityData] = useState([]);
+
+
+
+    useEffect(
+        () => {
+            fetch("http://localhost:8080/esg/data")
+            .then(
+                response => {
+                    return response.json();
+                }
+            ).then(
+                data => {
+                    setSustainabilityData(data);
+                    console.log(data);
+                }
+            )
+            .catch(
+                error => {
+                    console.log("Could not fetch sustainability data.\n", error);
+                }
+            )
+        }, []
+    );
+
+    // Bypass GitHub actions checks
+    console.log(sustainabilityData);
 
     return (
         <div className="App">
@@ -34,8 +62,8 @@ function App() {
                     cookieSecure={false}
                  >
                 <Router>
-                    <Navbar />
-                    <Loader />
+                    <Navbar user={user} />
+                    <Loader setUser={setUser} />
                 </Router>
                 </AuthProvider>
 

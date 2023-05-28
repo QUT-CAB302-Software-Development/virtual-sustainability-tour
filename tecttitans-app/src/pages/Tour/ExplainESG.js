@@ -8,18 +8,23 @@ import './Card.css';
 import './ExplainESG.css';
 
 
+const desc = [
+    "ESG scores assess a company's performance and impact in areas related to the environment, society, and governance (ESG).",
+]
+
+
 function ExplainESG({ place, setExplainESGState }){
 
 
 
     return (
-        <Card elevation={6} sx={{ borderRadius: '28px', height: 'fit-content' }} className='card'>
+        <Card elevation={6} sx={{ borderRadius: '28px' }} className='card'>
 
             <CardHeader
-                avatar={<EnergySavingsLeafIcon htmlColor="LimeGreen" fontSize='large'/>}
+                avatar={<EnergySavingsLeafIcon htmlColor="LimeGreen" sx={{fontSize: '50px'}}/>}
                 action={
                     <IconButton onClick={() => setExplainESGState(false)}>
-                        <CloseIcon sx={{ borderRadius: '50%' }} className="close-button" />
+                        <CloseIcon className="close-button" />
                     </IconButton>
                 }
                 title={<Typography gutterBottom variant="h5">
@@ -28,10 +33,12 @@ function ExplainESG({ place, setExplainESGState }){
                 }/>
 
 
-            <CardContent>
-                <Typography gutterBottom variant="subtitle1">
-                    https://www.sustainalytics.com/esg-ratings {place.name}
-                </Typography>
+            <CardContent sx={{ marginX: "4px", marginTop: "-24px" }}>
+                {desc.map((para) => (
+                    <Typography gutterBottom variant="subtitle2" align="center" fontWeight="normal">
+                        {para}
+                    </Typography>
+                ))}
             </CardContent>
         </Card>
     )

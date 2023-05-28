@@ -1,0 +1,36 @@
+html,
+#root {
+    background-color: #01040c;
+}
+
+
+.contentContainer {
+    position: absolute;
+    text-shadow: 2px 2px 2px black;
+    margin-inline: 20%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    padding-top: 35vh;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    pointer-events: all;
+    padding-top: 48px;
+}
+
+.ESG {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    padding-top: 65vh;
+}
