@@ -8,7 +8,6 @@ import getESGScore from "../../data/getESGScore";
 import './Map.css';
 import Scale from '../../components/Scale';
 import { Typography } from '@mui/material';
-import MapSwitch from '../../components/MapSwitch';
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
@@ -25,12 +24,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
     const [heading, setHeading] = useState(60);
     const minZoom = 17.2;
     const cardAnimationDelay = 100; // ms
-    const [mapId, setMapId] = useState(process.env.REACT_APP_GMAPS_ID);
 
-    const handleToggle = (isChecked) => {
-        const newMapId = isChecked ? process.env.REACT_APP_GMAPS_ID2 : process.env.REACT_APP_GMAPS_ID;
-        setMapId(newMapId);
-      };
 
     function animate() {
         setTilt((prevTilt) => {
@@ -102,7 +96,7 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                 minZoom: minZoom,
                 heading: heading,
                 tilt: tilt,
-                mapId: mapId,
+                mapId: process.env.REACT_APP_GMAPS_ID,
                 }}
             >
                 {places.map((place, i) => (
@@ -138,7 +132,6 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
                 </div>
                 ))}
             </GoogleMapReact>
-            <MapSwitch onToggle={handleToggle}/> 
             <Scale/> 
         </div>
     );
