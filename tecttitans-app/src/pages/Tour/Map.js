@@ -11,8 +11,8 @@ import { Typography } from '@mui/material';
 
 function getColor(esgScore) {
     const colorScale = scaleQuantize()
-    .domain([5, 45]) // range
-    .range(['#008000', '#9acd32', '#ffff00', '#ffa500','#ff4500']); // use a color scale that goes from red to yellow to green
+        .domain([5, 45]) // range
+        .range(['#008000', '#9acd32', '#ffff00', '#ffa500','#ff4500']); // use a color scale that goes from red to yellow to green
     
     if(esgScore === null) { return '#B0B0B0'; }
     return colorScale(esgScore);
@@ -20,10 +20,11 @@ function getColor(esgScore) {
 
 // google maps api usage ============================================================================================================
 function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState, setReviewBoxState, setExplainESGState }) {   
-    const cardAnimationDelay = 100; // ms
     const [tilt, setTilt] = useState(0);
     const [heading, setHeading] = useState(60);
     const minZoom = 17.2;
+    const cardAnimationDelay = 100; // ms
+
 
     function animate() {
         setTilt((prevTilt) => {
@@ -55,8 +56,6 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
             }
             });
         }
-
-      
       
       useEffect(() => {
         let animationLoop;
@@ -81,60 +80,59 @@ function Map({ places, zoom, coordinates, setPlaceClicked, setPlaceDetailsState,
       }, []);
 
     return (
-        <div className="map-container">
+        <div className="map-container">    
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_STYLE_KEY }}
                 center={coordinates}
-                zoom={minZoom}
+                zoom={zoom}
                 options={{
-                    mapId: process.env.REACT_APP_GMAPS_ID,
-                    disableDefaultUI: true, 
-                    disableDoubleClickZoom: true,
-                    zoomControl: false, 
-                    streetViewControl: false,
-                    fullscreenControl: false,
-                    mapTypeControl: false,
-                    clickableIcons: false,
-                    minZoom: minZoom,
-                    heading: heading,
-                    tilt: tilt,
+                disableDefaultUI: true,
+                disableDoubleClickZoom: true,
+                zoomControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                mapTypeControl: false,
+                clickableIcons: false,
+                minZoom: minZoom,
+                heading: heading,
+                tilt: tilt,
+                mapId: process.env.REACT_APP_GMAPS_ID,
                 }}
             >
                 {places.map((place, i) => (
-                    <div
-                        className="marker-container"
-                        lat={Number(place.geometry.location.lat)}
-                        lng={Number(place.geometry.location.lng)}
-                        key={i}
+                <div
+                    className="marker-container"
+                    lat={Number(place.geometry.location.lat)}
+                    lng={Number(place.geometry.location.lng)}
+                    key={i}
+                >
+                    <Tooltip
+                    TransitionComponent={Zoom}
+                    title={
+                        <Typography variant="subtitle1" align="center">
+                        {place.name}
+                        </Typography>
+                    }
+                    arrow
                     >
-                        <Tooltip
-                            TransitionComponent={Zoom}
-                            title={ 
-                                <Typography variant="subtitle1" align="center">
-                                    {place.name}
-                                </Typography>
-                            }
-                            arrow
-                        >
-                            <PlaceIcon 
-                                className="icon"
-                                sx={{ color: getColor(getESGScore(place.name)), fontSize: 48 }}
-                                onClick={() => {
-                                    setPlaceDetailsState(false);
-                                    setReviewBoxState(false);
-                                    setExplainESGState(false);
-                                    setTimeout(() => {
-                                        setPlaceDetailsState(true);
-                                        setPlaceClicked(place);
-                                    }, cardAnimationDelay);
-                                }}
-                            />
-                        </Tooltip>
-                    </div>
+                    <PlaceIcon
+                        className="icon"
+                        sx={{ color: getColor(getESGScore(place.name)), fontSize: 48 }}
+                        onClick={() => {
+                        setPlaceDetailsState(false);
+                        setReviewBoxState(false);
+                        setExplainESGState(false);
+                        setTimeout(() => {
+                            setPlaceDetailsState(true);
+                            setPlaceClicked(place);
+                        }, cardAnimationDelay);
+                        }}
+                    />
+                    </Tooltip>
+                </div>
                 ))}
             </GoogleMapReact>
-            
-            <Scale/>
+            <Scale/> 
         </div>
     );
 }
