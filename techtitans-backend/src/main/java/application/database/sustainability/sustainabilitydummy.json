@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Sofitel",
+    "ghgTotal": 2200000000,
+    "sales": 2204000000,
+    "operatingIncome": 1244000000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Pullman",
+    "ghgTotal": 2200000000,
+    "sales": 2204000000,
+    "operatingIncome": 1244000000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Novotel",
+    "ghgTotal": 2200000000,
+    "sales": 2204000000,
+    "operatingIncome": 1244000000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Mercure",
+    "ghgTotal": 2200000000,
+    "sales": 2204000000,
+    "operatingIncome": 1244000000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Ibis",
+    "ghgTotal": 2200000000,
+    "sales": 2204000000,
+    "operatingIncome": 1244000000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Marriot",
+    "ghgTotal": 2200000000,
+    "sales": 2204000000,
+    "operatingIncome": 1244000000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Rydges",
+    "ghgTotal": 118705000,
+    "sales": 987794000,
+    "operatingIncome": 53820000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Events",
+    "ghgTotal": 118705000,
+    "sales": 987794000,
+    "operatingIncome": 53820000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Hilton",
+    "ghgTotal": 4370546000,
+    "sales": 5788000000,
+    "operatingIncome": 1010000000,
+    "waterWithdrawn": 138887000,
+    "waterDischarge": 34722000,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "W Brisbane",
+    "ghgTotal": 18500000,
+    "sales": 30200000,
+    "operatingIncome": 5700000,
+    "waterWithdrawn": 0,
+    "waterDischarge": 0,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  },
+  {
+    "name": "Meriton",
+    "ghgTotal": 3132920000,
+    "sales": 2015000000,
+    "operatingIncome": 380000000,
+    "waterWithdrawn": 65540000,
+    "waterDischarge": 12610000,
+    "sox": 0,
+    "nox": 0,
+    "voc": 0
+  }
+]

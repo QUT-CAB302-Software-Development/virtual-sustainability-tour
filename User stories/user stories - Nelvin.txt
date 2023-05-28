@@ -1,0 +1,75 @@
+1.	As a user, I want to be able to filter virtual tours by location or sustainability factor, so that I can easily find out the tours that suit for me. (Should have)
+Given: The filters feature displays on the page at the top of the tour listings.
+When: I select the filters from a dropdown menu
+Then: The filter updates my search results automatically as I make selections.
+2.	As a user, I want to be able to see high-quality images of the virtual tours, so that I have a better understanding of what they will be look like before I go there. (Should have)
+Given: The website displays high quality images of each tour.
+When: I clicked on the thumbnails of each tour
+Then: The website display images, and I am able to zoom in on the images to get a closer look.
+
+3.	As a user, I want to be able to read descriptions of the virtual tours or any other relevant information details, so that I know more about the virtual tour that I am planning to go for. (Must have)
+Given: The website displays detailed and vivid description of each tour.
+When: I clicked on the tour I am interested in
+Then: The website shows me all the relevant information including location name, sustainability factor, reviews etc.
+
+4.	As a user, I want to be able to login securely into the website, so that I feel confident that the website is safe for visiting. (Could have)
+Given: The login page should use HTTPS to ensure a secure connection.
+When: I tried to login my account on the website
+Then: The website seems like including some basic validation and error handling, in response to prevent common security issues.
+
+5.	As a user, I want to be able to access the website on various devices such as desktop computers, laptops, tablets, and smartphone, so that I can access it at my convenience. (Must have)
+Given: The website has a responsive layout that adapts to a wide range of devices and screen sizes. 
+When: I visit the website from various devices and browsers
+Then: The website functions properly.
+
+6.	As a user, I want to be able to access the website’s contact page, so that I can easily communicate with the website’s customer service team. (Could have)
+Given: The customer service team of the website can handle a variety of customer queries.
+When: I clicked on the contact page on the web application
+Then: I can request my inquiry using the contact form.
+
+7.	As a developer, I want to make sure that the website is responsive and accessible from different range of devices and screen sizes, so that users can access the website is user-friendly. (Must have)
+Given: The website’s form and other interactive elements are easy to use and responsive, regardless of the device types and browsers.
+When: I tested the website on various screen sizes
+Then: I can interact with the website smoothly.
+
+8.	As a developer, I want to ensure that the web application’s code, including HTML, CSS and JavaScript, is clean and well-organised, so that it is easy to maintain and update in the future. (Could have)
+Given: The website is structured in a way that is easy to read and well-organised.
+When: I try to modify the existing code
+Then: I can be easy to read and understand because the code is properly commented and documented.
+
+9.	As a front-end developer, I want to ensure that the website’s design is visually appealing, so that users have a positive and smooth experience while visiting. (Could have)
+Given: The website’s design is user friendly and has a visually appealing color scheme.
+When: I browse the website throughout
+Then: The website’s color scheme is easy on the eyes and has a easy-to-read font size.
+
+10.	As a developer, I want to ensure that the website is able to prevent SQL injection attacks by sanitizing input data, so that hackers cannot inject malicious into the website’s database. (Could have)
+Given: The website uses strong authentication and authorization mechanisms.
+When: I use the input field and test to inject some malicious code into it 
+Then: The website use parameterized SQL queries which allow input data to be safely passed as parameters rather than directly concatenated into query string.
+
+
+11.	As a developer, I want to ensure the website use secure authentication methods, such as password hashing, so that the website can effectively prevent unauthorized access to user’s account. (Could have)
+Given: The website uses strong authentication and authorization mechanisms.
+When: I use the input field and test to inject some malicious code into it 
+Then: The website use input validation to ensure the user input data is in the expected format and does not contain unexpected characters or symbols.
+
+12.	As a user, I want the contact page to include a frequently asked question (FAQ) section, so that I can resolved my inquiry instantly without contacting the customer support team. (Should have)
+Given: The FAQ information is presented in a user-friendly manner and all common customer queries are included.
+When: I click on the FAQ section
+Then: The information is organised and presented in a clear manner.
+
+13.	As a user, I want the website to be accessible for all users, including those with disabilities, so that all users can easily and effectively use and visit the web app. (Won’t have)
+Given: The website is designed with accessibility.
+When: I access the assistive technologies as a user with disability
+Then: I can easily access and use the content on the web app.
+
+14.	As a user, I want the website to have a simple and clear navigation menu, so that I can easily find the pages on the website. (Must have)
+Given: The navigation menu’s layout is clean and well-organised.
+When: I look for the information throughout the web application
+Then: I can be easy to find and follow with the appropriate animations on the navigation bar menu.
+
+15.	As a user, I want the website to protect my personal information after I signed up for a new account, so that I feel confident that my information is protected from being stolen by hackers. (Could have)
+Given: The sign up page use encryption techniques, such as SSL/TLS
+When: I sign up a new account on the web app
+Then: I feel confident to input my information data into the website as the data transmission between the user and the server is safe. 
+

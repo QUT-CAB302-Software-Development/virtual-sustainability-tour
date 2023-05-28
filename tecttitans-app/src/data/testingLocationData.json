@@ -1,0 +1,32 @@
+[
+  {
+    "id":5309,
+    "locationId":"cnsc9963",
+    "name":"Jiaxing - Haiyan Wuyue Plaza, China",
+    "status":"OPEN",
+    "address":{
+      "street":"B1, Zaoyuan West Road and Zhongxing Road, Haiyan County, Jiaxing City, Zhejiang",
+      "city":"Jiaxing",
+      "state":"Zhejiang",
+      "zip":null,"countryId":115,
+      "country":"China",
+      "regionId":102,
+      "region":"Asia Pacific"},
+    "gps":
+    {
+      "latitude":-27.470125,
+      "longitude":153.021072
+    },
+    "dateOpened":"2022-09-22",
+    "stallCount":3,
+    "counted":true,
+    "elevationMeters":5,
+    "powerKilowatt":250,
+    "solarCanopy":false,
+    "battery":false,
+    "statusDays":0,
+    "urlDiscuss":false
+  }
+]
+
+
