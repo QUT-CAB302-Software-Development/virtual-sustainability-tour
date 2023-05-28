@@ -5,7 +5,6 @@ import { Canvas } from "@react-three/fiber";
 import {Suspense} from "react";
 import {TopSection} from "./TopSection";
 
-
 const CanvasContainer = styled.div `
   width: 100%;
   height: 180vh;
