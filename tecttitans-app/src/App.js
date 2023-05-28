@@ -22,7 +22,6 @@ function App() {
     const [sustainabilityData, setSustainabilityData] = useState([]);
 
 
-
     useEffect(
         () => {
             fetch("http://localhost:8080/esg/data")
