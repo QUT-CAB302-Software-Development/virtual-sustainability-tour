@@ -3,8 +3,9 @@
 
 
 
-![Hi](https://imgur.com/a/8XDrT8w)
-![Hi](https://imgur.com/a/8XDrT8w)
+![S1](./tecttitans-app/public/S1.png)
+![S2](./tecttitans-app/public/S2.png)
+![S3](./tecttitans-app/public/S3.png)
 
 
 ## 🛠 Technologies
