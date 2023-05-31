@@ -38,5 +38,29 @@
   {
     "hotel_name": "Hyatt",
     "esg_score": 30.0
+  },
+  {
+    "hotel_name": "Capri",
+    "esg_score": 21.0
+  },
+  {
+    "hotel_name": "SkyTower",
+    "esg_score": 27.0
+  },
+  {
+    "hotel_name": "Adina",
+    "esg_score": 22.0
+  },
+  {
+    "hotel_name": "Meriton",
+    "esg_score": 18.0
+  },
+  {
+    "hotel_name": "Mantra",
+    "esg_score": 29.0
+  },
+  {
+    "hotel_name": "Selina",
+    "esg_score": 15.0
   }
 ]
